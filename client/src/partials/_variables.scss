@@ -1,5 +1,13 @@
 $color: (
+    global-black: #13182C,
+    global-white: #FFFFFF,
+    interactive: #2E66E5,
     table-header-text: #5C667E,
+    borders: #BDC5D5,
+    nav-bg: #232940,
+    page-bg: #F7F8F9, 
+    instock: #158463,
+    out-of-stock: #C94515
 );
 
 @function color($color-name) {
