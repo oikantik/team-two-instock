@@ -1,0 +1,102 @@
+@import 'variables';
+
+// FONT SIZE variable map and lookup function
+$font-size: (
+    h1-hero-tablet: 3.75rem,
+    h2-tablet: 2.25rem,
+    h3-mobile-tablet: 1.5rem,
+    subheading-mobile: 0.875rem,
+    subheading-tablet: 1rem,
+    paragraph-mobile: 0.8125rem, //also for comments
+    paragraph-tablet: 0.875rem,  //also for comments
+    lists-mobile: 0.8125rem,     // also for contact info
+    lists-tablet: 0.875rem,      // also for contact info
+    label: 0.75rem
+);
+
+@function font-size($element) {
+    @return map-get($font-size, $element);
+}
+
+// HEADING & TEXT mixins
+@mixin heading-1 {
+    font-size: font-size(h1-hero-tablet);
+    font-weight: 600;
+    line-height: font-size(h1-hero-tablet) + .5rem;
+    color: inherit;
+}
+
+@mixin heading-2 {
+    font-size: font-size(h2-tablet);
+    font-weight: 600;
+    line-height: font-size(h2-tablet) + .5rem;
+    color: inherit;
+}
+
+@mixin heading-3 {
+    font-size: font-size(h3-mobile-tablet);
+    font-weight: 600;
+    line-height: font-size(h3-mobile-tablet) + .5rem;
+    color: inherit;
+}
+
+@mixin subheading-mobile {
+    font-size: font-size(subheading-mobile);
+    font-weight: 500;
+    line-height: font-size(subheading-mobile) + .5rem;
+    color: inherit;
+}
+
+@mixin subheading-tablet {
+    font-size: font-size(subheading-tablet);
+    font-weight: 500;
+    line-height: font-size(subheading-tablet) + .5rem;
+    color: inherit;
+}
+
+@mixin paragraph-mobile {
+    font-size: font-size(paragraph-mobile);
+    font-weight: 400;
+    line-height: font-size(paragraph-mobile) + .3125rem;
+    color: inherit;
+}
+
+@mixin paragraph-tablet {
+    font-size: font-size(paragraph-tablet);
+    font-weight: 400;
+    line-height: font-size(paragraph-tablet) + .5rem;
+    color: inherit;
+}
+
+@mixin comments-mobile {
+    @include paragraph-mobile;
+}
+
+@mixin comments-tablet {
+    @include paragraph-mobile;
+}
+
+@mixin lists-mobile {
+    @include paragraph-mobile;
+}
+
+@mixin lists-tablet {
+    @include paragraph-tablet;
+    line-height: font-size(paragraph-tablet) + .375rem;
+}
+
+@mixin contact-mobile {
+    @include lists-mobile;
+}
+
+@mixin contact-tablet {
+    @include lists-tablet;
+}
+
+@mixin labels {
+    display: block;
+    font-size: font-size(label);
+    font-weight: 500;
+    line-height: font-size(label) + .5rem;
+    color: color(label);
+}

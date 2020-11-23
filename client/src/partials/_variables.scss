@@ -1,0 +1,55 @@
+$nav-height-mobile: 169px;
+$nav-height-tablet: 80px;
+
+$max-content-width: 1080px;
+
+$about-max-width: 896px;
+$mobile-gutter: 1rem;
+$tablet-desktop-gutter: 1.5rem;
+
+
+
+
+
+// COLORS variable map and lookup function
+$colors: (
+    global-black: #13182C,
+    global-white: #FFFFFF,
+    interactive: #2E66E5,
+
+    label: #AFAFAF,
+    input-field: #FAFAFA,
+    input-border: #E1E1E1,
+    divider: #E1E1E1,
+    button: #0095FF,
+    button-hover: #0065AD
+);
+
+@function color($color-name) {
+    @return map-get($colors, $color-name);
+}
+
+// HORIZONTAL PADDING variable map and lookup function
+$x-padding: (
+    mobile: 1rem,
+    tablet: 1.5rem,
+    desktop: calc(( 100% - #{$max-content-width}) / 2)
+);
+
+@function x-padding($device) {
+    @return map-get($x-padding, $device);
+}
+
+// BREAKPOINT variable map and lookup function
+$breakpoint: (
+    mobile: 320px,
+    before-tablet: 500px,
+    tablet: 768px,
+    before-desktop-1: 1128px,
+    before-desktop-2: 1152px,
+    desktop: 1280px
+);
+
+@function breakpoint($device) {
+    @return map-get($breakpoint, $device);
+}

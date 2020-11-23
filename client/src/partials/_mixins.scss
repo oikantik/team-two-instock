@@ -1,0 +1,63 @@
+@import 'variables';
+@import 'typography';
+
+@mixin before-tablet {
+    @media (min-width: breakpoint(before-tablet)) {
+        @content;
+    }
+}
+
+
+@mixin tablet {
+    @media (min-width: breakpoint(tablet)) {
+        @content;
+    }
+}
+
+@mixin before-desktop-1 {
+    @media (min-width: breakpoint(before-desktop-1)) {
+        @content;
+    }
+}
+
+@mixin before-desktop-2 {
+    @media (min-width: breakpoint(before-desktop-2)) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: breakpoint(desktop)) {
+        @content;
+    }
+}
+
+@mixin fixed-nav-offset-mobile {
+    position: relative;
+    top: $nav-height-mobile;
+}
+
+@mixin fixed-nav-offset-tablet {
+    position: relative;
+    top: $nav-height-tablet;
+}
+
+@mixin fixed-nav-offset {
+    position: relative;
+    top: $nav-height-mobile;
+    @include tablet {
+        top: $nav-height-tablet;
+    }
+}
+
+
+@mixin input-field {
+    padding: 0.8rem;
+    border: 1px solid color(input-border);
+    border-radius: 4px;
+    outline: none;
+    background-color: color(input-field);
+    &:focus {
+        border: 2px solid  color(button);
+    }
+}
