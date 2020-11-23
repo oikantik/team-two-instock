@@ -1,0 +1,23 @@
+@use './fonts';
+@use './variables';
+
+*, 
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a:link,
+a:visited,
+a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+html {
+    color: color(global-black);
+    font-family: "Titillium";
+    font-size: 16px;
+}
