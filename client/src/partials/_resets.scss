@@ -1,4 +1,3 @@
-@use './fonts';
 @use './variables';
 
 *, 
@@ -16,8 +15,8 @@ a:active {
     text-decoration: none;
 }
 
-html {
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,a,img,article,aside,footer,header,nav,ul,button,input,textarea,::placeholder,section {
     color: color(global-black);
-    font-family: "Titillium";
+    font-family: $base-font-family;
     font-size: 16px;
 }
