@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
-const warehousesRoutes = require('./routes/WarehousesRoutes.js');
-const inventoryRoutes = require('./routes/InventoryRoutes.js');
+const warehousesRoutes = require('./routes/warehousesRoutes.js');
+const inventoryRoutes = require('./routes/inventoryRoutes.js');
 
 
 
@@ -13,6 +13,7 @@ const SERVER_PORT = 8080;
 
 
 //CORS-------------------------------
+
 app.use(function (_req, res, next){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -27,7 +28,7 @@ app.use('/warehouses', warehousesRoutes);
 
 app.use('/inventory', inventoryRoutes);
 
-app.use(express.static('files'));
+app.use(express.static('data'));
 
 app.use((req,res,next) => {
     console.log('request');
