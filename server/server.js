@@ -28,7 +28,7 @@ app.use('/warehouses', warehousesRoutes);
 
 app.use('/inventory', inventoryRoutes);
 
-app.use(express.static('data'));
+app.use(express.static('files'));
 
 app.use((req,res,next) => {
     console.log('request');
