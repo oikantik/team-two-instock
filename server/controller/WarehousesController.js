@@ -1,4 +1,4 @@
-const warehousesModel = require('../models/WarehousesModel');
+const warehousesModel = require('../model/WarehousesModel');
 
 const getAllWarehouses = (req, res) => {
     res.status(200).json(warehousesModel.readFromWarehousesFile());
