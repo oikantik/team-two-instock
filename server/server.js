@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
-const warehousesRoutes = require('./routes/warehousesRoutes.js');
-const inventoryRoutes = require('./routes/inventoryRoutes.js');
+
+const warehousesRoutes = require('./routes/WarehousesRoutes');
+const inventoryRoutes = require('./routes/InventoryRoutes');
 
 
 
