@@ -1,17 +1,14 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
-
+const warehousesRoutes = require('./routes/WarehousesRoutes.js');
+const inventoryRoutes = require('./routes/InventoryRoutes.js');
 
 
 
 //DEFINING THE SERVER-----------------------------------------
 
 const SERVER_PORT = 8080;
-
-
-
-//USAGE OF MIDDLEWARE----------------------------------------
 
 
 
@@ -23,7 +20,12 @@ app.use(function (_req, res, next){
 });
 
 
-app.use(express.json());
+
+//USAGE OF MIDDLEWARE----------------------------------------
+
+app.use('/warehouses', warehousesRoutes);
+
+app.use('/inventory', inventoryRoutes);
 
 app.use(express.static('files'));
 
@@ -31,6 +33,8 @@ app.use((req,res,next) => {
     console.log('request');
     next();
 }); 
+
+
 
 app.use((req,res,next) => {
     //VERIFYING ACTUAL JSON REQUEST FROM THE CLIENT
