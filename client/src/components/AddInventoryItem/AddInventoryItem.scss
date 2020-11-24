@@ -1,0 +1,55 @@
+@import '../../partials/variables';
+@import '../../partials/typography';
+
+.add-inventory-item {
+    position: relative;
+    top: 136px;
+    width: calc(100% - 2rem);
+    height: 874px;
+    border: 1px solid red;
+    border-radius: 3px;
+    margin: auto;
+    background-color: color(global-white);
+
+    &__heading {
+        position: relative;
+        display: flex;
+        justify-content: baseline;
+        align-items: flex-start;
+        padding: 1.5rem;
+        padding-top: 2rem;
+        // padding: 2rem 1.5rem 1.5rem 1.75rem;
+    }
+
+    &__heading-icon {
+        position: relative;
+        top: 0.5rem;
+        margin-right: 0.5rem;
+ 
+    }
+
+    &__heading-text {
+        @include m-h1;
+    }
+
+    &__form {
+        padding: 1rem 0;
+        border: 1px solid blue;
+    }
+
+    &__fieldset {
+        display: flex;
+        flex-direction: column;
+        padding: 0 1.5rem;
+        border: none;
+        border-bottom: 1px solid color(borders);
+    }
+
+    &__legend {
+        @include m-h2;
+    }
+    
+   &__radio {
+       border: 0;
+   }
+}

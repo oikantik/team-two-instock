@@ -1,6 +1,7 @@
 import Home from './pages/Home/Home';
 import { BrowserRouter, Switch, Route  } from 'react-router-dom';
 import "./App.scss";
+import AddInventoryItem from './components/AddInventoryItem/AddInventoryItem';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/inventory/:inventoryId' component={Home}></Route>
         </Switch>
       </BrowserRouter>
+      <AddInventoryItem />
     </div>
   );
 }
