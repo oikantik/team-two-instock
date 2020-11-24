@@ -8,10 +8,10 @@ function WarehousesContainer() {
       <form className="warehouses-search">
         <input
           type="text"
-          placeholder="search"
+          placeholder="Search"
           className="warehouses-search__input"
         />
-        <button className="warehouses-search__button">Search</button>
+        <span className="warehouses-search__icon"></span>
       </form>
       <button className="warehouses-container__button">
         + Add New Warehouse

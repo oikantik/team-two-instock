@@ -1,0 +1,59 @@
+@use '../../partials/typography'as *;
+
+.warehouses-list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid color(borders);
+
+  &__control {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__delete,
+  &__edit {
+    background: transparent;
+    border: none;
+  }
+}
+
+.warehouses-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &__item {
+    width: 120px;
+    margin-bottom: 1.5rem;
+  }
+
+  &__label {
+    @include m-h4;
+    color: color(table-header-text);
+  }
+
+  &__value {
+    @include m-p2;
+    color: color(table-header-text);
+
+    &--location {
+      @include m-h3;
+      color: color(interactive);
+      display: flex;
+      align-items: center;
+    }
+
+    &--contact {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__chevron-image {
+    width: 16px;
+    height: 16px;
+  }
+}

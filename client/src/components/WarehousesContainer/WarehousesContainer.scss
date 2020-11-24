@@ -1,0 +1,60 @@
+@use '../../partials/typography'as *;
+
+.warehouses-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-top: 2rem;
+
+  &__title {
+    @include m-h1;
+    color: color(global-black);
+    margin-bottom: 1rem;
+  }
+
+  &__button {
+    @include m-h3;
+    border-radius: 20px;
+    background-color: color(interactive);
+    color: color(global-white);
+    height: 36px;
+    outline: none;
+    border: none;
+    margin-bottom: 1rem;
+  }
+
+}
+
+.warehouses-search {
+
+  position: relative;
+  margin-bottom: 1rem;
+
+  &__input {
+    border-radius: 20px;
+    height: 36px;
+    padding: 1rem;
+    width: 100%;
+    border: 1px solid color(borders);
+    outline: none;
+
+    &::placeholder {
+      @include m-p2;
+      color: color(table-header-text);
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    width: 20px;
+    height: 36px;
+    background-image: url("../../assets/icons/search-24px.svg");
+    background-position: left;
+    background-repeat: no-repeat;
+  }
+
+}
