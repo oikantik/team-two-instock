@@ -8,15 +8,15 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path='/' exact component={Home}></Route>
-          <Route path='/warehouse' component={}></Route>
-          <Route path='/editWarehouse/:warehouseId' component={}></Route>
-          <Route path='/addWarehouse' component={}></Route>
-          <Route path='/inventory' component={}></Route>
-          <Route path='/inventoryItem' component={}></Route>
-          <Route path='/editInventory/:inventoryId' component={}></Route>
-          <Route path='/addInventory' component={}></Route>
-          <Route path='/warehouse/:warehouseId' component={}></Route>
-          <Route path='/inventory/:inventoryId' component={}></Route>
+          <Route path='/warehouse' component={Home}></Route>
+          <Route path='/editWarehouse/:warehouseId' component={Home}></Route>
+          <Route path='/addWarehouse' component={Home}></Route>
+          <Route path='/inventory' component={Home}></Route>
+          <Route path='/inventoryItem' component={Home}></Route>
+          <Route path='/editInventory/:inventoryId' component={Home}></Route>
+          <Route path='/addInventory' component={Home}></Route>
+          <Route path='/warehouse/:warehouseId' component={Home}></Route>
+          <Route path='/inventory/:inventoryId' component={Home}></Route>
         </Switch>
       </BrowserRouter>
     </div>
