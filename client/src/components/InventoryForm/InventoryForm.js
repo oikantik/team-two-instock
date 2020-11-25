@@ -1,11 +1,11 @@
 import React from 'react';
-import './AddInventoryItem.scss'
+import './InventoryForm.scss'
 import axios from 'axios';
 
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import errorIcon from "../../assets/icons/error-24px.svg";
 
-class AddInventoryItem extends React.Component {
+class InventoryForm extends React.Component {
     state = {
         itemName: "",
         itemDescription: "",
@@ -175,12 +175,12 @@ class AddInventoryItem extends React.Component {
         return (
             <>
                 <label 
-                    className="add-inventory-item__label"   
+                    className="inventory-form__label"   
                     htmlFor="itemQuantity">
                         Quantity
                 </label>
                 <input 
-                    className="add-inventory-item__text-input add-inventory-item__text-input--short"
+                    className="inventory-form__text-input inventory-form__text-input--short"
                     onChange={this.handleChange}
                     value={this.state.itemQuantity}
                     name="itemQuantity" 
@@ -195,8 +195,8 @@ class AddInventoryItem extends React.Component {
     renderErrorMessage = () => {
         return (
             <>
-                <img className="add-inventory-item__error-icon" src={errorIcon} alt="error message icon" />
-                <span className="add-inventory-item__error-text" >This field is required</span>
+                <img className="inventory-form__error-icon" src={errorIcon} alt="error message icon" />
+                <span className="inventory-form__error-text" >This field is required</span>
             </>
         );
     }
@@ -204,27 +204,27 @@ class AddInventoryItem extends React.Component {
     render() {
 
         return (
-            <div className="add-inventory-item">
+            <div className="inventory-form">
                 {/* HEADING STARTS */}
-                <div className="add-inventory-item__heading">
-                    <img className="add-inventory-item__heading-icon" src={backArrow} alt="Go back arrow" />
-                    <h1 className="add-inventory-item__heading-text">Add New Inventory Item</h1>
+                <div className="inventory-form__heading">
+                    <img className="inventory-form__heading-icon" src={backArrow} alt="Go back arrow" />
+                    <h1 className="inventory-form__heading-text">Add New Inventory Item</h1>
                 </div>
                 {/* FORM STARTS */}
                 <form 
-                    className="add-inventory-item__form" 
+                    className="inventory-form__form" 
                     onSubmit={this.handleSubmit} 
                     onReset={this.handleReset}>
                         {/* ITEM DETAILS SECTION */}
-                        <fieldset className="add-inventory-item__fieldset">
-                            <legend className="add-inventory-item__legend add-inventory-item__legend--stretch">Item Details</legend>
+                        <fieldset className="inventory-form__fieldset">
+                            <legend className="inventory-form__legend inventory-form__legend--stretch">Item Details</legend>
                             <label 
-                                className="add-inventory-item__label" 
+                                className="inventory-form__label" 
                                 htmlFor="itemName">
                                     Item Name
                             </label>
                             <input 
-                                className="add-inventory-item__text-input" 
+                                className="inventory-form__text-input" 
                                 onChange={this.handleChange}
                                 value={this.state.itemName}
                                 name="itemName" 
@@ -232,32 +232,32 @@ class AddInventoryItem extends React.Component {
                                 type="text"
                                 placeholder="Item Name"
                             />
-                            <div className="add-inventory-item__error">
+                            <div className="inventory-form__error">
                                 {this.state.itemNameError && this.renderErrorMessage()}
                             </div>
                             <label 
-                                className="add-inventory-item__label" 
+                                className="inventory-form__label" 
                                 htmlFor="itemDescription">
                                     Description
                             </label>
                             <textarea
-                                className="add-inventory-item__text-input add-inventory-item__text-input--textarea" 
+                                className="inventory-form__text-input inventory-form__text-input--textarea" 
                                 onChange={this.handleChange}
                                 value={this.state.itemDescription}
                                 name="itemDescription" 
                                 id="itemDescription" 
                                 placeholder="Please enter a brief item description..."
                             />
-                            <div className="add-inventory-item__error">
+                            <div className="inventory-form__error">
                                 {this.state.itemDescriptionError && this.renderErrorMessage()}
                             </div>
                             <label 
-                                className="add-inventory-item__label" 
+                                className="inventory-form__label" 
                                 htmlFor="itemCategory">
                                     Category
                             </label>
                             <select 
-                                className="add-inventory-item__text-input add-inventory-item__text-input--select"
+                                className="inventory-form__text-input inventory-form__text-input--select"
                                 onChange={this.handleChange}
                                 value={this.state.itemCategory}
                                 name="itemCategory" 
@@ -265,21 +265,21 @@ class AddInventoryItem extends React.Component {
                                     <option value="">Please select</option>
                                     {this.renderSelectFieldOptions(this.props.categories)}
                             </select>
-                            <div className="add-inventory-item__error">
+                            <div className="inventory-form__error">
                                 {this.state.itemCategoryError && this.renderErrorMessage()}
                             </div>
                         </fieldset>
                         {/* ITEM AVAILABILITY SECTION */}
-                        <fieldset className="add-inventory-item__fieldset">
-                            <legend className="add-inventory-item__legend">Item Availability</legend>
-                            <fieldset className="add-inventory-item__radio">
+                        <fieldset className="inventory-form__fieldset">
+                            <legend className="inventory-form__legend">Item Availability</legend>
+                            <fieldset className="inventory-form__radio">
                                 <legend 
-                                    className="add-inventory-item__label add-inventory-item__label--radio">
+                                    className="inventory-form__label inventory-form__label--radio">
                                         Status
                                 </legend>
-                                <div className="add-inventory-item__radio-group">
+                                <div className="inventory-form__radio-group">
                                     <input
-                                        className="add-inventory-item__radio-input"
+                                        className="inventory-form__radio-input"
                                         onChange={this.handleOptionChange}
                                         value="In Stock"
                                         checked={this.state.itemStatus === "In Stock"}
@@ -287,14 +287,14 @@ class AddInventoryItem extends React.Component {
                                         id="itemStatus"
                                         type="radio" />
                                     <label
-                                        className={this.state.itemStatus === "In Stock" ? "add-inventory-item__radio-label add-inventory-item__radio-label--checked" : "add-inventory-item__radio-label"}
+                                        className={this.state.itemStatus === "In Stock" ? "inventory-form__radio-label inventory-form__radio-label--checked" : "inventory-form__radio-label"}
                                         htmlFor="itemStatus">
                                             In stock
                                     </label>
                                 </div>
-                                <div className="add-inventory-item__radio-group">
+                                <div className="inventory-form__radio-group">
                                     <input 
-                                        className="add-inventory-item__radio-input" 
+                                        className="inventory-form__radio-input" 
                                         onChange={this.handleOptionChange}
                                         value="Out of Stock"
                                         checked={this.state.itemStatus === "Out of Stock"}
@@ -302,23 +302,23 @@ class AddInventoryItem extends React.Component {
                                         id="itemStatus" 
                                         type="radio" />
                                     <label 
-                                        className={this.state.itemStatus === "Out of Stock" ? "add-inventory-item__radio-label add-inventory-item__radio-label--checked" : "add-inventory-item__radio-label"}
+                                        className={this.state.itemStatus === "Out of Stock" ? "inventory-form__radio-label inventory-form__radio-label--checked" : "inventory-form__radio-label"}
                                         htmlFor="itemStatus">
                                             Out of stock
                                     </label>
                                 </div>
                             </fieldset>
                             {this.state.itemStatus === "In Stock" && this.renderQuantity()}
-                            <div className="add-inventory-item__error">
+                            <div className="inventory-form__error">
                                 {this.state.itemQuantityError && this.renderErrorMessage()}
                             </div>
                             <label  
-                                className="add-inventory-item__label" 
+                                className="inventory-form__label" 
                                 htmlFor="itemWarehouse">
                                     Warehouse
                             </label>
                             <select 
-                                className="add-inventory-item__text-input add-inventory-item__text-input--select"
+                                className="inventory-form__text-input inventory-form__text-input--select"
                                 onChange={this.handleChange}
                                 value={this.state.itemWarehouse}
                                 name="itemWarehouse" 
@@ -327,19 +327,19 @@ class AddInventoryItem extends React.Component {
                                     <option value="">Please select</option>
                                     {this.renderSelectFieldOptions(this.props.warehouses)}
                             </select>
-                            <div className="add-inventory-item__error">
+                            <div className="inventory-form__error">
                                 {this.state.itemWarehouseError && this.renderErrorMessage()}
                             </div>
                         </fieldset>
                         {/* BUTTONS */}
-                        <div className="add-inventory-item__button-group">
+                        <div className="inventory-form__button-group">
                             <button 
-                                className="add-inventory-item__button add-inventory-item__button--secondary"
+                                className="inventory-form__button inventory-form__button--secondary"
                                 type="reset">
                                     Cancel
                             </button>
                             <button 
-                                className="add-inventory-item__button"
+                                className="inventory-form__button"
                                 type="submit">
                                     + Add Item
                             </button>
@@ -350,4 +350,4 @@ class AddInventoryItem extends React.Component {
     }
 };
 
-export default AddInventoryItem;
+export default InventoryForm;

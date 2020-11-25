@@ -1,7 +1,7 @@
 import Home from './pages/Home/Home';
 import { BrowserRouter, Switch, Route  } from 'react-router-dom';
 import "./App.scss";
-import AddInventoryItem from './components/AddInventoryItem/AddInventoryItem';
+import InventoryForm from './components/InventoryForm/InventoryForm';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path='/inventory' component={Home}></Route>
           <Route path='/inventoryItem' component={Home}></Route>
           <Route path='/editInventory/:inventoryId' component={Home}></Route>
-          <Route path='/addInventory' component={AddInventoryItem}></Route>
+          <Route path='/addInventory' component={InventoryForm}></Route>
           <Route path='/warehouse/:warehouseId' component={Home}></Route>
           <Route path='/inventory/:inventoryId' component={Home}></Route>
         </Switch>
