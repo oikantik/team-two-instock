@@ -13,18 +13,44 @@ class AddInventoryItem extends React.Component {
         itemStatus: "In Stock",
         itemQuantity: "0",
         itemWarehouse: "",
-        // should validation error be rendered or not
-        itemNameError: true,
-        itemDescriptionError: true,
-        itemCategoryError: true,
-        itemQuantityError: true,
-        itemWarehouseError: true
+        // should validation error message for a given field be rendered or not
+        itemNameError: false,
+        itemDescriptionError: false,
+        itemCategoryError: false,
+        itemQuantityError: false,
+        itemWarehouseError: false
     }
 
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         });
+        if (e.target.name === "itemName") {
+            this.setState({
+                itemNameError: false
+            });
+        }
+        if (e.target.name === "itemDescription") {
+            this.setState({
+                itemDescriptionError: false
+            });
+        }
+        if (e.target.name === "itemCategory") {
+            this.setState({
+                itemCategoryError: false
+            });
+        }
+        if (e.target.name === "itemQuantity") {
+            this.setState({
+                itemQuantityError: false
+            });
+        }
+        if (e.target.name === "itemWarehouse") {
+            this.setState({
+                itemWarehouseError: false
+            });
+        }
+
     }
 
     handleOptionChange = (e) => {
@@ -53,26 +79,41 @@ class AddInventoryItem extends React.Component {
         if (!this.checkForEmpty(itemName)) {
             // console.log("name is empty");
             isValid.name = false;
+            this.setState({
+                itemNameError: true
+            });
         }
 
         if (!this.checkForEmpty(itemDescription)) {
             // console.log("description is empty");
             isValid.description = false;
+            this.setState({
+                itemDescriptionError: true
+            });
         }
 
         if (!this.checkForEmpty(itemCategory)) {
             // console.log("category is empty");
             isValid.category = false;
+            this.setState({
+                itemCategoryError: true
+            });
         }
 
         if (itemStatus === "In Stock" && itemQuantity === "0") {
             // console.log("if in stock add quantity");
             isValid.quantity = false;
+            this.setState({
+                itemQuantityError: true
+            });
         }
 
         if (!this.checkForEmpty(itemWarehouse)) {
             // console.log("warehouse empty");
             isValid.warehouse = false;
+            this.setState({
+                itemWarehouseError: true
+            });
         }
 
         if (isValid.name && isValid.description && isValid.category && isValid.quantity && isValid.warehouse) {
@@ -96,11 +137,14 @@ class AddInventoryItem extends React.Component {
                 quantity: itemQuantity
             }
             console.log(newItem);
+            // put this in side axios request later
+            this.handleReset();
             // axios.post()
             //     .then((response) => {
             //         this.handleReset();
             //     })
             //     .catch((error) => console.log(error))
+
         }
     }
 
@@ -111,7 +155,12 @@ class AddInventoryItem extends React.Component {
             itemCategory: "",
             itemStatus: "In Stock",
             itemQuantity: 0,
-            itemWarehouse: ""
+            itemWarehouse: "",
+            itemNameError: false,
+            itemDescriptionError: false,
+            itemCategoryError: false,
+            itemQuantityError: false,
+            itemWarehouseError: false
         });
     }
 
