@@ -62,6 +62,8 @@ class Home extends Component {
             name={this.state.deleteModal.name}
             onClose={this.onClose}
             onConfirm={this.onConfirm}
+            type="warehouse"
+            source="list of warehouses"
           />
         )}
         <WarehousesContainer />
