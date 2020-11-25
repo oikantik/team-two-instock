@@ -1,0 +1,123 @@
+
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+
+
+
+
+
+
+.inv-item-details {
+  width: 100%;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  height: 365px;
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 91.5%;
+    height: 92px;
+  }
+
+  &__title-div {
+    display: flex;
+    align-items: center;
+  }
+
+  &__arrow-icon {
+    margin-right: 8px
+  }
+
+  &__title {
+    @include m-h1;
+  }
+
+  &__edit-div {
+    width: 36px;
+    height: 36px;
+    background-color: color(interactive);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__edit-icon-path {
+
+  }
+
+  &__edit-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__border {
+    width: 100%;
+    border-bottom: 1px solid color(borders)
+  }
+
+  &__main {
+    width: 91.5%;
+  }
+
+  &__main-top {
+
+  }
+
+  &__descr-label {
+    font-size: font-size(p3-mobile);
+    margin-top: 1rem;
+  }
+
+  &__descr {
+    font-size: font-size(p3-mobile)
+  }
+
+  &__category-label {
+    font-size: font-size(p3-mobile)
+  }
+
+  &__category {
+    font-size: font-size(p3-mobile)
+  }
+
+  &__main-bottom {
+
+  }
+
+  &__div-row {
+
+  }
+
+  &__status-label {
+    font-size: font-size(p3-mobile)
+  }
+
+  &__div-status {
+    
+  }
+
+  &__status {
+    font-size: font-size(p3-mobile)
+  }
+
+  &__quantity-label {
+    font-size: font-size(p3-mobile)
+  }
+
+  &__quantity {
+    font-size: font-size(p3-mobile)
+  }
+
+  &__warehouse-label{
+    font-size: font-size(p3-mobile)
+  }
+
+  &__warehouse {
+    font-size: font-size(p3-mobile)
+  }
+
+}

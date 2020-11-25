@@ -1,11 +1,14 @@
 import Home from './pages/Home/Home';
+import InventoryItem from './components/InventoryItem/InventoryItem';
 import { BrowserRouter, Switch, Route  } from 'react-router-dom';
 import "./App.scss";
+
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <InventoryItem/>
         <Switch>
           <Route path='/' exact component={Home}></Route>
           <Route path='/warehouse' component={Home}></Route>
