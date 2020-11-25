@@ -37,6 +37,11 @@ class AddInventoryItem extends React.Component {
             status: this.state.itemStatus,
             quantity: this.state.itemQuantity
         }
+        axios.post()
+            .then((response) => {
+                this.handleReset();
+            })
+            .catch((error) => console.log(error))
 
     }
 
@@ -48,6 +53,13 @@ class AddInventoryItem extends React.Component {
             itemStatus: "In Stock",
             itemQuantity: 0,
             itemWarehouse: ""
+        });
+    }
+
+    renderSelectFieldOptions = (optionsArr) => {
+        optionsArr = optionsArr || ["test1", "test2"];
+        return optionsArr.map((option) => {
+            return <option value={option}>{option}</option>
         });
     }
 
@@ -73,6 +85,10 @@ class AddInventoryItem extends React.Component {
     }
 
     render() {
+        const selectCategoryClass = this.state.itemCategory !== "" ? "add-inventory-item__text-input add-inventory-item__text-input--select-checked" : "add-inventory-item__text-input add-inventory-item__text-input--select";
+
+        const selectWarehouseClass = this.state.itemWarehouse !== "" ? "add-inventory-item__text-input add-inventory-item__text-input--select-checked" : "add-inventory-item__text-input add-inventory-item__text-input--select";
+
         return (
             <div className="add-inventory-item">
                 {/* HEADING STARTS */}
@@ -121,15 +137,14 @@ class AddInventoryItem extends React.Component {
                                     Category
                             </label>
                             <select 
-                                className="add-inventory-item__text-input add-inventory-item__text-input--select" 
+                                className="add-inventory-item__text-input add-inventory-item__text-input--select"
                                 onChange={this.handleChange}
                                 value={this.state.itemCategory}
                                 name="itemCategory" 
                                 id="itemCategory"
                                 required>
                                     <option value="">Please select</option>
-                                    <option value="test1">test1</option>
-                                    <option value="test2">test2</option>
+                                    {this.renderSelectFieldOptions(this.props.categories)}
                             </select>
                         </fieldset>
                         {/* ITEM AVAILABILITY SECTION */}
@@ -150,7 +165,7 @@ class AddInventoryItem extends React.Component {
                                         id="itemStatus"
                                         type="radio" />
                                     <label
-                                        className="add-inventory-item__radio-label"
+                                        className={this.state.itemStatus === "In Stock" ? "add-inventory-item__radio-label add-inventory-item__radio-label--checked" : "add-inventory-item__radio-label"}
                                         htmlFor="itemStatus">
                                             In stock
                                     </label>
@@ -165,7 +180,7 @@ class AddInventoryItem extends React.Component {
                                         id="itemStatus" 
                                         type="radio" />
                                     <label 
-                                        className="add-inventory-item__radio-label" 
+                                        className={this.state.itemStatus === "Out of Stock" ? "add-inventory-item__radio-label add-inventory-item__radio-label--checked" : "add-inventory-item__radio-label"}
                                         htmlFor="itemStatus">
                                             Out of stock
                                     </label>
@@ -185,8 +200,7 @@ class AddInventoryItem extends React.Component {
                                 id="itemWarehouse"
                                 required>
                                     <option value="">Please select</option>
-                                    <option value="test1">test1</option>
-                                    <option value="test2">test2</option>
+                                    {this.renderSelectFieldOptions(this.props.warehouses)}
                             </select>
                         </fieldset>
                         {/* BUTTONS */}

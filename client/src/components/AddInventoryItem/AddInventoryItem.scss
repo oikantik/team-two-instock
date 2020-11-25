@@ -139,6 +139,10 @@
         outline: none;
         margin-bottom: 1rem;
 
+        &:focus {
+            border-color: color(interactive);
+        }
+
         @include tablet {
             @include p2;
             width: calc(100% - 2rem);
@@ -164,12 +168,16 @@
         &--select {
             @include m-p2;
             font-family: $base-font-family;
-            color: color(global-black);
+            color: color(global-black); // not sure it this is doing anything
             background-color: color(global-white);
             background-image: url(../../assets/icons/arrow_drop_down-24px.svg);
             background-repeat: no-repeat;
             background-position: 95% 50%;
             appearance: none;
+
+            &:focus {
+                background-image: url(../../assets/icons/arrow_drop_down-24px-hover.svg);
+            }
 
             @include tablet {
                 @include p2;
@@ -205,9 +213,15 @@
 
        &-label {
            @include m-p2;
+           color: color(table-header-text);
 
            @include tablet {
                @include p2;
+               color: color(table-header-text);
+           }
+
+           &--checked {
+               color: color(global-black);
            }
        }
    }
@@ -233,6 +247,11 @@
        outline: none;
        color: color(global-white);
        background-color: color(interactive);
+       transition: background-color .2s ease;
+
+       &:hover {
+           background-color: color(nav-bg);
+       }
 
        @include tablet {
            @include p2;
@@ -249,6 +268,13 @@
            border: 1px solid color(borders);
            color: color(global-black);
            background-color: color(global-white);
+           transition: border .2s ease, color .2s ease;
+
+           &:hover {
+               border: 1px solid color(interactive);
+               color: color(interactive);
+               background-color: color(global-white);
+           }
        }
    }
 }
