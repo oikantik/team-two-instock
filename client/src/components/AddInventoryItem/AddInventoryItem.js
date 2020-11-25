@@ -1,14 +1,15 @@
 import React from 'react';
 import './AddInventoryItem.scss'
+import axios from 'axios';
 
-import backArrow from "../../assets/icons/arrow-back-24px.svg";
+import backArrow from "../../assets/icons/arrow_back-24px.svg";
 
 class AddInventoryItem extends React.Component {
     state = {
         itemName: "",
         itemDescription: "",
         itemCategory: "",
-        itemStatus: "inStock",
+        itemStatus: "In Stock",
         itemQuantity: "",
         itemWarehouse: ""
     }
@@ -44,7 +45,7 @@ class AddInventoryItem extends React.Component {
             itemName: "",
             itemDescription: "",
             itemCategory: "",
-            itemStatus: "inStock",
+            itemStatus: "In Stock",
             itemQuantity: 0,
             itemWarehouse: ""
         });
@@ -143,8 +144,8 @@ class AddInventoryItem extends React.Component {
                                     <input
                                         className="add-inventory-item__radio-input"
                                         onChange={this.handleOptionChange}
-                                        value="inStock"
-                                        checked={this.state.itemStatus === "inStock"}
+                                        value="In Stock"
+                                        checked={this.state.itemStatus === "In Stock"}
                                         name="itemStatus"
                                         id="itemStatus"
                                         type="radio" />
@@ -158,8 +159,8 @@ class AddInventoryItem extends React.Component {
                                     <input 
                                         className="add-inventory-item__radio-input" 
                                         onChange={this.handleOptionChange}
-                                        value="outOfStock"
-                                        checked={this.state.itemStatus === "outOfStock"}
+                                        value="Out of Stock"
+                                        checked={this.state.itemStatus === "Out of Stock"}
                                         name="itemStatus" 
                                         id="itemStatus" 
                                         type="radio" />
@@ -170,7 +171,7 @@ class AddInventoryItem extends React.Component {
                                     </label>
                                 </div>
                             </fieldset>
-                            {this.state.itemStatus === "inStock" && this.renderQuantity()}
+                            {this.state.itemStatus === "In Stock" && this.renderQuantity()}
                             <label  
                                 className="add-inventory-item__label" 
                                 htmlFor="itemWarehouse">
