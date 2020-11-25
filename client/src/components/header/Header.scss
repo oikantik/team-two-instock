@@ -1,0 +1,134 @@
+@import '../../partials/fonts';
+@import '../../partials/mixins';
+@import '../../partials/resets';
+@import '../../partials/typography';
+@import '../../partials/variables';
+
+
+header{
+    background-color: color(nav-bg);
+    height: 53.35vw;
+    width: 100vw;
+    @include tablet {
+        height: 24.3vw;
+    }
+    @include desktop {
+        height: 24.3vw;
+    }
+
+}
+
+.header{
+    background-color: color(nav-bg);
+    font-family: $base-font-family;
+    display: flex;
+    flex-direction: column;
+    height: 53.35vw;
+    align-items: center;
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2rem 2rem;
+        align-items: flex-start;
+        height: 24.3vw;
+    }
+
+    @include desktop {
+        padding: 2rem 7rem; 
+    }
+
+    &__logo-div{
+        padding-top: 2.5rem;
+        @include tablet {
+            padding: 0rem;
+        }
+    }
+
+    &__logo{
+        height: 28px;
+        width: 89.81px;
+        @include tablet {
+            height: 32px;
+        }
+    }
+
+    &__nav{
+        width: 100%;
+        padding: 0rem 1.3rem;
+        padding-top: 24px;
+        @include tablet {
+            width: 25%;
+            padding: 0rem;
+        }
+    
+    }
+
+    &__list{
+        list-style: none;
+        text-decoration: none;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        @include desktop {
+            width: 70%;
+            padding: 0rem;
+        }
+    }
+
+    &__item {
+        @include m-h4;
+        border: none;
+        background: none;
+        width: 164px;
+        height: 34px;
+        outline: transparent;
+        text-align: center;
+        @include tablet {
+            width: 75px;
+            height: 22px;
+            @include h4;
+        }
+    }
+
+    &__item-W {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        outline: transparent;
+        color: white;
+        width: 40%;
+        background-color:color(global-black);
+        border: none;
+        width: 164px;
+        height: 34px;
+        border-radius: 20px;
+        @include tablet {
+            width: 75px;
+            height: 22px;
+            }
+        
+    }
+    
+
+    &__item-I {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        text-decoration: none;
+        outline: transparent;
+        color: white;
+        width: 40%;
+        background-color:color(global-black);
+        border: none;
+        width: 164px;
+        height: 34px;
+        border-radius: 20px;
+        @include tablet {
+            width: 75px;
+            height: 22px;
+        }
+    }
+
+}
