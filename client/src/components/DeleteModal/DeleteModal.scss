@@ -41,17 +41,28 @@
     right: 0;
     padding-right: 1rem;
     top: 1rem;
+    cursor: pointer;
   }
 
   &__headline {
     @include m-h1;
     padding-top: 3.75rem;
     margin-bottom: 1rem;
+
+    @include tablet {
+      padding-top: 2.5rem;
+    }
   }
 
   &__paragraph {
     @include m-p1;
-    width: 544px;
+
+
+    @include tablet {
+      @include p1;
+      width: 544px;
+      margin-bottom: 2.5rem;
+    }
   }
 
   &__buttons {
@@ -59,6 +70,11 @@
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
+
+    @include tablet {
+      margin-bottom: 2.5rem;
+      justify-content: flex-end;
+    }
   }
 
   &__button {
@@ -68,6 +84,13 @@
     border: none;
     outline: none;
     @include m-h3;
+    cursor: pointer;
+
+    @include tablet {
+      @include h3;
+      height: 38px;
+      width: 72px;
+    }
 
     &:first-of-type {
       margin-right: 1rem;

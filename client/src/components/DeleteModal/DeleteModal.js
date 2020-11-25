@@ -14,7 +14,7 @@ function DeleteModal() {
           />
         </button>
         <h1 className="delete-modal__headline">
-          DELETE {"warehousen_name"} warehouse?
+          Delete {"warehouse_name"} warehouse?
         </h1>
         <p className="delete-modal__paragraph">
           Please confirm that you'd like to delete the King West from the list
