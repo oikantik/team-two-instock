@@ -7,7 +7,7 @@ import chevronRightIcon from "../../assets/icons/chevron_right-24px.svg";
 import WarehousesLabels from "../WarehousesLabels/WarehousesLabels";
 
 function WarehousesList({ warehouses, onDelete }) {
-  const handleDelete = (id) => onDelete(id);
+  const handleDelete = (id, name) => onDelete(id, name);
   const showWarehouses = warehouses.map((warehouse) => {
     return (
       <div className="warehouses-items" key={warehouse.id}>
@@ -53,7 +53,7 @@ function WarehousesList({ warehouses, onDelete }) {
             <img
               src={deleteIcon}
               alt="delete"
-              onClick={() => handleDelete(warehouse.id)}
+              onClick={() => handleDelete(warehouse.id, warehouse.name)}
             />
           </button>
           <Link
