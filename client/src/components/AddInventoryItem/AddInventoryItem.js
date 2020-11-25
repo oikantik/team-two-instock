@@ -33,6 +33,12 @@ class AddInventoryItem extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+
+        const { itemName, itemDescription, itemCategory, itemStatus, itemQuantity, itemWarehouse } = this.state;
+        
+        if (this.validate(itemName) ||) {
+
+        }
         const newItem = {
             warehouseID: "", // I think this can be found and set in the back end
             warehouseName: this.state.itemWarehouse,
@@ -77,7 +83,7 @@ class AddInventoryItem extends React.Component {
                         Quantity
                 </label>
                 <input 
-                    className="add-inventory-item__text-input"
+                    className="add-inventory-item__text-input add-inventory-item__text-input--short"
                     onChange={this.handleChange}
                     value={this.state.itemQuantity}
                     name="itemQuantity" 
@@ -86,6 +92,15 @@ class AddInventoryItem extends React.Component {
                     placeholder="0"
                     required/>
             </>
+        );
+    }
+
+    renderErrorMessage = () => {
+        return (
+            <div>
+                <img src="../../assets/icons/error-24px.svg" alt="error message icon" />
+                <span>This field is required</span>
+            </div>
         );
     }
 

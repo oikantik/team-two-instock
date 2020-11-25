@@ -165,6 +165,13 @@
             resize: none;
         }
 
+        &--short {
+            transition: width 1.5s ease;
+            @include desktop {
+                width: 122px;
+            }
+        }
+
         &--select {
             @include m-p2;
             font-family: $base-font-family;
@@ -177,6 +184,10 @@
 
             &:focus {
                 background-image: url(../../assets/icons/arrow_drop_down-24px-hover.svg);
+            }
+
+            &:invalid {
+                color: color(table-header-text);
             }
 
             @include tablet {
