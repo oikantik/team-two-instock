@@ -20,6 +20,7 @@
   &__edit {
     background: transparent;
     border: none;
+    outline: none;
   }
 }
 
@@ -31,9 +32,18 @@
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   justify-content: space-between;
+  border-bottom: 1px solid color(borders);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 
   @include tablet {
+    padding-top: 0;
     flex-direction: row;
+    align-items: center;
+    height: 90px;
+
   }
 
   &__item {
@@ -50,6 +60,10 @@
       @include tablet {
         width: 100px;
       }
+
+      @include desktop {
+        width: 150px;
+      }
     }
 
     &--name {
@@ -58,6 +72,10 @@
       @include tablet {
         order: 3;
         width: 110px;
+      }
+
+      @include desktop {
+        width: 150px;
       }
     }
 
@@ -68,12 +86,22 @@
         order: 2;
         width: 100px;
       }
+
+      @include desktop {
+        width: 220px;
+      }
+
     }
 
     &--contact {
       order: 4;
 
       @include tablet {
+        width: 150px;
+      }
+
+
+      @include desktop {
         width: 150px;
       }
     }
@@ -97,7 +125,7 @@
     color: color(table-header-text);
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 
     &--location {
@@ -105,6 +133,12 @@
       color: color(interactive);
       display: flex;
       align-items: center;
+
+      &:active,
+      &:visited,
+      &:link {
+        color: color(interactive);
+      }
     }
 
     &--contact {
@@ -131,10 +165,17 @@
 
   }
 
+
+  @include desktop {
+    width: 70px;
+  }
+
   &__delete,
   &__edit {
     background: transparent;
     border: none;
+    outline: none;
+    cursor: pointer;
   }
 }
 
@@ -163,24 +204,48 @@
 
     &--warehouse {
       width: 100px;
+
+      @include desktop {
+        width: 150px;
+      }
     }
 
     &--address {
       width: 100px;
+
+
+      @include desktop {
+        width: 220px;
+      }
     }
 
     &--name {
       width: 110px;
+
+
+      @include desktop {
+        width: 150px;
+      }
     }
 
     &--contact {
       width: 150px;
+
+
+      @include desktop {
+        width: 150px;
+      }
     }
 
     &--actions {
       width: 90px;
       display: flex;
       justify-content: center;
+
+
+      @include desktop {
+        width: 70px;
+      }
     }
 
   }

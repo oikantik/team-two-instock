@@ -1,114 +1,75 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./WarehousesList.scss";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevronRightIcon from "../../assets/icons/chevron_right-24px.svg";
-import sortIcon from "../../assets/icons/sort-24px.svg";
+import WarehousesLabels from "../WarehousesLabels/WarehousesLabels";
 
-function WarehousesList() {
-  return (
-    <div className="warehouses-list">
-      <div className="warehouses-items-labels">
-        <div className="warehouses-items-labels__label warehouses-items-labels__label--warehouse">
-          <p className="warehouses-items-labels__label-container">
-            <span className="warehouses-items-labels__label-text">
-              WAREHOUSE
-            </span>
-            <span className="warehouses-items-labels__label-icon">
-              <img
-                src={sortIcon}
-                alt="sortIcon"
-                className="warehouses-items-labels__label-icon-image"
-              />
-            </span>
-          </p>
-        </div>
-        <div className="warehouses-items-labels__label warehouses-items-labels__label--address">
-          <p className="warehouses-items-labels__label-container">
-            <span className="warehouses-items-labels__label-text">ADDRESS</span>
-            <span className="warehouses-items-labels__label-icon">
-              <img
-                src={sortIcon}
-                alt="sortIcon"
-                className="warehouses-items-labels__label-icon-image"
-              />
-            </span>
-          </p>
-        </div>
-        <div className="warehouses-items-labels__label warehouses-items-labels__label--name">
-          <p className="warehouses-items-labels__label-container">
-            <span className="warehouses-items-labels__label-text">
-              CONTACT NAME
-            </span>
-            <span className="warehouses-items-labels__label-icon">
-              <img
-                src={sortIcon}
-                alt="sortIcon"
-                className="warehouses-items-labels__label-icon-image"
-              />
-            </span>
-          </p>
-        </div>
-        <div className="warehouses-items-labels__label warehouses-items-labels__label--contact">
-          <p className="warehouses-items-labels__label-container">
-            <span className="warehouses-items-labels__label-text">
-              CONTACT INFORMATION
-            </span>
-            <span className="warehouses-items-labels__label-icon">
-              <img
-                src={sortIcon}
-                alt="sortIcon"
-                className="warehouses-items-labels__label-icon-image"
-              />
-            </span>
-          </p>
-        </div>
-        <div className="warehouses-items-labels__label warehouses-items-labels__label--actions">
-          <p className="warehouses-items-labels__label-container">
-            <span className="warehouses-items-labels__label-text">ACTIONS</span>
-          </p>
-        </div>
-      </div>
-      <div className="warehouses-items">
+function WarehousesList({ warehouses, onDelete }) {
+  const handleDelete = (id) => onDelete(id);
+  const showWarehouses = warehouses.map((warehouse) => {
+    return (
+      <div className="warehouses-items" key={warehouse.id}>
         <div className="warehouses-items__item warehouses-items__item--warehouse">
           <p className="warehouses-items__label">WAREHOUSE</p>
-          <p className="warehouses-items__value  warehouses-items__value--location">
-            Manhattan{" "}
+          <Link
+            className="warehouses-items__value  warehouses-items__value--location"
+            to={`/warehouse/${warehouse.id}`}
+          >
+            {warehouse.name}{" "}
             <img
               src={chevronRightIcon}
               alt="chevron"
               className="warehouses-items__chevron-image"
             />
-          </p>
+          </Link>
         </div>
 
         <div className="warehouses-items__item warehouses-items__item--address">
           <p className="warehouses-items__label">ADDRESS</p>
-          <p className="warehouses-items__value">503 Broadway, New York, USA</p>
+          <p className="warehouses-items__value">{`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}</p>
         </div>
 
         <div className="warehouses-items__item warehouses-items__item--name">
           <p className="warehouses-items__label">CONTACT NAME</p>
-          <p className="warehouses-items__value">Parmin Aujla</p>
+          <p className="warehouses-items__value">{warehouse.contact.name}</p>
         </div>
 
         <div className="warehouses-items__item warehouses-items__item--contact">
           <p className="warehouses-items__label">CONTACT INFORMATION</p>
           <p className="warehouses-items__value warehouses-items__value--contact">
-            <span className="warehouses-items__value">+1 (646) 123-1234</span>
-            <span className="warehouses-items__value">paujla@instock.com</span>
+            <span className="warehouses-items__value">
+              {warehouse.contact.phone}
+            </span>
+            <span className="warehouses-items__value">
+              {warehouse.contact.email}
+            </span>
           </p>
         </div>
 
         <div className="warehouses-actions">
           <button className="warehouses-actions__delete">
-            <img src={deleteIcon} alt="delete" />
+            <img
+              src={deleteIcon}
+              alt="delete"
+              onClick={() => handleDelete(warehouse.id)}
+            />
           </button>
-          <button className="warehouses-actions__edit">
+          <Link
+            className="warehouses-actions__edit"
+            to={`/editWarehouse/${warehouse.id}`}
+          >
             <img src={editIcon} alt="edit" />
-          </button>
+          </Link>
         </div>
       </div>
+    );
+  });
+  return (
+    <div className="warehouses-list">
+      <WarehousesLabels />
+      {showWarehouses}
     </div>
   );
 }
