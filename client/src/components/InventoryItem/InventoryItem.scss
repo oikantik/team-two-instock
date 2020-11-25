@@ -10,6 +10,12 @@
   flex-direction: column;
   align-items: center;
   height: 365px;
+  @include tablet {
+    height: 292px;
+  }
+  @include desktop {
+    height: 274px;
+  }
   
   &__header {
     display: flex;
