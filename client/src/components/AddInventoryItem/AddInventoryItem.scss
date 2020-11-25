@@ -90,7 +90,7 @@
 
         // targets the last child element within each fieldset
         > :last-child {
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.75rem;
 
             @include tablet {
                 margin-bottom: 0.5rem;
@@ -137,7 +137,7 @@
         border: 1px solid color(borders);
         border-radius: 20px;
         outline: none;
-        margin-bottom: 1rem;
+        margin-bottom: 0.25rem;
 
         &:focus {
             border-color: color(interactive);
@@ -147,7 +147,6 @@
             @include p2;
             width: calc(100% - 2rem);
             height: 38px;
-            margin-bottom: 1.5rem;
         }
 
         &::placeholder {
@@ -287,5 +286,32 @@
                background-color: color(global-white);
            }
        }
+   }
+
+   &__error {
+       display: flex;
+       align-items: center;
+       height: 16px;
+    //    border: 1px solid red;
+        @include tablet {
+            margin-bottom: 0.25rem;
+        }
+   }
+
+
+   &__error-icon {
+        width: 1rem;
+        margin-right: 0.25rem;
+   }
+
+   &__error-text {
+        @include m-p3;
+        color: color(out-of-stock);
+        line-height: 1rem;
+        @include tablet {
+            @include p3;
+            color: color(out-of-stock);
+            line-height: 1rem;
+        }
    }
 }

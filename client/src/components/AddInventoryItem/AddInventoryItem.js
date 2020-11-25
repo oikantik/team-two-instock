@@ -3,6 +3,7 @@ import './AddInventoryItem.scss'
 import axios from 'axios';
 
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
+import errorIcon from "../../assets/icons/error-24px.svg";
 
 class AddInventoryItem extends React.Component {
     state = {
@@ -10,8 +11,14 @@ class AddInventoryItem extends React.Component {
         itemDescription: "",
         itemCategory: "",
         itemStatus: "In Stock",
-        itemQuantity: "",
-        itemWarehouse: ""
+        itemQuantity: "0",
+        itemWarehouse: "",
+        // should validation error be rendered or not
+        itemNameError: true,
+        itemDescriptionError: true,
+        itemCategoryError: true,
+        itemQuantityError: true,
+        itemWarehouseError: true
     }
 
     handleChange = (e) => {
@@ -26,34 +33,75 @@ class AddInventoryItem extends React.Component {
         });
     }
 
-    validate = (input) => {
+    // includes checking for only spaces
+    checkForEmpty = (input) => {
         let trimmedInput = input.trim();
         return !!trimmedInput;
+    }
+
+    validateAll = () => {
+        const { itemName, itemDescription, itemCategory, itemStatus, itemQuantity, itemWarehouse } = this.state;
+
+        const isValid = {
+            name: true,
+            description: true,
+            category: true,
+            quantity: true,
+            warehouse: true
+        };
+
+        if (!this.checkForEmpty(itemName)) {
+            // console.log("name is empty");
+            isValid.name = false;
+        }
+
+        if (!this.checkForEmpty(itemDescription)) {
+            // console.log("description is empty");
+            isValid.description = false;
+        }
+
+        if (!this.checkForEmpty(itemCategory)) {
+            // console.log("category is empty");
+            isValid.category = false;
+        }
+
+        if (itemStatus === "In Stock" && itemQuantity === "0") {
+            // console.log("if in stock add quantity");
+            isValid.quantity = false;
+        }
+
+        if (!this.checkForEmpty(itemWarehouse)) {
+            // console.log("warehouse empty");
+            isValid.warehouse = false;
+        }
+
+        if (isValid.name && isValid.description && isValid.category && isValid.quantity && isValid.warehouse) {
+            return true;
+        }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
 
         const { itemName, itemDescription, itemCategory, itemStatus, itemQuantity, itemWarehouse } = this.state;
-        
-        if (this.validate(itemName) ||) {
 
+        if (this.validateAll()) {
+            const newItem = {
+                warehouseID: "", // I think this can be found and set in the back end
+                warehouseName: itemWarehouse,
+                itemName: itemName,
+                description: itemDescription,
+                category: itemCategory,
+                status: itemStatus,
+                quantity: itemQuantity
+            }
+            console.log(newItem);
+            // axios.post()
+            //     .then((response) => {
+            //         this.handleReset();
+            //     })
+            //     .catch((error) => console.log(error))
         }
-        const newItem = {
-            warehouseID: "", // I think this can be found and set in the back end
-            warehouseName: this.state.itemWarehouse,
-            itemName: this.state.itemName,
-            description: this.state.itemDescription,
-            category: this.state.itemCategory,
-            status: this.state.itemStatus,
-            quantity: this.state.itemQuantity
-        }
-        axios.post()
-            .then((response) => {
-                this.handleReset();
-            })
-            .catch((error) => console.log(error))
-
     }
 
     handleReset = () => {
@@ -69,8 +117,8 @@ class AddInventoryItem extends React.Component {
 
     renderSelectFieldOptions = (optionsArr) => {
         optionsArr = optionsArr || ["test1", "test2"];
-        return optionsArr.map((option) => {
-            return <option value={option}>{option}</option>
+        return optionsArr.map((option, i) => {
+            return <option key={i} value={option}>{option}</option>
         });
     }
 
@@ -90,24 +138,21 @@ class AddInventoryItem extends React.Component {
                     id="itemQuantity" 
                     type="number"
                     placeholder="0"
-                    required/>
+                />
             </>
         );
     }
 
     renderErrorMessage = () => {
         return (
-            <div>
-                <img src="../../assets/icons/error-24px.svg" alt="error message icon" />
-                <span>This field is required</span>
-            </div>
+            <>
+                <img className="add-inventory-item__error-icon" src={errorIcon} alt="error message icon" />
+                <span className="add-inventory-item__error-text" >This field is required</span>
+            </>
         );
     }
 
     render() {
-        const selectCategoryClass = this.state.itemCategory !== "" ? "add-inventory-item__text-input add-inventory-item__text-input--select-checked" : "add-inventory-item__text-input add-inventory-item__text-input--select";
-
-        const selectWarehouseClass = this.state.itemWarehouse !== "" ? "add-inventory-item__text-input add-inventory-item__text-input--select-checked" : "add-inventory-item__text-input add-inventory-item__text-input--select";
 
         return (
             <div className="add-inventory-item">
@@ -137,7 +182,10 @@ class AddInventoryItem extends React.Component {
                                 id="itemName" 
                                 type="text"
                                 placeholder="Item Name"
-                                required/>
+                            />
+                            <div className="add-inventory-item__error">
+                                {this.state.itemNameError && this.renderErrorMessage()}
+                            </div>
                             <label 
                                 className="add-inventory-item__label" 
                                 htmlFor="itemDescription">
@@ -150,7 +198,10 @@ class AddInventoryItem extends React.Component {
                                 name="itemDescription" 
                                 id="itemDescription" 
                                 placeholder="Please enter a brief item description..."
-                                required/>
+                            />
+                            <div className="add-inventory-item__error">
+                                {this.state.itemDescriptionError && this.renderErrorMessage()}
+                            </div>
                             <label 
                                 className="add-inventory-item__label" 
                                 htmlFor="itemCategory">
@@ -161,11 +212,13 @@ class AddInventoryItem extends React.Component {
                                 onChange={this.handleChange}
                                 value={this.state.itemCategory}
                                 name="itemCategory" 
-                                id="itemCategory"
-                                required>
+                                id="itemCategory">
                                     <option value="">Please select</option>
                                     {this.renderSelectFieldOptions(this.props.categories)}
                             </select>
+                            <div className="add-inventory-item__error">
+                                {this.state.itemCategoryError && this.renderErrorMessage()}
+                            </div>
                         </fieldset>
                         {/* ITEM AVAILABILITY SECTION */}
                         <fieldset className="add-inventory-item__fieldset">
@@ -207,6 +260,9 @@ class AddInventoryItem extends React.Component {
                                 </div>
                             </fieldset>
                             {this.state.itemStatus === "In Stock" && this.renderQuantity()}
+                            <div className="add-inventory-item__error">
+                                {this.state.itemQuantityError && this.renderErrorMessage()}
+                            </div>
                             <label  
                                 className="add-inventory-item__label" 
                                 htmlFor="itemWarehouse">
@@ -218,10 +274,13 @@ class AddInventoryItem extends React.Component {
                                 value={this.state.itemWarehouse}
                                 name="itemWarehouse" 
                                 id="itemWarehouse"
-                                required>
+                                >
                                     <option value="">Please select</option>
                                     {this.renderSelectFieldOptions(this.props.warehouses)}
                             </select>
+                            <div className="add-inventory-item__error">
+                                {this.state.itemWarehouseError && this.renderErrorMessage()}
+                            </div>
                         </fieldset>
                         {/* BUTTONS */}
                         <div className="add-inventory-item__button-group">
