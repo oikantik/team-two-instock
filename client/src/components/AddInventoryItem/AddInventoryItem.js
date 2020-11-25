@@ -26,6 +26,11 @@ class AddInventoryItem extends React.Component {
         });
     }
 
+    validate = (input) => {
+        let trimmedInput = input.trim();
+        return !!trimmedInput;
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         const newItem = {
