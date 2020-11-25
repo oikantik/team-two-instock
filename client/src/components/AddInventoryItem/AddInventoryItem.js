@@ -8,8 +8,8 @@ class AddInventoryItem extends React.Component {
         itemName: "",
         itemDescription: "",
         itemCategory: "",
-        itemStatus: "",
-        itemQuantity: 0,
+        itemStatus: "inStock",
+        itemQuantity: "",
         itemWarehouse: ""
     }
 
@@ -19,8 +19,24 @@ class AddInventoryItem extends React.Component {
         });
     }
 
+    handleOptionChange = (e) => {
+        this.setState({
+            itemStatus: e.target.value
+        });
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
+        const newItem = {
+            warehouseID: "", // I think this can be found and set in the back end
+            warehouseName: this.state.itemWarehouse,
+            itemName: this.state.itemName,
+            description: this.state.itemDescription,
+            category: this.state.itemCategory,
+            status: this.state.itemStatus,
+            quantity: this.state.itemQuantity
+        }
+
     }
 
     handleReset = () => {
@@ -28,10 +44,31 @@ class AddInventoryItem extends React.Component {
             itemName: "",
             itemDescription: "",
             itemCategory: "",
-            itemStatus: "",
+            itemStatus: "inStock",
             itemQuantity: 0,
             itemWarehouse: ""
         });
+    }
+
+    renderQuantity = () => {
+        return (
+            <>
+                <label 
+                    className="add-inventory-item__label"   
+                    htmlFor="itemQuantity">
+                        Quantity
+                </label>
+                <input 
+                    className="add-inventory-item__text-input"
+                    onChange={this.handleChange}
+                    value={this.state.itemQuantity}
+                    name="itemQuantity" 
+                    id="itemQuantity" 
+                    type="number"
+                    placeholder="0"
+                    required/>
+            </>
+        );
     }
 
     render() {
@@ -85,7 +122,7 @@ class AddInventoryItem extends React.Component {
                             <select 
                                 className="add-inventory-item__text-input add-inventory-item__text-input--select" 
                                 onChange={this.handleChange}
-                                value={this.state.itemName}
+                                value={this.state.itemCategory}
                                 name="itemCategory" 
                                 id="itemCategory"
                                 required>
@@ -105,10 +142,12 @@ class AddInventoryItem extends React.Component {
                                 <div className="add-inventory-item__radio-group">
                                     <input
                                         className="add-inventory-item__radio-input"
+                                        onChange={this.handleOptionChange}
+                                        value="inStock"
+                                        checked={this.state.itemStatus === "inStock"}
                                         name="itemStatus"
                                         id="itemStatus"
-                                        type="radio" 
-                                        checked />
+                                        type="radio" />
                                     <label
                                         className="add-inventory-item__radio-label"
                                         htmlFor="itemStatus">
@@ -118,6 +157,9 @@ class AddInventoryItem extends React.Component {
                                 <div className="add-inventory-item__radio-group">
                                     <input 
                                         className="add-inventory-item__radio-input" 
+                                        onChange={this.handleOptionChange}
+                                        value="outOfStock"
+                                        checked={this.state.itemStatus === "outOfStock"}
                                         name="itemStatus" 
                                         id="itemStatus" 
                                         type="radio" />
@@ -128,20 +170,7 @@ class AddInventoryItem extends React.Component {
                                     </label>
                                 </div>
                             </fieldset>
-                            <label 
-                                className="add-inventory-item__label"   
-                                htmlFor="itemQuantity">
-                                    Quantity
-                            </label>
-                            <input 
-                                className="add-inventory-item__text-input"
-                                onChange={this.handleChange}
-                                value={this.state.itemQuantity}
-                                name="itemQuantity" 
-                                id="itemQuantity" 
-                                type="number"
-                                placeholder="0"
-                                required/>
+                            {this.state.itemStatus === "inStock" && this.renderQuantity()}
                             <label  
                                 className="add-inventory-item__label" 
                                 htmlFor="itemWarehouse">

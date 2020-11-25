@@ -152,6 +152,7 @@
 
             @include tablet {
                 @include p2;
+                color: color(table-header-text);
             }
         }
 
