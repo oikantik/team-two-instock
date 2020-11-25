@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./Home.scss";
 import WarehousesContainer from "../../components/WarehousesContainer/WarehousesContainer";
 import WarehousesList from "../../components/WarehousesList/WarehousesList";
 import { axiosInstance } from "../../utils/axios";
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
 class Home extends Component {
   state = {
@@ -25,13 +26,14 @@ class Home extends Component {
   };
   render() {
     return (
-      <div>
+      <Fragment>
+        <DeleteModal />
         <WarehousesContainer />
         <WarehousesList
           warehouses={this.state.warehouses}
           onDelete={this.onDelete}
         />
-      </div>
+      </Fragment>
     );
   }
 }
