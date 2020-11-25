@@ -4,9 +4,6 @@
 
 
 
-
-
-
 .inv-item-details {
   width: 100%;
   display: flex; 
@@ -54,13 +51,18 @@
     height: 20px;
   }
 
+  &__edit {
+    display: none;
+  }
+
   &__border {
     width: 100%;
-    border-bottom: 1px solid color(borders)
+    border-bottom: 1px solid color(borders);
   }
 
   &__main {
     width: 91.5%;
+    height: 250px;
   }
 
   &__main-top {
@@ -68,20 +70,27 @@
   }
 
   &__descr-label {
-    font-size: font-size(p3-mobile);
-    margin-top: 1rem;
+    @include m-h4;
+    margin-top: 16px;
   }
 
   &__descr {
-    font-size: font-size(p3-mobile)
+    @include m-p2;
+    margin-top: 4px;
+    margin-right: 50px;
   }
 
   &__category-label {
-    font-size: font-size(p3-mobile)
+    @include m-h4;
+    margin-top: 16px;
+
   }
 
   &__category {
-    font-size: font-size(p3-mobile)
+    @include m-p2;
+    margin-top: 4px;
+
+
   }
 
   &__main-bottom {
@@ -89,35 +98,59 @@
   }
 
   &__div-row {
+    display: flex;
+    margin-top: 16px;
+  }
 
+  &__div-column {
+    margin-right: 117px;
   }
 
   &__status-label {
-    font-size: font-size(p3-mobile)
-  }
-
-  &__div-status {
+    @include m-h4;
     
   }
 
+  &__div-status {
+    width: 61px;
+    height: 24px;
+    background-color:  rgba(21, 132, 99, 0.07);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__status {
-    font-size: font-size(p3-mobile)
+    @include m-p2;
+    color: color(instock);
+    margin-top: 4px;
+
   }
 
   &__quantity-label {
-    font-size: font-size(p3-mobile)
+    @include m-h4;
   }
 
   &__quantity {
-    font-size: font-size(p3-mobile)
+    @include m-p2;
+    margin-top: 4px;
+
+
   }
 
   &__warehouse-label{
-    font-size: font-size(p3-mobile)
+    @include m-h4;
+    margin-top: 16px;
+
+
   }
 
   &__warehouse {
-    font-size: font-size(p3-mobile)
+    @include m-p2;
+    margin-top: 4px;
+
+
   }
 
 }
