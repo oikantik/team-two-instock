@@ -18,6 +18,10 @@
     @include m-h1;
     color: color(global-black);
     margin-bottom: 1rem;
+
+    @include tablet {
+      @include h1;
+    }
   }
 
   &__button {
@@ -32,6 +36,8 @@
 
     @include tablet {
       width: 168px;
+      @include h3;
+      color: color(global-white);
     }
   }
 
@@ -48,12 +54,17 @@
   }
 
   &__input {
+    @include m-p2;
     border-radius: 20px;
     height: 36px;
     padding: 1rem;
     width: 100%;
     border: 1px solid color(borders);
     outline: none;
+
+    @include tablet {
+      @include p2;
+    }
 
     &::placeholder {
       @include m-p2;
