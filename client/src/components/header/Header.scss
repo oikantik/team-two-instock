@@ -39,7 +39,7 @@ header{
     }
 
     &__logo-div{
-        padding-top: 1.89rem;
+        padding-top: 1.6rem;
         @include tablet {
             padding: 0rem;
         }
@@ -54,11 +54,11 @@ header{
     }
 
     &__nav{
-        width: 100%;
-        padding: 0rem 1.3rem;
+        margin-top: 1rem;
         @include tablet {
             width: 30%;
             padding: 0rem;
+            margin: 0rem;
         }
         @include desktop {
             width: 19%;
@@ -70,8 +70,7 @@ header{
         list-style: none;
         text-decoration: none;
         display: flex;
-        width: 100%;
-        justify-content: space-between;
+        justify-content:center;
         @include desktop {
             width: 100%;
             padding: 0rem;
@@ -82,9 +81,8 @@ header{
         @include m-h4;
         border: none;
         background: none;
-        width: 164px;
+        // width: 164px;
         height: 34px;
-        padding-top: 1.7rem;
         outline: transparent;
         text-align: center;
         @include tablet {
@@ -106,8 +104,8 @@ header{
         width: 40%;
         background-color:color(global-black);
         border: none;
-        width: 164px;
-        height: 34px;
+        width: 10.25rem;
+        height: 2.125rem;
         border-radius: 20px;
         @include tablet {
             width: 75px;
@@ -129,8 +127,8 @@ header{
         width: 40%;
         background-color:color(global-black);
         border: none;
-        width: 164px;
-        height: 34px;
+        width: 10.25rem;
+        height: 2.125rem;
         border-radius: 20px;
         @include tablet {
             width: 75px;
