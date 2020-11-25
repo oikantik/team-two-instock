@@ -1,15 +1,23 @@
 @import '../../partials/variables';
 @import '../../partials/typography';
+@import '../../partials/mixins';
 
 .add-inventory-item {
     position: absolute;
     top: 136px;
     width: calc(100% - 2rem);
-    height: 874px;
     border-radius: 3px;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-    margin: 0 calc( (100vw - (100vw - 2rem)) / 2);
+    margin: 0 calc((100vw - (100vw - 2rem)) / 2);
     background-color: color(global-white);
+
+    @include tablet {
+        display: flex;
+        flex-wrap: wrap;
+        top: 92px;
+        width: calc(100% - 4rem);
+        margin: 0 calc((100vw - (100vw - 4rem)) / 2);
+    }
 
     &__heading {
         position: relative;
@@ -20,6 +28,11 @@
         border-bottom: 1px solid color(borders);
         margin-bottom: 1rem;
 
+        @include tablet {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
         &-icon {
             position: relative;
             top: 0.5rem;
@@ -28,6 +41,18 @@
 
         &-text {
             @include m-h1;
+            @include tablet {
+                @include h1;
+            }
+        }
+    }
+
+    &__form {
+        width: 100%;
+
+        @include tablet {
+            display: flex;
+            flex-wrap: wrap;
         }
     }
 
@@ -36,27 +61,61 @@
         flex-direction: column;
         padding: 0 1.5rem;
         border: none;
+
+        @include tablet {
+            width: 50%;
+            padding: 0 2rem;
+            padding-right: 0;
+        }
         
         // targets the "Item Details" fieldset
         &:nth-child(1) {
             border-bottom: 1px solid color(borders);
             margin-bottom: 1rem;
+
+            @include tablet {
+                border-bottom: none;
+                border-right: 1px solid color(borders);
+                margin-bottom: 1.5rem;
+            }
         }
         
+
         // targets the last child element within each fieldset
         > :last-child {
             margin-bottom: 1.5rem;
+
+            @include tablet {
+                margin-bottom: 0.5rem;
+            }
         }
     }
 
     &__legend {
         @include m-h2;
         margin-bottom: 1.5rem;
+
+        @include tablet {
+            @include h2;
+            margin-bottom: 2rem;
+        }
+
+        &--stretch {
+            @include tablet {
+                width: 100%;
+                width: 100.25%;
+                border-right: 1px solid color(borders);
+            }
+        }
     }
 
     &__label {
         @include m-h3;
         margin-bottom: 0.25rem;
+
+        @include tablet {
+            @include h3;
+        }
 
         &--radio {
             width: 100%;
@@ -73,9 +132,20 @@
         outline: none;
         margin-bottom: 1rem;
 
+        @include tablet {
+            @include p2;
+            width: calc(100% - 2rem);
+            height: 38px;
+            margin-bottom: 1.5rem;
+        }
+
         &::placeholder {
             @include m-p2;
             color: color(table-header-text);
+
+            @include tablet {
+                @include p2;
+            }
         }
 
         &--textarea {
@@ -92,6 +162,10 @@
             background-repeat: no-repeat;
             background-position: 95% 50%;
             appearance: none;
+
+            @include tablet {
+                @include p2;
+            }
         }
     }
     
@@ -104,8 +178,16 @@
        border: 0;
        margin-bottom: 1.125rem;
 
+       @include tablet {
+           justify-content: flex-start;
+       }
+
        &-group {
            display: inline-block;
+
+           @include tablet {
+               margin-right: 2.5rem;
+           }
        }
 
        &-input {
@@ -115,6 +197,10 @@
 
        &-label {
            @include m-p2;
+
+           @include tablet {
+               @include p2;
+           }
        }
    }
 
@@ -123,17 +209,32 @@
        justify-content: space-between;
        padding: 1rem 1.5rem;
        background-color: color(page-bg);
+
+       @include tablet {
+           justify-content: flex-end;
+           width: 100%;
+       }
    }
 
    &__button {
        @include m-p2;
        width: calc(50% - 8.5px);
-       padding: .5rem 0;
+       padding: .5rem 1rem;
        border-radius: 20px;
        border: none;
        outline: none;
        color: color(global-white);
        background-color: color(interactive);
+
+       @include tablet {
+           @include p2;
+           width: auto;
+
+           // targets "cancel" button
+           &:first-child {
+               margin-right: 1rem;
+           }
+       }
 
        &--secondary {
            border: 1px solid color(borders);

@@ -49,7 +49,7 @@ class AddInventoryItem extends React.Component {
                     onReset={this.handleReset}>
                         {/* ITEM DETAILS SECTION */}
                         <fieldset className="add-inventory-item__fieldset">
-                            <legend className="add-inventory-item__legend">Item Details</legend>
+                            <legend className="add-inventory-item__legend add-inventory-item__legend--stretch">Item Details</legend>
                             <label 
                                 className="add-inventory-item__label" 
                                 htmlFor="itemName">
