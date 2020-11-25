@@ -17,6 +17,7 @@
     align-items: center;
     width: 91.5%;
     height: 92px;
+    
   }
 
   &__title-div {
@@ -30,9 +31,13 @@
 
   &__title {
     @include m-h1;
+    @include tablet {
+      @include h1;
+    }
   }
 
-  &__edit-div {
+  &__edit-button {
+    border: none;
     width: 36px;
     height: 36px;
     background-color: color(interactive);
@@ -40,6 +45,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    outline: none;
+    @include tablet {
+      width: 81px;
+      height: 38px;
+      display: flex;
+      padding-right: 5px;
+    }
   }
 
   &__edit-icon-path {
@@ -49,10 +61,19 @@
   &__edit-icon {
     width: 20px;
     height: 20px;
+    @include tablet {
+      margin-right: .5rem;
+    }
   }
 
   &__edit {
     display: none;
+    @include tablet {
+      display: inline;
+      @include h3;
+      color: color(global-white);
+      
+    }
   }
 
   &__border {
@@ -63,43 +84,76 @@
   &__main {
     width: 91.5%;
     height: 250px;
+    @include tablet {
+      height: 198px;
+      display: flex;
+      align-items: center;
+    }
   }
 
   &__main-top {
-
+    @include tablet {
+      height: 150px;
+      border-right: 1px solid color(borders);
+      width: 100%;
+    }
   }
 
   &__descr-label {
     @include m-h4;
     margin-top: 16px;
+    @include tablet {
+      @include h4;
+      margin:0;
+    }
   }
 
   &__descr {
     @include m-p2;
     margin-top: 4px;
     margin-right: 50px;
+    @include tablet {
+      @include p2;
+
+    }
   }
 
   &__category-label {
     @include m-h4;
     margin-top: 16px;
+    @include tablet {
+      @include h4;
+      margin-top: 32px;
+
+    }
 
   }
 
   &__category {
     @include m-p2;
     margin-top: 4px;
+    @include tablet {
+      @include p2;
+
+    }
 
 
   }
 
   &__main-bottom {
-
+    @include tablet {
+      height: 150px;
+      width: 100%;
+      padding-left: 2.5rem;
+    }
   }
 
   &__div-row {
     display: flex;
     margin-top: 16px;
+    @include tablet {
+      margin: 0;
+    }
   }
 
   &__div-column {
@@ -108,6 +162,10 @@
 
   &__status-label {
     @include m-h4;
+    @include tablet {
+      @include h4;
+
+    }
     
   }
 
@@ -119,29 +177,46 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
   }
 
   &__status {
     @include m-p2;
     color: color(instock);
     margin-top: 4px;
+    @include tablet{
+      @include h4;
+      color: color(instock);
+
+    }
 
   }
 
   &__quantity-label {
     @include m-h4;
+    @include tablet{
+      @include h4;
+
+    }
   }
 
   &__quantity {
     @include m-p2;
     margin-top: 4px;
+    @include tablet {
+      @include p2;
 
-
+    }
   }
 
   &__warehouse-label{
     @include m-h4;
     margin-top: 16px;
+    @include tablet{
+      @include h4;
+      margin-top: 36px;
+
+    }
 
 
   }
@@ -149,7 +224,10 @@
   &__warehouse {
     @include m-p2;
     margin-top: 4px;
+    @include tablet {
+      @include p2;
 
+    }
 
   }
 
