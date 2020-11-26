@@ -172,15 +172,17 @@ class InventoryForm extends React.Component {
     }
 
     renderQuantity = () => {
+        const itemQuantityInputClass = this.state.itemQuantityError ? "inventory-form__num-input inventory-form__num-input--error" : "inventory-form__num-input";
+
         return (
             <>
                 <label 
-                    className="inventory-form__label"   
+                    className="inventory-form__label"  
                     htmlFor="itemQuantity">
                         Quantity
                 </label>
                 <input 
-                    className="inventory-form__text-input inventory-form__text-input--short"
+                    className={itemQuantityInputClass}
                     onChange={this.handleChange}
                     value={this.state.itemQuantity}
                     name="itemQuantity" 
@@ -203,6 +205,18 @@ class InventoryForm extends React.Component {
 
     render() {
 
+        const itemNameInputClass = this.state.itemNameError ? "inventory-form__text-input inventory-form__text-input--error" : "inventory-form__text-input";
+
+        const itemDescriptionInputClass = this.state.itemDescriptionError ? "inventory-form__textarea inventory-form__textarea--error" : "inventory-form__textarea";
+
+        const itemCategoryInputClass = this.state.itemCategoryError ? "inventory-form__select inventory-form__select--error" : "inventory-form__select";
+
+        const inStockRadioLabelClass = this.state.itemStatus === "In Stock" ? "inventory-form__radio-label inventory-form__radio-label--checked" : "inventory-form__radio-label";
+
+        const outOfStockRadioLabelClass = this.state.itemStatus === "Out of Stock" ? "inventory-form__radio-label inventory-form__radio-label--checked" : "inventory-form__radio-label";
+
+        const itemWarehouseInputClass = this.state.itemWarehouseError ? "inventory-form__select inventory-form__select--error" : "inventory-form__select";
+
         return (
             <div className="inventory-form">
                 {/* HEADING STARTS */}
@@ -224,7 +238,7 @@ class InventoryForm extends React.Component {
                                     Item Name
                             </label>
                             <input 
-                                className="inventory-form__text-input" 
+                                className={itemNameInputClass}
                                 onChange={this.handleChange}
                                 value={this.state.itemName}
                                 name="itemName" 
@@ -241,7 +255,7 @@ class InventoryForm extends React.Component {
                                     Description
                             </label>
                             <textarea
-                                className="inventory-form__text-input inventory-form__text-input--textarea" 
+                                className={itemDescriptionInputClass}
                                 onChange={this.handleChange}
                                 value={this.state.itemDescription}
                                 name="itemDescription" 
@@ -257,7 +271,7 @@ class InventoryForm extends React.Component {
                                     Category
                             </label>
                             <select 
-                                className="inventory-form__text-input inventory-form__text-input--select"
+                                className={itemCategoryInputClass}
                                 onChange={this.handleChange}
                                 value={this.state.itemCategory}
                                 name="itemCategory" 
@@ -287,7 +301,7 @@ class InventoryForm extends React.Component {
                                         id="itemStatus"
                                         type="radio" />
                                     <label
-                                        className={this.state.itemStatus === "In Stock" ? "inventory-form__radio-label inventory-form__radio-label--checked" : "inventory-form__radio-label"}
+                                        className={inStockRadioLabelClass}
                                         htmlFor="itemStatus">
                                             In stock
                                     </label>
@@ -302,12 +316,13 @@ class InventoryForm extends React.Component {
                                         id="itemStatus" 
                                         type="radio" />
                                     <label 
-                                        className={this.state.itemStatus === "Out of Stock" ? "inventory-form__radio-label inventory-form__radio-label--checked" : "inventory-form__radio-label"}
+                                        className={outOfStockRadioLabelClass}
                                         htmlFor="itemStatus">
                                             Out of stock
                                     </label>
                                 </div>
                             </fieldset>
+                            {/* Only render Quantity Field if Status is "In Stock" */}
                             {this.state.itemStatus === "In Stock" && this.renderQuantity()}
                             <div className="inventory-form__error">
                                 {this.state.itemQuantityError && this.renderErrorMessage()}
@@ -318,7 +333,7 @@ class InventoryForm extends React.Component {
                                     Warehouse
                             </label>
                             <select 
-                                className="inventory-form__text-input inventory-form__text-input--select"
+                                className={itemWarehouseInputClass}
                                 onChange={this.handleChange}
                                 value={this.state.itemWarehouse}
                                 name="itemWarehouse" 

@@ -20,6 +20,7 @@
         margin: 0 calc((100vw - (100vw - 4rem)) / 2);
     }
 
+    // point at which content reached the size it will be in desktop view
     @media (min-width: 1084px) {
         margin: 0 calc((100vw - 1020px) / 2);
     }
@@ -86,9 +87,8 @@
                 margin-bottom: 1.5rem;
             }
         }
-        
 
-        // targets the last child element within each fieldset
+        // targets the last direct child of each fieldset
         > :last-child {
             margin-bottom: 0.75rem;
 
@@ -100,20 +100,22 @@
 
     &__legend {
         @include m-h2;
-        margin-bottom: 1.5rem;
+        position: relative;
+        top: 1rem;
+        margin-bottom: 2.5rem;
 
         @include tablet {
             @include h2;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
-        &--stretch {
-            @include tablet {
-                width: 100%;
-                width: 100.25%;
-                border-right: 1px solid color(borders);
-            }
-        }
+        // modifier for left fieldset legend in tablet & desktop view
+        // &--stretch {
+        //     @include tablet {
+        //         position: relative;
+        //         top: 32px;
+        //     }
+        // }
     }
 
     &__label {
@@ -129,6 +131,7 @@
         }
     }
 
+    // full class name is .inventory-form__text-input, will be reuseing with @extend
     &__text-input {
         @include m-p2;
         width: 100%;
@@ -157,44 +160,58 @@
                 @include p2;
                 color: color(table-header-text);
             }
-        }
 
-        &--textarea {
-            height: 120px;
-            resize: none;
         }
-
-        &--short {
-            transition: width 1.5s ease;
-            @include desktop {
-                width: 122px;
-            }
-        }
-
-        &--select {
-            @include m-p2;
-            font-family: $base-font-family;
-            color: color(global-black); // not sure it this is doing anything
-            background-color: color(global-white);
-            background-image: url(../../assets/icons/arrow_drop_down-24px.svg);
-            background-repeat: no-repeat;
-            background-position: 95% 50%;
-            appearance: none;
+        
+        // make input border red on error, will stay red on focus intil value changed
+        // full class name is .inventory-form__text-input--error, will be reusing with @extend
+        &--error {
+            border: 1px solid color(out-of-stock);
 
             &:focus {
-                background-image: url(../../assets/icons/arrow_drop_down-24px-hover.svg);
-            }
-
-            &:invalid {
-                color: color(table-header-text);
-            }
-
-            @include tablet {
-                @include p2;
+                border: 1px solid color(out-of-stock);
             }
         }
     }
-    
+
+    &__textarea {
+        @extend .inventory-form__text-input;
+        height: 120px;
+        resize: none;
+
+        &--error {
+            @extend .inventory-form__text-input--error;
+        }
+    }
+
+    &__select {
+        @extend .inventory-form__text-input;
+        @include m-p2;
+        font-family: $base-font-family;
+        color: color(global-black); // not sure it this is doing anything
+        background-color: color(global-white);
+        background-image: url(../../assets/icons/arrow_drop_down-24px.svg);
+        background-repeat: no-repeat;
+        background-position: 95% 50%;
+        appearance: none;
+
+        &:focus {
+            background-image: url(../../assets/icons/arrow_drop_down-24px-hover.svg);
+        }
+
+        &:invalid {
+            color: color(table-header-text);
+        }
+
+        @include tablet {
+            @include p2;
+        }
+
+        &--error {
+            @extend .inventory-form__text-input--error;
+        }
+    }
+    // fieldset for radio buttons group
     &__radio {
        display: flex;
        flex-wrap: wrap;
@@ -233,6 +250,23 @@
            &--checked {
                color: color(global-black);
            }
+       }
+
+       &--error {
+           @extend .inventory-form__text-input--error;
+       }
+   }
+
+   &__num-input {
+       @extend .inventory-form__text-input;
+       transition: width 1.5s ease;
+
+       @include desktop {
+           width: 122px;
+       }
+
+       &--error {
+           @extend .inventory-form__text-input--error;
        }
    }
 
@@ -292,26 +326,24 @@
        display: flex;
        align-items: center;
        height: 16px;
-    //    border: 1px solid red;
         @include tablet {
             margin-bottom: 0.25rem;
         }
-   }
 
+        &-icon {
+            width: 1rem;
+            margin-right: 0.25rem;
+        }
 
-   &__error-icon {
-        width: 1rem;
-        margin-right: 0.25rem;
-   }
-
-   &__error-text {
-        @include m-p3;
-        color: color(out-of-stock);
-        line-height: 1rem;
-        @include tablet {
-            @include p3;
+        &-text {
+            @include m-p3;
             color: color(out-of-stock);
             line-height: 1rem;
+            @include tablet {
+                @include p3;
+                color: color(out-of-stock);
+                line-height: 1rem;
+            }
         }
    }
 }
