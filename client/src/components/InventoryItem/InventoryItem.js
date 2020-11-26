@@ -1,5 +1,5 @@
 import React from 'react';
-import arrowBackIcon from '../../assets/Icons/arrow_back-24px.svg';
+import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
 import { Link } from 'react-router-dom';
 import './InventoryItem.scss';
 
