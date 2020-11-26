@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import './Header.scss';
 import logo from '../../assets/logo/InStock-Logo.svg';
 
@@ -12,8 +12,10 @@ function Header() {
                 </div>
                 <nav className="header__nav">
                     <ul className="header__list">
-                        <Link  className="header__link header__link-W" to="/warehouse"><li className="header__item header__item-W">Warehouses</li></Link>
-                        <Link className="header__link header__link-I" to="/inventory"><li className="header__item header__item-I">Inventory</li></Link>
+                        <NavLink  activeClassName="header__link-W" className="header__link" to="/warehouse" activeStyle={{color: "white"
+                        }}>Warehouses</NavLink>
+                        <NavLink activeClassName="header__link-I" className="header__link" to="/inventory"activeStyle={{color: "white"
+                        }}>Inventory</NavLink>
                     </ul>
                 </nav>
             </div>

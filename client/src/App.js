@@ -11,12 +11,13 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home}></Route>
           <Route path='/warehouse' component={Home}></Route>
-          <Route path='/editWarehouse/:warehouseId' component={Home}></Route>
-          <Route path='/addWarehouse' component={Home}></Route>
+          {/* <Route path='/editWarehouse/:warehouseId' component={Home}></Route> */}
+          <Route path='/warehouse/editWarehouse/:warehouseId' component={Home}></Route>
+          <Route path='/warehouse/addWarehouse' component={Home}></Route>
           <Route path='/inventory' component={Home}></Route>
-          <Route path='/inventoryItem' component={Home}></Route>
-          <Route path='/editInventory/:inventoryId' component={Home}></Route>
-          <Route path='/addInventory' component={Home}></Route>
+          <Route path='/inventory/inventoryItem' component={Home}></Route>
+          <Route path='/inventory/editInventory/:inventoryId' component={Home}></Route>
+          <Route path='/inventory/addInventory' component={Home}></Route>
           <Route path='/warehouse/:warehouseId' component={Home}></Route>
           <Route path='/inventory/:inventoryId' component={Home}></Route>
         </Switch>

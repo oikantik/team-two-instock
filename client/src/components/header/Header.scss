@@ -25,6 +25,7 @@ header{
     flex-direction: column;
     height: 53.35vw;
     align-items: center;
+    
     @include tablet {
         flex-direction: row;
         justify-content: space-between;
@@ -49,15 +50,17 @@ header{
         height: 28px;
         width: 89.81px;
         @include tablet {
-            height: 32px;
+            height: 28px;
         }
     }
 
     &__nav{
         margin-top: 1rem;
+        width:100%;
+        padding: 0 1rem;
         @include tablet {
-            width: 30%;
-            padding: 0rem;
+            width: 24%;
+            padding: 0;
             margin: 0rem;
         }
         @include desktop {
@@ -71,68 +74,67 @@ header{
         text-decoration: none;
         display: flex;
         justify-content:center;
-        @include desktop {
+        width: 100%;
+        margin: 0;
+        @include tablet {
             width: 100%;
             padding: 0rem;
         }
     }
 
-    &__item {
-        @include m-h4;
+    &__link {
+        @include m-h3;
         border: none;
+        color: color(table-header-text);
         background: none;
-        // width: 164px;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
         height: 34px;
         outline: transparent;
-        text-align: center;
         @include tablet {
-            width: 75px;
-            height: 22px;
+            height: 2.375rem;
             @include h4;
         }
     }
 
-    &__item-W {
+    &__link-W {
         display: flex;
         padding: 0rem;
         justify-content: center;
         align-items: center;
         text-decoration: none;
         outline: transparent;
-        color: white;
-        padding: 1rem 3rem;
-        width: 40%;
         background-color:color(global-black);
         border: none;
-        width: 10.25rem;
+        margin:0;
         height: 2.125rem;
         border-radius: 20px;
         @include tablet {
-            width: 75px;
-            height: 22px;
-            }
+            height: 2.375rem;
+            @include h4;
+        }
         
     }
     
 
-    &__item-I {
+    &__link-I {
         display: flex;
         justify-content: center;
         align-items: center;
         text-decoration: none;
         text-decoration: none;
         outline: transparent;
-        padding: 1rem 3rem;
-        color: white;
-        width: 40%;
+        color: color(global-white);
         background-color:color(global-black);
         border: none;
-        width: 10.25rem;
         height: 2.125rem;
         border-radius: 20px;
         @include tablet {
-            width: 75px;
-            height: 22px;
+            height: 2.375rem;
+            @include h4;
         }
     }
 
