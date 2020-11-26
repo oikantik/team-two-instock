@@ -13,7 +13,17 @@ const getSingleWarehouse = (req, res) => {
   res.status(200).json(warehouse);
 };
 
+const deleteSingleWarehouse = (req, res) => {
+  const id = req.params.warehouseId;
+  if (warehousesModel.doesWarehouseExist(id)) {
+    const newWarehouseList = warehousesModel.deleteOne(id);
+    return res.status(200).json(newWarehouseList)
+  } 
+  res.status(404).send("Warehouse with the given id was not found");
+}
+
 module.exports = {
   getSingleWarehouse,
   getAllWarehouses,
+  deleteSingleWarehouse
 };

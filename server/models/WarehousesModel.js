@@ -25,7 +25,32 @@ const findOne = (id) => {
   return warehouse;
 };
 
+const doesWarehouseExist = (id) => {
+  const warehouses = readFromWarehousesFile();
+  const warehouse = warehouses.find((warehouse) => warehouse.id === id);
+  if (warehouse) {
+    return true;
+  }
+  return false;
+}
+
+const deleteWarehouseInventory = (warehouseID) => {
+  const inventories = readFromInventoriesFile();
+  const newInventoriesList = inventories.filter((item) => item.warehouseID !== warehouseID);
+  fs.writeFileSync(inventoriesFile, JSON.stringify(newInventoriesList));
+}
+
+const deleteOne = (warehouseID) => {
+  const warehouses = readFromWarehousesFile();
+  const newWarehouseList = warehouses.filter((warehouse) => warehouse.id !== warehouseID);
+  fs.writeFileSync(warehousesFile, JSON.stringify(newWarehouseList));
+  deleteWarehouseInventory(warehouseID);
+  return newWarehouseList;
+}
+
 module.exports = {
-  findOne,
   readFromWarehousesFile,
+  findOne,
+  doesWarehouseExist,
+  deleteOne
 };
