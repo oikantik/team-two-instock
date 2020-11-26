@@ -31,6 +31,11 @@
     align-items: center;
   }
 
+  &__arrow-link {
+    display: flex;
+    align-items: center;
+  }
+
   &__arrow-icon {
     margin-right: 8px
   }
@@ -40,6 +45,10 @@
     @include tablet {
       @include h1;
     }
+  }
+
+  &__edit-link {
+    cursor: pointer;
   }
 
   &__edit-button {
@@ -52,6 +61,7 @@
     justify-content: center;
     align-items: center;
     outline: none;
+    cursor: pointer;
     @include tablet {
       width: 81px;
       height: 38px;
@@ -179,11 +189,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 4px;
     
   }
 
   &__status {
-    @include m-p2;
+    @include m-h4;
     color: color(instock);
     margin-top: 4px;
     @include tablet{
