@@ -108,14 +108,6 @@
             @include h2;
             margin-bottom: 3rem;
         }
-
-        // modifier for left fieldset legend in tablet & desktop view
-        // &--stretch {
-        //     @include tablet {
-        //         position: relative;
-        //         top: 32px;
-        //     }
-        // }
     }
 
     &__label {
