@@ -38,14 +38,15 @@ const deleteWarehouseInventory = (warehouseID) => {
   const inventories = readFromInventoriesFile();
   const newInventoriesList = inventories.filter((item) => item.warehouseID !== warehouseID);
   fs.writeFileSync(inventoriesFile, JSON.stringify(newInventoriesList));
+  return newInventoriesList
 }
 
 const deleteOne = (warehouseID) => {
   const warehouses = readFromWarehousesFile();
   const newWarehouseList = warehouses.filter((warehouse) => warehouse.id !== warehouseID);
   fs.writeFileSync(warehousesFile, JSON.stringify(newWarehouseList));
-  deleteWarehouseInventory(warehouseID);
-  return newWarehouseList;
+  const newInventoriesList = deleteWarehouseInventory(warehouseID);
+  return { warehouses: newWarehouseList, inventory: newInventoriesList };
 }
 
 module.exports = {
