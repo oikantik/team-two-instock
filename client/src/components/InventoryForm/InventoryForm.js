@@ -7,12 +7,12 @@ import errorIcon from "../../assets/icons/error-24px.svg";
 
 class InventoryForm extends React.Component {
     state = {
-        itemName: "",
-        itemDescription: "",
-        itemCategory: "",
-        itemStatus: "In Stock",
-        itemQuantity: "0",
-        itemWarehouse: "",
+        itemName: this.props.name || "",
+        itemDescription: this.props.description || "",
+        itemCategory: this.props.category || "",
+        itemStatus: this.props.status || "In Stock",
+        itemQuantity: this.props.quantity || "0",
+        itemWarehouse: this.props.warehouse || "",
         // should validation error message for a given field be rendered or not
         itemNameError: false,
         itemDescriptionError: false,
@@ -137,7 +137,7 @@ class InventoryForm extends React.Component {
                 quantity: itemQuantity
             }
             console.log(newItem);
-            // put this in side axios request later
+            // put this inside axios request later
             this.handleReset();
             // axios.post()
             //     .then((response) => {
@@ -154,7 +154,7 @@ class InventoryForm extends React.Component {
             itemDescription: "",
             itemCategory: "",
             itemStatus: "In Stock",
-            itemQuantity: 0,
+            itemQuantity: "0",
             itemWarehouse: "",
             itemNameError: false,
             itemDescriptionError: false,
