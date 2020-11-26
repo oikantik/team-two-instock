@@ -12,7 +12,7 @@ const InventoryItem = (props) => {
             <img src={arrowBackIcon} alt="Arrow Icon" className="inv-item-details__arrow-icon" />
           </Link>
           <h1 className="inv-item-details__title">Television</h1>
-        </div>
+        </div> 
         {/* We can add the inventory ID through the props once we patch everything together */}
         <Link to={`/editInventory/:inventoryId`} className="inv-item-details__edit-link">
           <button className="inv-item-details__edit-button">
