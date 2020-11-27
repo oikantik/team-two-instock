@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './WarehouseForm.scss';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -15,7 +17,9 @@ class WarehouseForm extends Component {
       <div className="add-warehouse">
         <div className="add-warehouse__header">
           <div className="add-warehouse__div-title">
-            <img src={arrowBackIcon} className="add-warehouse__arrow-icon" alt="Back Arrow Icon"></img>
+            <Link to={"/warehouse"} className="add-warehouse__header-link">
+              <img src={arrowBackIcon} className="add-warehouse__arrow-icon" alt="Back Arrow Icon"></img>
+            </Link>
             <h1 className="add-warehouse__title">Add New Warehouse</h1>
           </div>
         </div>

@@ -20,6 +20,17 @@
     @include tablet {
       margin-left: 36px;
     }
+    @include desktop {
+      margin-left: 44px;
+    }
+  }
+
+  &__header-link {
+    display: flex;
+    align-items: center;
+    @include tablet {
+      padding-top: 4px;
+    }
   }
 
   &__arrow-icon {
@@ -457,6 +468,8 @@
   }
 
   &__cancel-button {
+    cursor: pointer;
+    outline: none;
     border-radius: 20px;
     width: 139px;
     height: 36px;
@@ -473,6 +486,8 @@
   }
 
   &__add-warehouse-button {
+    cursor: pointer;
+    outline: none;
     border-radius: 20px;
     width: 139px;
     height: 36px;
