@@ -43,9 +43,16 @@
     padding-top: 0;
     flex-direction: row;
     align-items: center;
-    height: 90px;
+    height: 70px;
     padding-bottom: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
 
+  }
+
+  @include desktop {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   &__item {
@@ -163,7 +170,7 @@
   height: 24px;
 
   @include tablet {
-    width: 90px;
+    width: 70px;
     justify-content: space-between;
 
   }
@@ -179,87 +186,5 @@
     border: none;
     outline: none;
     cursor: pointer;
-  }
-}
-
-.warehouses-items-labels {
-  display: none;
-
-  @include tablet {
-    margin-top: 1rem;
-    height: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: color(page-bg);
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  &__label-container {
-    display: flex;
-    align-items: center;
-  }
-
-
-
-  &__label {
-
-    &--warehouse {
-      width: 100px;
-
-      @include desktop {
-        width: 150px;
-      }
-    }
-
-    &--address {
-      width: 100px;
-
-
-      @include desktop {
-        width: 220px;
-      }
-    }
-
-    &--name {
-      width: 110px;
-
-
-      @include desktop {
-        width: 150px;
-      }
-    }
-
-    &--contact {
-      width: 150px;
-
-
-      @include desktop {
-        width: 150px;
-      }
-    }
-
-    &--actions {
-      width: 90px;
-      display: flex;
-      justify-content: center;
-
-
-      @include desktop {
-        width: 70px;
-      }
-    }
-
-  }
-
-  &__label-text {
-    @include h4;
-    margin-right: .5rem;
-  }
-
-
-  &__label-icon-image {
-    height: 12px;
   }
 }
