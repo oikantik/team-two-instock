@@ -2,7 +2,7 @@ import Home from "./pages/Home/Home";
 import InventoryItem from "./components/InventoryItem/InventoryItem";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.scss";
-import Header from "./components/HeaderX/Header";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
