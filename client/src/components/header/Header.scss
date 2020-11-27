@@ -1,0 +1,141 @@
+@import '../../partials/fonts';
+@import '../../partials/mixins';
+@import '../../partials/resets';
+@import '../../partials/typography';
+@import '../../partials/variables';
+
+
+header{
+    background-color: color(nav-bg);
+    height: 53.35vw;
+    width: 100vw;
+    @include tablet {
+        height: 24.3vw;
+    }
+    @include desktop {
+        height: 14.5vw;
+    }
+
+}
+
+.header{
+    background-color: color(nav-bg);
+    font-family: $base-font-family;
+    display: flex;
+    flex-direction: column;
+    height: 53.35vw;
+    align-items: center;
+    
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2rem 2rem;
+        align-items: flex-start;
+        height: 24.3vw;
+    }
+
+    @include desktop {
+        padding: 2rem 8.12rem; 
+        height: 14.53vw;
+    }
+
+    &__logo-div{
+        padding-top: 1.6rem;
+        @include tablet {
+            padding: 0rem;
+        }
+    }
+
+    &__logo{
+        height: 28px;
+        width: 89.81px;
+        @include tablet {
+            height: 28px;
+        }
+    }
+
+    &__nav{
+        margin-top: 1rem;
+        width:100%;
+        padding: 0 1rem;
+        @include tablet {
+            width: 24%;
+            padding: 0;
+            margin: 0rem;
+        }
+        @include desktop {
+            width: 19%;
+        }
+    
+    }
+
+    &__list{
+        list-style: none;
+        text-decoration: none;
+        display: flex;
+        justify-content:center;
+        width: 100%;
+        margin: 0;
+        @include tablet {
+            width: 100%;
+            padding: 0rem;
+        }
+    }
+
+    &__link {
+        @include m-h3;
+        border: none;
+        color: color(table-header-text);
+        background: none;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 34px;
+        outline: transparent;
+        @include tablet {
+            height: 2.375rem;
+            @include h4;
+        }
+    }
+
+    &__link-W {
+        display: flex;
+        padding: 0rem;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        outline: transparent;
+        background-color:color(global-black);
+        border: none;
+        margin:0;
+        height: 2.125rem;
+        border-radius: 20px;
+        @include tablet {
+            height: 2.375rem;
+            @include h4;
+        }
+        
+    }
+    
+
+    &__link-I {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        text-decoration: none;
+        outline: transparent;
+        color: color(global-white);
+        background-color:color(global-black);
+        border: none;
+        height: 2.125rem;
+        border-radius: 20px;
+        @include tablet {
+            height: 2.375rem;
+            @include h4;
+        }
+    }
+
+}
