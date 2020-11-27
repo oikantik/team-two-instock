@@ -1,6 +1,6 @@
 import Home from "./pages/Home/Home";
 import InventoryItem from "./components/InventoryItem/InventoryItem";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import "./App.scss";
 
 import InventoryAdd from './pages/InventoryAdd/InventoryAdd';
@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route path="/" exact component={Home}></Route>
+          <Redirect path="/" exact to="/warehouse"></Redirect>
           <Route path="/warehouse/add" component={Home}></Route>
           <Route path="/warehouse/:warehouseId/edit" component={Home}></Route>
           <Route path="/warehouse/:warehouseId" component={Home}></Route>
