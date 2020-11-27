@@ -15,16 +15,13 @@ const getSingleWarehouse = (req, res) => {
 
 const updateWarehouse = (req, res) => {
   const id = req.params.warehouseId;
-
   // this function is in my other PR that still needs to be merged
   if (!warehousesModel.doesWarehouseExists(id)) {
     return res.status(404).send("Warehouse with the given ID was not found.");
   }
-
   if (!warehousesModel.reqBodyIsValid(req.body)) {
-    return res.status(404).send("One or more inputs is empty or invalid.");
+    return res.status(400).send("One or more inputs is empty or invalid.");
   }
-
   const updatedWarehouse = warehousesModel.updateWarehouse(id, req.body);
   return res.status(200).json(updatedWarehouse);
 }
