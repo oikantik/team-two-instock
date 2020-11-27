@@ -3,10 +3,13 @@ import "./WarehousesListHeader.scss";
 import { Link } from 'react-router-dom'
 
 function WarehousesContainer() {
+  const handleSearch = (e) => {
+    e.preventDefault();
+  }
   return (
     <div className="warehouses-list-header">
       <h1 className="warehouses-list-header__title">Warehouses</h1>
-      <form className="warehouses-search">
+      <form className="warehouses-search" onSubmit={handleSearch}>
         <input
           type="text"
           placeholder="Search"
