@@ -14,27 +14,14 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={Home}></Route>
-          <Route path="/warehouse" component={Home}></Route>
+          <Route path="/warehouse/add" component={Home}></Route>
+          <Route path="/warehouse/:warehouseId/edit" component={Home}></Route>
           <Route path="/warehouse/:warehouseId" component={Home}></Route>
-          {/* <Route path='/editWarehouse/:warehouseId' component={Home}></Route> */}
-          <Route
-            path="/warehouse/editWarehouse/:warehouseId"
-            component={Home}
-          ></Route>
-          <Route path="/warehouse/addWarehouse" component={Home}></Route>
-          <Route path="/inventory/addInventory" component={InventoryAdd}></Route>
-          <Route
-            path="/inventory/:inventoryId"
-            component={InventoryItem}
-          ></Route>
-          
+          <Route path="/warehouse" component={Home}></Route>
+          <Route path="/inventory/add" component={InventoryAdd}></Route>
+          <Route path="/inventory/:inventoryId/edit" component={Home}></Route>
+          <Route path="/inventory/:inventoryId" component={InventoryItem}></Route>
           <Route path="/inventory" component={Home}></Route>
-          {/* <Route path='/inventory/inventoryItem' component={Home}></Route> */}
-          <Route
-            path="/inventory/editInventory/:inventoryId"
-            component={Home}
-          ></Route>
-          
         </Switch>
       </BrowserRouter>
     </div>
