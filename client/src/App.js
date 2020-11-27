@@ -22,17 +22,19 @@ function App() {
             component={Home}
           ></Route>
           <Route path="/warehouse/addWarehouse" component={Home}></Route>
+          <Route path="/inventory/addInventory" component={InventoryAdd}></Route>
           <Route
             path="/inventory/:inventoryId"
             component={InventoryItem}
           ></Route>
+          
           <Route path="/inventory" component={Home}></Route>
           {/* <Route path='/inventory/inventoryItem' component={Home}></Route> */}
           <Route
             path="/inventory/editInventory/:inventoryId"
             component={Home}
           ></Route>
-          <Route path="/inventory/addInventory" component={InventoryAdd}></Route>
+          
         </Switch>
       </BrowserRouter>
     </div>
