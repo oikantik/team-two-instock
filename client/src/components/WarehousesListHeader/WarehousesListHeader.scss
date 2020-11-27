@@ -1,7 +1,7 @@
 @use '../../partials/typography'as *;
 @use '../../partials/mixins'as *;
 
-.warehouses-container {
+.warehouses-list-header {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -10,8 +10,16 @@
   margin-top: 2rem;
 
   @include tablet {
+    align-items: center;
     flex-direction: row;
     justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @include desktop {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   &__title {
@@ -21,10 +29,11 @@
 
     @include tablet {
       @include h1;
+      margin-bottom: 1.5rem;
     }
   }
 
-  &__button {
+  &__link {
     @include m-h3;
     border-radius: 20px;
     background-color: color(interactive);
@@ -33,11 +42,16 @@
     outline: none;
     border: none;
     margin-bottom: 1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @include tablet {
       width: 168px;
       @include h3;
       color: color(global-white);
+      margin-bottom: 1.5rem;
     }
   }
 
@@ -51,6 +65,7 @@
 
     margin-left: auto;
     margin-right: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   &__input {
@@ -81,6 +96,10 @@
     background-image: url("../../assets/icons/search-24px.svg");
     background-position: left;
     background-repeat: no-repeat;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    border: none;
   }
 
 }
