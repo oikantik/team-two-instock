@@ -17,15 +17,21 @@
   &__div-title {
     display: flex;
     margin-left: 28px;
+    @include tablet {
+      margin-left: 36px;
+    }
   }
 
   &__arrow-icon {
-
+    
   }
 
   &__title {
     @include m-h1;
     margin-left: 12px;
+    @include tablet {
+      @include h1;
+    }
   }
 
   &__border {
@@ -46,15 +52,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__sub-main-div1 {
+    width: 86%;
+    @include tablet {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+    //  border-right: 1px solid color(borders)
+    }
   }
 
   &__warehouse-details {
-    width: 86%;
+    width: 100%;
+    @include tablet {
+      width: 82%;
+    }
   }
 
   &__warehouse-details-title {
     @include m-h2;
     margin-top: 16px;
+    @include tablet {
+      @include h2;
+    }
   }
 
   &__warehouse-name-div {
@@ -66,6 +91,10 @@
     @include m-h3;
     margin-top: 24px;
     margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 32px;
+    }
   }
 
   &__warehouse-name-input {
@@ -82,6 +111,11 @@
     &:hover {
       border: 2px solid color(interactive); 
     }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+    }
   }
 
   &__warehouse-address-div {
@@ -93,6 +127,10 @@
     @include m-h3;
     margin-top: 16px;
     margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 24px;
+    }
 
 
   }
@@ -102,6 +140,7 @@
     border: 1px solid color(borders);
     height: 36px;
     padding-left: 16px;
+    @include m-p2;
     color: color(table-header-text);
     outline: none;
     &::placeholder {
@@ -109,6 +148,12 @@
     }
     &:hover {
       border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+
     }
 
   }
@@ -122,6 +167,10 @@
     @include m-h3;
     margin-top: 16px;
     margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 24px;
+    }
 
 
   }
@@ -131,6 +180,7 @@
     border: 1px solid color(borders);
     height: 36px;
     padding-left: 16px;
+    @include m-p2;
     color: color(table-header-text);
     outline: none;
     &::placeholder {
@@ -138,6 +188,12 @@
     }
     &:hover {
       border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+
     }
 
   }
@@ -151,6 +207,10 @@
     @include m-h3;
     margin-top: 16px;
     margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 24px;
+    }
 
   }
 
@@ -161,12 +221,19 @@
     height: 36px;
     padding-left: 16px;
     outline: none;
+    @include m-p2;
     color: color(table-header-text);
     &::placeholder {
       @include m-p2;
     }
     &:hover {
       border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+
     }
 
   }
@@ -175,15 +242,35 @@
     width: 100%;
     height: 1px;
     border-bottom: 1px solid color(borders);
+    @include tablet {
+      height: 400px;
+      width: 1px;
+      border-right: 1px solid color(borders);
+    }
+  }
+
+  &__sub-main-div2 {
+    width: 86%;
+    @include tablet {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &__contact-details {
-    width: 86%;
+    width: 100%;
+    @include tablet {
+      width: 82%;
+    }
   }
 
   &__contact-details-title {
     @include m-h2;
     margin-top: 16px;
+    @include tablet {
+      @include h2;
+    }
 
   }
 
@@ -194,8 +281,12 @@
 
   &__contact-name-label {
     @include m-h3;
-    margin-top: 16px;
+    margin-top: 24px;
     margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 32px;
+    }
 
 
   }
@@ -205,13 +296,20 @@
     border: 1px solid color(borders);
     height: 36px;
     padding-left: 16px;
-    color: color(table-header-text);
     outline: none;
+    @include m-p2;
+    color: color(table-header-text);
     &::placeholder {
       @include m-p2;
     }
     &:hover {
       border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+
     }
 
   }
@@ -225,6 +323,10 @@
     @include m-h3;
     margin-top: 16px;
     margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 24px;
+    }
 
 
   }
@@ -235,12 +337,19 @@
     height: 36px;
     padding-left: 16px;
     outline: none;
+    @include m-p2;
     color: color(table-header-text);
     &::placeholder {
       @include m-p2;
     }
     &:hover {
       border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+
     }
 
   }
@@ -254,6 +363,10 @@
     @include m-h3;
     margin-top: 16px;
     margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 24px;
+    }
 
 
   }
@@ -264,12 +377,19 @@
     height: 36px;
     padding-left: 16px;
     outline: none;
+    @include m-p2;
     color: color(table-header-text);
     &::placeholder {
       @include m-p2;
     }
     &:hover {
       border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+
     }
 
   }
@@ -283,6 +403,10 @@
     @include m-h3;
     margin-top: 16px;
     margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 24px;
+    }
 
 
   }
@@ -292,14 +416,21 @@
     border: 1px solid color(borders);
     height: 36px;
     padding-left: 16px;
-    color: color(table-header-text);
     outline: none;
+    @include m-p2;
     margin-bottom: 24px;
+    color: color(table-header-text);
     &::placeholder {
       @include m-p2;
     }
     &:hover {
       border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+
     }
 
   }
@@ -311,12 +442,18 @@
     align-items: center;
     justify-content: center;
     background-color: #F7F8F9 ; 
+    @include tablet {
+      height: 70px;
+    }
   }
 
   &__footer-container {
     width: 86%;
     display: flex;
     justify-content: space-between;
+    @include tablet {
+      justify-content: flex-end;
+    }
   }
 
   &__cancel-button {
@@ -326,7 +463,13 @@
     @include m-h3;
     border: 1px solid color(borders);
     background-color: color(global-white);
-
+    color: color(table-header-text);
+    @include tablet {
+      @include h3;
+      color: color(table-header-text);
+      height: 38px;
+      width: 72px;
+    }
   }
 
   &__add-warehouse-button {
@@ -337,7 +480,13 @@
     background-color: color(interactive);
     color: color(global-white);
     border: 1px solid color(borders);
-    
+    @include tablet {
+      @include h3;
+      color: color(global-white);
+      margin-left: 16px;
+      height: 38px;
+      width: 138px;
+    }
   }
 
 
