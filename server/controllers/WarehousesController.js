@@ -13,6 +13,15 @@ const getSingleWarehouse = (req, res) => {
   res.status(200).json(warehouse);
 };
 
+const deleteSingleWarehouse = (req, res) => {
+  const id = req.params.warehouseId;
+  if (warehousesModel.doesWarehouseExist(id)) {
+    const updatedData = warehousesModel.deleteOne(id);
+    return res.status(200).json(updatedData);
+  } 
+  res.status(404).send("Warehouse with the given id was not found");
+}
+
 const updateWarehouse = (req, res) => {
   const id = req.params.warehouseId;
   // this function is in my other PR that still needs to be merged
@@ -29,5 +38,6 @@ const updateWarehouse = (req, res) => {
 module.exports = {
   getSingleWarehouse,
   getAllWarehouses,
-  updateWarehouse
+  updateWarehouse,
+  deleteSingleWarehouse
 };
