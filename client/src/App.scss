@@ -2,6 +2,10 @@
 @use './partials/variables' as *;
 @use './partials/mixins' as *;
 
+body {
+    background-color: color(page-bg);
+}
+
 .App {
    
     &__absolute {
@@ -28,7 +32,7 @@
             margin: 0 calc((100vw - (100vw - 4rem)) / 2);
         }
 
-        // point at which content reaches the size it will be in desktop view
+        // point at which content reaches the size it will be in desktop viewgit
         @media (min-width: 1084px) {
             margin: 0 calc((100vw - 1020px) / 2);
         }
