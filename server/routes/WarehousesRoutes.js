@@ -7,5 +7,7 @@ router.get("/", warehousesController.getAllWarehouses);
 router.get("/:warehouseId", warehousesController.getSingleWarehouse);
 router.delete("/:warehouseId", warehousesController.deleteSingleWarehouse);
 
+router.put("/:warehouseId", warehousesController.updateWarehouse);
+
 // Export the Router------------------------------
 module.exports = router;
