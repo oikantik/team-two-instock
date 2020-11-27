@@ -1,0 +1,19 @@
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+
+
+.require-input {
+  display: flex;
+  align-items: center;
+
+  &__img {
+    width: 13.33px;
+    height: 13.33px;
+  }
+
+  &__paragraph {
+    @include p3;
+    color: color(out-of-stock);
+    margin-left: 5px;
+  }
+}

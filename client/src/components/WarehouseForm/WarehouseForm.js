@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './WarehouseForm.scss';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
 import { Link } from 'react-router-dom';
+import RequireInput from '../RequireInput/RequireInput';
 
 
 
@@ -32,18 +33,22 @@ class WarehouseForm extends Component {
                 <div className="add-warehouse__warehouse-name-div">
                   <label className="add-warehouse__warehouse-name-label" htmlFor="warehouseNameInput">Warehouse Name</label>
                   <input className="add-warehouse__warehouse-name-input" placeholder="Warehouse Name" id="warehouseNameInput"type="text"/>
+                  <RequireInput/>
                 </div>
                 <div className="add-warehouse__warehouse-address-div">
                   <label className="add-warehouse__warehouse-address-label" htmlFor="addressInput">Street Address</label>
                   <input className="add-warehouse__warehouse-address-input" placeholder="Street Address" id="addressInput" type="text"/>
+                  <RequireInput/>
                 </div>
                 <div className="add-warehouse__warehouse-city-div">
                   <label className="add-warehouse__warehouse-city-label" htmlFor="cityInput">City</label>
                   <input className="add-warehouse__warehouse-city-input" placeholder="City" id="cityInput" type="text"/>
+                  <RequireInput/>
                 </div>
                 <div className="add-warehouse__warehouse-country-div">
                   <label className="add-warehouse__warehouse-country-label" htmlFor="countryInput">Country</label>
                   <input className="add-warehouse__warehouse-country-input" placeholder="Country" id="countryInput" type="text"/>
+                  <RequireInput/>
                 </div>
               </div>
             </div>
@@ -54,18 +59,22 @@ class WarehouseForm extends Component {
                 <div className="add-warehouse__contact-name-div">
                   <label className="add-warehouse__contact-name-label" htmlFor="contactNameInput">Contact Name</label>
                   <input className="add-warehouse__contact-name-input" placeholder="Contact Name" id="contactNameInput" type="text"/>
+                  <RequireInput/>
                 </div>
                 <div className="add-warehouse__contact-position-div">
                   <label className="add-warehouse__contact-position-label" htmlFor="positionInput">Position</label>
                   <input className="add-warehouse__contact-position-input" placeholder="Position" id="positionInput" type="text"/>
+                  <RequireInput/>
                 </div>
                 <div className="add-warehouse__contact-phone-div">
                   <label className="add-warehouse__contact-phone-label" htmlFor="phoneInput">Phone Number</label>            
                   <input className="add-warehouse__contact-phone-input" placeholder="Phone Number" id="phoneInput" type="text"/>
+                  <RequireInput/>
                 </div>
                 <div className="add-warehouse__contact-email-div">
                   <label className="add-warehouse__contact-email-label" htmlFor="emailInput">Email</label>
                   <input className="add-warehouse__contact-email-input" placeholder="Email" id="emailInput" type="text"/>
+                  <RequireInput/>
                 </div>
               </div>
             </div>

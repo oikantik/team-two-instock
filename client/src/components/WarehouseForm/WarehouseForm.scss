@@ -228,7 +228,6 @@
   &__warehouse-country-input {
     border-radius: 20px;
     border: 1px solid color(borders);
-    margin-bottom: 24px;
     height: 36px;
     padding-left: 16px;
     outline: none;
@@ -253,6 +252,7 @@
     width: 100%;
     height: 1px;
     border-bottom: 1px solid color(borders);
+    margin-top: 24px;
     @include tablet {
       height: 400px;
       width: 1px;
@@ -378,8 +378,6 @@
       @include h3;
       margin-top: 24px;
     }
-
-
   }
 
   &__contact-phone-input {
@@ -400,9 +398,7 @@
       @include p2;
       color: color(table-header-text);
       height: 38px;
-
     }
-
   }
 
   &__contact-email-div {
@@ -418,8 +414,6 @@
       @include h3;
       margin-top: 24px;
     }
-
-
   }
 
   &__contact-email-input {
@@ -429,7 +423,6 @@
     padding-left: 16px;
     outline: none;
     @include m-p2;
-    margin-bottom: 24px;
     color: color(table-header-text);
     &::placeholder {
       @include m-p2;
@@ -441,9 +434,7 @@
       @include p2;
       color: color(table-header-text);
       height: 38px;
-
     }
-
   }
 
   &__footer {
@@ -452,9 +443,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #F7F8F9 ; 
+    background-color: #F7F8F9;
+    margin-top: 24px;
     @include tablet {
       height: 70px;
+      margin-top: 32px;
     }
   }
 
@@ -503,7 +496,4 @@
       width: 138px;
     }
   }
-
-
-
 }
