@@ -10,7 +10,7 @@ import RequireInput from '../RequireInput/RequireInput';
 class WarehouseForm extends Component {
   
   state = {
-
+    
   }
   
   render() {
