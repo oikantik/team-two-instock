@@ -47,10 +47,13 @@ class Home extends Component {
   };
 
   onConfirm = (id) => {
-    console.log(id);
-    setTimeout(() => {
-      this.onClose();
-    }, 5000); // this will be replaced when backend axios for delete is done
+    axiosInstance.delete(`/warehouses/${id}`).then((response) => {
+      this.setState({
+        ...this.state,
+        warehouses: response.data.warehouses
+      }, () => this.onClose())
+    }).catch(error => console.log(error))
+
   };
 
   render() {
