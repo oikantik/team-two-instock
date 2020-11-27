@@ -79,15 +79,12 @@ class WarehouseForm extends Component {
               </div>
             </div>
           </div>
-        
-      
           <div className="add-warehouse__footer">
             <div class="add-warehouse__footer-container">
               <button className="add-warehouse__cancel-button">Cancel</button>
               <button className="add-warehouse__add-warehouse-button">+ Add Warehouse</button>
             </div>
           </div>
-        
         </form>
       </div>
     );
