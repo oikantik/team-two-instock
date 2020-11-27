@@ -24,8 +24,7 @@ const deleteSingleWarehouse = (req, res) => {
 
 const updateWarehouse = (req, res) => {
   const id = req.params.warehouseId;
-  // this function is in my other PR that still needs to be merged
-  if (!warehousesModel.doesWarehouseExists(id)) {
+  if (!warehousesModel.doesWarehouseExist(id)) {
     return res.status(404).send("Warehouse with the given ID was not found.");
   }
   if (!warehousesModel.reqBodyIsValid(req.body)) {

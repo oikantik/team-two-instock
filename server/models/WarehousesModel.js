@@ -69,7 +69,7 @@ const reqBodyIsValid = (reqBody) => {
   const { warehouseName, address, city, country, contactName, position, phone, email } = reqBody;
   if (!warehouseName && !address && !city && !country && !contactName && !position && !phone && !email) {
     return false;
-  } else if (phone.replace(/\D/g, "").length === 11 && email.match(/.*\@.*\..*/)) {
+  } else if (phone.replace(/\D/g, "").length !== 11 && !email.match(/.*\@.*\..*/)) {
     return false;
   } else {
     return true;
@@ -90,8 +90,7 @@ const updateWarehouse = (warehouseID, reqBody) => {
     warehouse.contact.email = email;
     const warehouseIndex = warehouses.indexOf(warehouse);
     warehouses[warehouseIndex] = warehouse;
-    // console.log(warehouses);
-    // fs.writeFileSync(warehouseFile, JSON.stringify(warehouses));
+    fs.writeFileSync(warehousesFile, JSON.stringify(warehouses));
     return warehouse;
 }
 
