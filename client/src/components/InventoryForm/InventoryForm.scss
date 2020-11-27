@@ -3,28 +3,12 @@
 @import '../../partials/mixins';
 
 .inventory-form {
-    // // position: absolute;
-    // // top: 136px;
-    // width: calc(100% - 2rem);
     width: 100%;
-    // border-radius: 3px;
-    // box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-    // margin: 0 calc((100vw - (100vw - 2rem)) / 2);
-    // background-color: color(global-white);
 
     @include tablet {
         display: flex;
         flex-wrap: wrap;
-        // top: 92px;
-        // width: calc(100% - 4rem);
-        // max-width: 1020px;
-        // margin: 0 calc((100vw - (100vw - 4rem)) / 2);
     }
-
-    // point at which content reaches the size it will be in desktop view
-    // @media (min-width: 1084px) {
-    //     margin: 0 calc((100vw - 1020px) / 2);
-    // }
 
     &__heading {
         position: relative;
