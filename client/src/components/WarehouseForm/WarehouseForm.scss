@@ -90,6 +90,7 @@
     margin-top: 16px;
     @include tablet {
       @include h2;
+      margin-top: 24px;
     }
   }
 
@@ -254,7 +255,7 @@
     border-bottom: 1px solid color(borders);
     margin-top: 24px;
     @include tablet {
-      height: 400px;
+      height: 460px;
       width: 1px;
       border-right: 1px solid color(borders);
     }
@@ -281,6 +282,7 @@
     margin-top: 16px;
     @include tablet {
       @include h2;
+      margin-top: 24px;
     }
 
   }
