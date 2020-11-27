@@ -1,16 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const warehousesController = require('../controllers/WarehousesController');
+const warehousesController = require("../controllers/WarehousesController");
 
+router.get("/", warehousesController.getAllWarehouses);
+router.get("/:warehouseId", warehousesController.getSingleWarehouse);
+router.delete("/:warehouseId", warehousesController.deleteSingleWarehouse);
 
-router.get('/', warehousesController.getAllWarehouses);
-
-
+router.put("/:warehouseId", warehousesController.updateWarehouse);
 
 // Export the Router------------------------------
 module.exports = router;
-
-
-
-
