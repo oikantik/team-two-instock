@@ -205,16 +205,14 @@ return re.test(phone);
 
     if (this.validateAll()) {
         const newItem = {
-          name: warehouseName,
+          warehouseName: warehouseName,
           address: warehouseAddress,
           city:warehouseCity,
           country: warehouseCountry,
-          contact: {
-            name: contactName,
-            position: contactPosition,
-            phone: contactPhone,
-            email: contactEmail
-          }
+          contactName: contactName,
+          position: contactPosition,
+          phone: contactPhone,
+          email: contactEmail
         }
         console.log(newItem);
         // put this inside axios request later
@@ -319,8 +317,8 @@ handleReset = () => {
           </div>
           <div className="add-warehouse__footer">
             <div className="add-warehouse__footer-container">
-              <button className="add-warehouse__cancel-button">Cancel</button>
-              <button className="add-warehouse__add-warehouse-button">+ Add Warehouse</button>
+              <button type="reset" onClick={this.handleReset} className="add-warehouse__cancel-button">Cancel</button>
+              <button type="submit" className="add-warehouse__add-warehouse-button">+ Add Warehouse</button>
             </div>
           </div>
         </form>
