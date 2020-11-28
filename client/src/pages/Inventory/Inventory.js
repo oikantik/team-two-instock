@@ -1,5 +1,5 @@
 
-
+import {Link} from 'react-router-dom';
 import InventoryDetails from '../../components/InventoryDetails/InventoryDetails';
 import iconSort from '../../assets/icons/sort-24px.svg';
 import { Component } from 'react';
@@ -19,8 +19,8 @@ class MainInventory extends Component {
             "category": "Electronics",
             "status": "In Stock",
             "quantity": 500
-          },
-          {
+        },
+        {
             "id": "83433026-ca32-4c6d-bd86-a39ee8b7303e",
             "warehouseID": "2922c286-16cd-4d43-ab98-c79f698aeab0",
             "warehouseName": "Manhattan",
@@ -72,22 +72,24 @@ class MainInventory extends Component {
 
             // ADD ITEM FORM---------------------------------------------
             <section className='inventory'>
-                <div className='inventory__container'>
+                <div className='inventory__div'>
                     <div className='inventory__header'>
                         <h2 className='inventory__title'>Inventory</h2>
-                        <input className='inventory__search' placeholder='Search...'></input>
-                        <button className='inventory__button'>+ Add New Item</button>
+                        <div className="inventory__flex-end">
+                            <input className='inventory__search' placeholder='Search...'></input>
+                            <Link to="/inventory/addInventory"><button className='inventory__button'>+ Add New Item</button></Link>
+                        </div>
                     </div>
 
 
                     {/* THIS DIV WILL BE DISPLAYED ON TABLET AND DESKTOP */}
-                    <div className='inventory__head-container'>
-                        <p className='inventory__headings inventory__item'>inventory item<img src={iconSort} alt=''/></p>
-                        <p className='inventory__headings'>category<img src={iconSort} alt='sort icon'/></p>
-                        <p className='inventory__headings'>status<img src={iconSort} alt='sort icon'/></p>
-                        <p className='inventory__headings'>qty<img src={iconSort} alt='sort icon'/></p>
-                        <p className='inventory__headings'>warehouse<img src={iconSort} alt='sort icon'/></p>
-                        <p className='inventory__headings'>actions</p>
+                    <div className='inventory-tablet-head'>
+                        <p className='inventory-tablet-head__headings'>inventory item<img src={iconSort} alt='' className="inventory-tablet-head__sort"/></p>
+                        <p className='inventory-tablet-head__headings'>category<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
+                        <p className='inventory-tablet-head__headings'>status<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
+                        <p className='inventory-tablet-head__headings'>qty<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
+                        <p className='inventory-tablet-head__headings'>warehouse<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
+                        <p className='inventory-tablet-head__headings'>actions</p>
                     </div>
 
 

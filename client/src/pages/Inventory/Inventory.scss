@@ -1,0 +1,163 @@
+@import '../../partials/fonts';
+@import '../../partials/mixins';
+@import '../../partials/resets';
+@import '../../partials/typography';
+@import '../../partials/variables';
+
+
+// ADD ITEM FORM STYLING START---------------------------------------------
+.inventory {
+    position: relative;
+    width: 91%;
+    height: 2092px;
+    margin: 0 auto;
+    @include tablet {
+        width: 91%;
+        height: 605px;
+    }
+    @include desktop {
+        width: 1020px;
+    }
+
+
+    &__div {
+        width: 100%;
+        padding-top: 32px;
+        background-color: #ffff;
+        margin: 0 auto;
+        border: 1px solid color(page-bg);
+        overflow: scroll;
+        box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+        border-radius: 3px;
+        position: absolute;
+        top: -70px;
+        @include tablet {
+            width: 100%;
+            top: -100px;
+            overflow: visible;
+        }
+        @include desktop {
+            width: 100%;
+            top: -100px;
+        }
+    }
+
+
+    &__flex-end {
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+    }
+
+
+    &__header {
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-bottom: 32px;
+        display: flex;
+        flex-direction: column;
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            padding-bottom: 22px;
+        }
+    }
+
+
+    &__title {
+        @include m-h1;
+        margin-bottom: 1rem;
+    }
+
+    &__search {
+        height: 2.25rem;
+        width: 18.4375rem;
+        border-radius: 20px;
+        padding: 0.5rem 1rem;
+        border: 1px solid color(borders);
+        margin-bottom: 1rem;
+        outline: none;
+        background-image: url(../../assets/icons/search-24px.svg);
+        background-size: 1.093125rem;
+        background-repeat: no-repeat;
+        background-position: 95%;
+        @include tablet {
+            height: 38px;
+            width: 185px;
+            margin-right: 16px;
+        }
+    }
+
+
+    &__button {
+        @include m-h3;
+        color: white;
+        background-color: color(interactive);
+        border-radius: 20px;
+        padding: 0.5rem, 6.4375rem;
+        border: 0;
+        height: 2.25rem;
+        width: 18.4375rem;
+        @include tablet {
+            width: 128px;
+            height: 38px;
+        }
+    }
+
+// ADD ITEM FORM STYLING END--------------------------------------
+
+.inventory-tablet-head {
+        display: none;
+        @include tablet {
+            @include h4;
+            text-align: left;
+            padding-left: 24px;
+            padding-right: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+            background-color: color(page-bg);
+        }
+    
+
+    &__headings {
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        @include h4;
+    }
+
+    &__sort {
+        height: 14px;
+    }
+}
+    // &__headings {
+    //     display: flex;
+    //     align-items: center;
+    //     width: 10px;
+    //     @include desktop {
+    //         width: 80px;
+    //     }
+
+    //     &--item {
+    //         width: 130px;
+    //         @include desktop {
+    //             width: 140px;
+    //         }
+    //     }
+    // }
+
+    // &__table {
+    //     @include tablet {
+    //         height: 471px;
+    //         overflow: scroll;
+    //     }
+    //     @include desktop {
+    //         height: 511px;
+    //         overflow: scroll;
+    //     }
+    // }
+}

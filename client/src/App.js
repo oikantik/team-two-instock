@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.scss";
 
 import InventoryAdd from './pages/InventoryAdd/InventoryAdd';
-import Header from "./components/headerX/Header";
+import Header from "./components/Header/Header";
 import Inventory from './pages/Inventory/Inventory';
 
 
