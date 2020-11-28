@@ -29,16 +29,16 @@
         overflow: scroll;
         box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
         border-radius: 3px;
-        position: absolute;
-        top: -70px;
+        // position: absolute;
+        // top: -70px;
         @include tablet {
             width: 100%;
-            top: -100px;
+            // top: -100px;
             overflow: visible;
         }
         @include desktop {
             width: 100%;
-            top: -100px;
+            // top: -100px;
         }
     }
 
