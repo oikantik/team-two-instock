@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import chevronRight from '../../assets/icons/chevron_right-24px.svg';
 import deleteIcon from '../../assets/icons/delete_outline-24px.svg';
 import editIcon from '../../assets/icons/edit-24px.svg';
+import sortIcon from '../../assets/icons/sort-24px.svg';
 import './WarehouseDetails.scss';
 
 
@@ -29,15 +30,38 @@ class WarehouseDetails extends Component {
             </button>
           </Link>    
         </div>
-        <div className="inv-item-details__border"></div>
+        <div className="warehouse-details__border"></div>
+        
         <div className="warehouse-details__warehouse-detail">
           
         </div>
 
+        <div className="warehouse-details__label-div">
+          <div className="warehouse-details__label-div-margin">
+            <div className="warehouse-details__inv-item-div">
+              <p className="warehouse-details__inv-item-label">INVENTORY ITEM</p>
+              <img className="warehouse-details__inv-item-sort" src={sortIcon}></img>
+            </div>
+            <div className="warehouse-details__categ-div">
+              <p className="warehouse-details__categ-label">CATEGORY</p>
+              <img className="warehouse-details__categ-sort" src={sortIcon}></img>
+            </div>
+            <div className="warehouse-details__stat-div">
+              <p className="warehouse-details__stat-label">STATUS</p>
+              <img className="warehouse-details__stat-sort" src={sortIcon}></img>
+            </div>
+            <div className="warehouse-details__quant-div">
+              <p className="warehouse-details__quant-label">QUANTIY</p>
+              <img className="warehouse-details__quant-sort" src={sortIcon}></img>
+            </div>
+            <div className="warehouse-details__actions-div">
+              <p className="warehouse-details__actions-label">ACTIONS</p>
+            </div>
+          </div>
+        </div>
+
         <div className="warehouse-details__inventory-div">
           <div className="warehouse-details__inventory-data">
-            <div className="warehouse-details__flex-row">
-              <div className="warehouse-details__item-category">
                 <div className="warehouse-details__item-div">
                   <p className="warehouse-details__item-label">INVENTORY ITEM</p>
                   <Link to={'/inventory/:inventoryId'} className="warehouse-details__item-link">
@@ -51,8 +75,7 @@ class WarehouseDetails extends Component {
                   <p className="warehouse-details__category-label">CATEGORY</p>
                   <p className="warehouse-details__category">Electronics</p>
                 </div>  
-              </div>
-              <div className="warehouse-details__status-quantity">
+             
                 <div className="warehouse-details__status-div">
                   <p className="warehouse-details__status-label">STATUS</p>
                   <div className="warehouse-details__status-container">
@@ -63,8 +86,6 @@ class WarehouseDetails extends Component {
                   <p className="warehouse-details__quantity-label">QTY</p>
                   <p className="warehouse-details__quantity">500</p>
                 </div>
-              </div>
-            </div>
             <div className="warehouse-details__delete-edit">
               <button className="warehouse-details__button">
                 <img className="warehouse-details__delete" src={deleteIcon}></img>
