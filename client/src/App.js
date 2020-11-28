@@ -6,6 +6,7 @@ import "./App.scss";
 import InventoryAdd from './pages/InventoryAdd/InventoryAdd';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import WarehouseDetails from "./components/WarehouseDetails/WarehouseDetails";
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
               <Redirect path="/" exact to="/warehouse"></Redirect>
               <Route path="/warehouse/add" component={Home}></Route>
               <Route path="/warehouse/:warehouseId/edit" component={Home}></Route>
-              <Route path="/warehouse/:warehouseId" component={Home}></Route>
+              <Route path="/warehouse/:warehouseId" component={WarehouseDetails}></Route>
               <Route path="/warehouse" component={Home}></Route>
               <Route path="/inventory/add" component={InventoryAdd}></Route>
               <Route path="/inventory/:inventoryId/edit" component={Home}></Route>
