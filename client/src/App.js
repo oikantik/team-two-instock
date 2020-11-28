@@ -7,6 +7,8 @@ import InventoryAdd from './pages/InventoryAdd/InventoryAdd';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
+import InventoryEdit from './pages/InventoryEdit/InventoryEdit'
+
 
 function App() {
   return (
@@ -22,7 +24,7 @@ function App() {
               <Route path="/warehouse/:warehouseId" component={Home}></Route>
               <Route path="/warehouse" component={Home}></Route>
               <Route path="/inventory/add" component={InventoryAdd}></Route>
-              <Route path="/inventory/:inventoryId/edit" component={Home}></Route>
+              <Route path="/inventory/:inventoryId/edit" component={InventoryEdit}></Route>
               <Route path="/inventory/:inventoryId" component={InventoryItem}></Route>
               <Route path="/inventory" component={Home}></Route>
             </Switch>
