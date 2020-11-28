@@ -1,0 +1,89 @@
+@use '../../partials/typography'as *;
+@use '../../partials/mixins'as *;
+
+.warehouses-items-labels {
+  display: none;
+
+  @include tablet {
+    margin-top: 0rem;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: color(page-bg);
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @include desktop {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  &__label-container {
+    display: flex;
+    align-items: center;
+  }
+
+
+
+  &__label {
+
+    &--warehouse {
+      width: 100px;
+
+      @include desktop {
+        width: 150px;
+      }
+    }
+
+    &--address {
+      width: 100px;
+
+
+      @include desktop {
+        width: 220px;
+      }
+    }
+
+    &--name {
+      width: 110px;
+
+
+      @include desktop {
+        width: 150px;
+      }
+    }
+
+    &--contact {
+      width: 150px;
+
+
+      @include desktop {
+        width: 150px;
+      }
+    }
+
+    &--actions {
+      width: 70px;
+      display: flex;
+      justify-content: center;
+
+
+      @include desktop {
+        width: 70px;
+      }
+    }
+
+  }
+
+  &__label-text {
+    @include h4;
+    margin-right: .5rem;
+  }
+
+
+  &__label-icon-image {
+    height: 12px;
+  }
+}

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "./Home.scss";
-import WarehousesContainer from "../../components/WarehousesContainer/WarehousesContainer";
+import WarehousesListHeader from "../../components/WarehousesListHeader/WarehousesListHeader";
 import WarehousesList from "../../components/WarehousesList/WarehousesList";
 import { axiosInstance } from "../../utils/axios";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
@@ -47,10 +47,13 @@ class Home extends Component {
   };
 
   onConfirm = (id) => {
-    console.log(id);
-    setTimeout(() => {
-      this.onClose();
-    }, 5000); // this will be replaced when backend axios for delete is done
+    axiosInstance.delete(`/warehouses/${id}`).then((response) => {
+      this.setState({
+        ...this.state,
+        warehouses: response.data.warehouses
+      }, () => this.onClose())
+    }).catch(error => console.log(error))
+
   };
 
   render() {
@@ -66,11 +69,17 @@ class Home extends Component {
             source="list of warehouses"
           />
         )}
-        <WarehousesContainer />
-        <WarehousesList
-          warehouses={this.state.warehouses}
-          onDelete={this.onDelete}
-        />
+        <main className="warehouse-home">
+          <section className="warehouse-list-section">
+            <WarehousesListHeader />
+            <WarehousesList
+              warehouses={this.state.warehouses}
+              onDelete={this.onDelete}
+            />
+          </section>
+        </main>
+
+
       </Fragment>
     );
   }
