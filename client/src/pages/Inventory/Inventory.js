@@ -77,7 +77,7 @@ class MainInventory extends Component {
                         <h2 className='inventory__title'>Inventory</h2>
                         <div className="inventory__flex-end">
                            
-                           <form class="inventory__search-form"><input className='inventory__search' placeholder='Search...'></input>
+                           <form className="inventory__search-form"><input className='inventory__search' placeholder='Search...'></input>
                            <button className="inventory__search-icon"></button>
                            </form> 
                             <Link to="/inventory/addInventory"><button className='inventory__button'>+ Add New Item</button></Link>
