@@ -49,11 +49,11 @@
         @include tablet {
             flex-direction: row;
             justify-content: space-between;
-            padding-bottom: 22px;
+            padding-bottom: 0px;
         }
-        // @include desktop {
-        //     padding: 2rem 2.5rem;
-        // }
+        @include desktop {
+            padding: 0 2.5rem 0 2.5rem;
+        }
     }
 
 
@@ -136,6 +136,11 @@
             align-items: center;
             height: 40px;
             background-color: color(page-bg);
+        }
+
+        @include desktop{
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
         }
     
 
