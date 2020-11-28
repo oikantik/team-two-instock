@@ -58,7 +58,7 @@ function WarehousesList({ warehouses, onDelete }) {
           </button>
           <Link
             className="warehouses-actions__edit"
-            to={`/editWarehouse/${warehouse.id}`}
+            to={`/warehouse/${warehouse.id}/edit`}
           >
             <img src={editIcon} alt="edit" />
           </Link>

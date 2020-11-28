@@ -1,12 +1,13 @@
 import Home from "./pages/Home/Home";
 import InventoryItem from "./components/InventoryItem/InventoryItem";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import "./App.scss";
 
 import InventoryAdd from './pages/InventoryAdd/InventoryAdd';
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
-import WarehouseForm from './components/WarehouseForm/WarehouseForm';
+import WarehouseAdd from './pages/WarehouseAdd/WarehouseAdd';
 
 
 function App() {
@@ -14,30 +15,24 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
-        <Switch>
-          <Route path="/" exact component={Home}></Route>
-          <Route path="/warehouse" exact component={Home}></Route>
-          <Route path="/warehouse/addWarehouse" exact component={WarehouseForm}></Route>
-          <Route path="/warehouse/:warehouseId" component={Home}></Route>
-          {/* <Route path='/editWarehouse/:warehouseId' component={Home}></Route> */}
-          <Route
-            path="/warehouse/editWarehouse/:warehouseId"
-            component={Home}
-          ></Route>
-          <Route path="/inventory/addInventory" exact component={InventoryAdd}></Route>
-          <Route
-            path="/inventory/:inventoryId"
-            component={InventoryItem}
-          ></Route>
-          
-          <Route path="/inventory" component={Home}></Route>
-          {/* <Route path='/inventory/inventoryItem' component={Home}></Route> */}
-          <Route
-            path="/inventory/editInventory/:inventoryId"
-            component={Home}
-          ></Route>
-          
-        </Switch>
+        <div className="App__absolute">
+          <main className="App__main">
+            <Switch>
+              <Redirect path="/" exact to="/warehouse"></Redirect>
+              <Route path="/warehouse/add" component={WarehouseAdd}></Route>
+              <Route path="/warehouse/:warehouseId/edit" component={Home}></Route>
+              <Route path="/warehouse/:warehouseId" component={Home}></Route>
+              <Route path="/warehouse" component={Home}></Route>
+              <Route path="/inventory/add" component={InventoryAdd}></Route>
+              <Route path="/inventory/:inventoryId/edit" component={Home}></Route>
+              <Route path="/inventory/:inventoryId" component={InventoryItem}></Route>
+              <Route path="/inventory" component={Home}></Route>
+            </Switch>
+          </main>
+          <footer className="App__footer">
+            <Footer />
+          </footer>
+        </div>
       </BrowserRouter>
     </div>
   );
