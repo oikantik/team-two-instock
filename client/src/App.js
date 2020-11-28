@@ -7,6 +7,8 @@ import InventoryAdd from './pages/InventoryAdd/InventoryAdd';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
+import WarehouseAdd from './pages/WarehouseAdd/WarehouseAdd';
+
 
 function App() {
   return (
@@ -17,7 +19,7 @@ function App() {
           <main className="App__main">
             <Switch>
               <Redirect path="/" exact to="/warehouse"></Redirect>
-              <Route path="/warehouse/add" component={Home}></Route>
+              <Route path="/warehouse/add" component={WarehouseAdd}></Route>
               <Route path="/warehouse/:warehouseId/edit" component={Home}></Route>
               <Route path="/warehouse/:warehouseId" component={Home}></Route>
               <Route path="/warehouse" component={Home}></Route>
