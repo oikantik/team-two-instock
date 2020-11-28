@@ -7,18 +7,6 @@
 
 // ADD ITEM FORM STYLING START---------------------------------------------
 .inventory {
-    position: relative;
-    width: 91%;
-    height: 2092px;
-    margin: 0 auto;
-    @include tablet {
-        width: 91%;
-        height: 605px;
-    }
-    @include desktop {
-        width: 1020px;
-    }
-
 
     &__div {
         width: 100%;
@@ -63,6 +51,9 @@
             justify-content: space-between;
             padding-bottom: 22px;
         }
+        // @include desktop {
+        //     padding: 2rem 2.5rem;
+        // }
     }
 
 
@@ -71,22 +62,47 @@
         margin-bottom: 1rem;
     }
 
+    &__search-form {
+        position: relative;
+    }
+
     &__search {
         height: 2.25rem;
-        width: 18.4375rem;
+        width: 100%;
         border-radius: 20px;
         padding: 0.5rem 1rem;
         border: 1px solid color(borders);
         margin-bottom: 1rem;
         outline: none;
-        background-image: url(../../assets/icons/search-24px.svg);
-        background-size: 1.093125rem;
-        background-repeat: no-repeat;
-        background-position: 95%;
+   
+
+        &::placeholder {
+
+        @include m-p2;
+        color: color(table-header-text);
+        }
         @include tablet {
             height: 38px;
             width: 185px;
             margin-right: 16px;
+        }
+    }
+
+    &__search-icon {
+        background-color: transparent;
+        position: absolute;
+        top: 7px;
+        right: 16px;
+        width: 20px;
+        height: 20px;
+        outline: none;
+        border: none;
+        background-image: url(../../assets/icons/search-24px.svg);
+
+        @include tablet {
+
+        top: 7px;
+        right: 32px;
         }
     }
 
@@ -99,7 +115,7 @@
         padding: 0.5rem, 6.4375rem;
         border: 0;
         height: 2.25rem;
-        width: 18.4375rem;
+        width: 100%;
         @include tablet {
             width: 128px;
             height: 38px;
@@ -128,6 +144,30 @@
         display: flex;
         align-items: center;
         @include h4;
+
+        &--item{
+            width: 120px;
+        }
+
+        &--category{
+            width: 120px;
+        }
+
+        &--status{
+            width: 120px;
+        }
+
+        &--qty{
+            width: 70px;
+        }
+
+        &--warehouse {
+            width: 120px;
+        }
+
+        &--action{
+            width: 70px;
+        }
     }
 
     &__sort {

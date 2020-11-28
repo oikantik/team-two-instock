@@ -76,7 +76,10 @@ class MainInventory extends Component {
                     <div className='inventory__header'>
                         <h2 className='inventory__title'>Inventory</h2>
                         <div className="inventory__flex-end">
-                            <input className='inventory__search' placeholder='Search...'></input>
+                           
+                           <form class="inventory__search-form"><input className='inventory__search' placeholder='Search...'></input>
+                           <button className="inventory__search-icon"></button>
+                           </form> 
                             <Link to="/inventory/addInventory"><button className='inventory__button'>+ Add New Item</button></Link>
                         </div>
                     </div>
@@ -84,12 +87,12 @@ class MainInventory extends Component {
 
                     {/* THIS DIV WILL BE DISPLAYED ON TABLET AND DESKTOP */}
                     <div className='inventory-tablet-head'>
-                        <p className='inventory-tablet-head__headings'>inventory item<img src={iconSort} alt='' className="inventory-tablet-head__sort"/></p>
-                        <p className='inventory-tablet-head__headings'>category<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
-                        <p className='inventory-tablet-head__headings'>status<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
-                        <p className='inventory-tablet-head__headings'>qty<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
-                        <p className='inventory-tablet-head__headings'>warehouse<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
-                        <p className='inventory-tablet-head__headings'>actions</p>
+                        <p className='inventory-tablet-head__headings inventory-tablet-head__headings--item'>inventory item<img src={iconSort} alt='' className="inventory-tablet-head__sort"/></p>
+                        <p className='inventory-tablet-head__headings inventory-tablet-head__headings--category'>category<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
+                        <p className='inventory-tablet-head__headings inventory-tablet-head__headings--status'>status<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
+                        <p className='inventory-tablet-head__headings inventory-tablet-head__headings--qty'>qty<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
+                        <p className='inventory-tablet-head__headings inventory-tablet-head__headings--warehouse'>warehouse<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
+                        <p className='inventory-tablet-head__headings inventory-tablet-head__headings--action'>actions</p>
                     </div>
 
 

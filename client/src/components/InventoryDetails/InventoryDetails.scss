@@ -8,6 +8,10 @@
 .inventory-details {
     @include tablet{
     border-bottom: 1px solid color(borders);
+
+    &:last-of-type{
+        border: none;
+    }
     }
     &__container {
         padding-left: 24px;
@@ -56,9 +60,8 @@
         width: 140px;
         height: 36px;
         @include tablet {
-            &__mob {
                 display: none;
-            }
+            
         }
     }
     
@@ -66,10 +69,43 @@
         width: 140px;
         margin-bottom: 16px;
         @include tablet {
+            margin: 0;
+
+            &--item {
+
+                width: 120px;
+                order: 1;
+            }
+
+            &--status {
+
+                width: 120px;
+                order: 3;
+            }
+
+            &--cat{
+
+                width: 120px;
+                order: 2;
+            }
+
+            &--qty{
+                
             width: 70px;
-        }
-        @include desktop {
-            width: 140px;
+            order: 4;
+            }
+
+            &--warehouse {
+
+                width: 120px;
+                order: 5;
+            }
+
+            &--actions{
+
+                width: 70px;
+                order: 6;
+            }
         }
     }
         &__aside {
@@ -79,6 +115,7 @@
             //align-items: flex-end;
             @include tablet {
                 // margin-left: 0;
+                width: 120px;
             }
         }
     
@@ -97,9 +134,6 @@
         color: color(interactive);
         display: flex;
         align-items: center;
-        @include tablet {
-            width: 90px;
-        }
     }
     
     &__status {
@@ -109,11 +143,6 @@
         justify-content: center;
         align-items: center;
         padding: 4px 8px;
-        @include tablet {
-            position: absolute;
-            margin-top: -12px;
-            left: 43%;
-        }
     }
     
     &__out-of-stock {
@@ -139,10 +168,7 @@
     &__button-div-tablet{
         display: none;
         @include tablet{
-            width: 100%;
             display: flex;
-            justify-content: flex-end;
-            margin-top: -60px;
             }
     }
 
@@ -161,29 +187,5 @@
         @include m-h3;
         font-weight: 400;
 
-        @include tablet {
-            position: absolute;
-            &--cat {
-                margin-top: -10px;
-                left: 26%;
-            }
-
-            &--qty {
-                margin-top: -10px;
-                left: 59%;
-            }
-
-            &--warehouse {
-                margin-top: -12px;
-                left: 71%;
-                @include desktop {
-                    left: 74%;
-                }
-            }
-
-            // &--actions {
-            //     left: 20%;
-            // }
-        }
     }
 }
