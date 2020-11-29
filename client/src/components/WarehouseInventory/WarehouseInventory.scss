@@ -7,13 +7,7 @@
   display: flex; 
   flex-direction: column;
   align-items: center;
-  
-  @include tablet {
-    
-  }
-  @include desktop {
-  
-  }
+
 
   &__header {
     display: flex;
@@ -249,9 +243,7 @@
     @include desktop {
       padding-left: 2.5rem;
       padding-right: 2.5rem;
-
     }
-    
   }
 
   &__flex-row {
@@ -278,7 +270,6 @@
       margin-top: 0;
       width: 120px;
     }
-    
   }
 
   &__item-label {
@@ -288,10 +279,6 @@
     }
   }
   
-  &__item-link {
-
-  }
-
   &__item {
     display: flex;
     align-items: center;
@@ -306,7 +293,6 @@
     width: 20px;
     height: 20px;
     padding-top: 2px; 
-
   }
 
   &__category-div {
@@ -359,7 +345,6 @@
     @include tablet {
       display: none;
     }
-
   }
 
   &__status-container {
@@ -373,11 +358,26 @@
     padding-bottom: 4px;
   }
 
+  &__status-container--out-of-stock {
+    background-color: rgba(201, 69, 21, 0.07);
+    padding: 0 .2rem;
+    width: 92px;
+    padding-bottom: .3rem;
+  }
+
   &__status {
     @include m-h4;
     color: color(instock);
     margin-top: 4px;
+    
   }
+
+  &__status--out-of-stock {
+    color: color(out-of-stock);
+    
+  }
+
+  
 
   &__quantity-div {
     margin-top: 20px;

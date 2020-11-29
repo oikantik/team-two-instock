@@ -28,9 +28,12 @@ const WarehouseInventory = ({warehouse}) => {
        
           <div className="warehouse-details__status-div">
             <p className="warehouse-details__status-label">STATUS</p>
-            <div className="warehouse-details__status-container">
+            {item.status === "In Stock" ? <div className="warehouse-details__status-container">
               <p className="warehouse-details__status">{item.status}</p>
-            </div>
+            </div> : <div className="warehouse-details__status-container warehouse-details__status-container--out-of-stock">
+              <p className="warehouse-details__status warehouse-details__status--out-of-stock">{item.status}</p>
+            </div>}
+            
           </div>
           <div className="warehouse-details__quantity-div">
             <p className="warehouse-details__quantity-label">QTY</p>
