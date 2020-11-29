@@ -16,13 +16,17 @@ class InventoryAdd extends Component {
         this.getInventories();
     }
 
+    goBack = () => {
+        this.props.history.goBack();
+    }
+
     addInventory = (data) => {
         console.log("add it", data);
-        // axiosInstance.put('/inventory/' + this.props.match.params.inventoryId, {
-        //   ...data
-        // }).then(response => {
-        //   this.goBack();
-        // }).catch(error => console.log(error))
+        axiosInstance.post('/inventory', {
+          ...data
+        }).then(response => {
+          this.goBack();
+        }).catch(error => console.log(error))
     }
 
     render() {
