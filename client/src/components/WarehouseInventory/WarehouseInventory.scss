@@ -282,6 +282,12 @@
   &__item {
     display: flex;
     align-items: center;
+
+    &:hover {
+      > img {
+        margin-left: 4px;
+      }
+    }
   }
 
   &__item-text {
@@ -293,6 +299,7 @@
     width: 20px;
     height: 20px;
     padding-top: 2px; 
+    transition: margin-left .3s ease;
   }
 
   &__category-div {
