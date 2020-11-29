@@ -1,5 +1,23 @@
 const inventoryModel = require("../models/InventoryModel");
 
+const getAllInventories = (req, res) => {
+  const inventories = inventoryModel.readFromInventoriesFile();
+  const categories = inventoryModel.getInventoryCategories();
+  const warehouseNames = inventoryModel.getWarehouseNames();
+  res.status(200).json({...inventories, categories: [...new Set(categories)], warehouseNames});
+}
+
+const getSingleInventory = (req, res) => {
+  const id = req.params.inventoryId;
+  const inventory = inventoryModel.findOne(id);
+  const categories = inventoryModel.getInventoryCategories();
+  const warehouseNames = inventoryModel.getWarehouseNames();
+  if (!inventory) {
+    return res.status(404).json({ error: "Inventory not found" });
+  }
+  res.status(200).json({...inventory, categories: [...new Set(categories)], warehouseNames});
+};
+
 const deleteSingleInventory = (req, res) => {
   const id = req.params.inventoryId;
   if (inventoryModel.doesInventoryExist(id)) {
@@ -7,6 +25,16 @@ const deleteSingleInventory = (req, res) => {
     return res.status(200).json(updatedData);
   }
   res.status(404).send("Inventory with the given id was not found");
+}
+
+const createInventory = (req, res) => {
+  if (!inventoryModel.reqBodyIsValid(req.body)) {
+    return res.status(400).send("One or more inputs is empty or invalid.");
+  }
+  const newInventory = inventoryModel.createInventory(req.body);
+  const categories = inventoryModel.getInventoryCategories();
+  const warehouseNames = inventoryModel.getWarehouseNames();
+  res.status(200).json({...newInventory, categories: [...new Set(categories)], warehouseNames});
 }
 
 const updateInventory = (req, res) => {
@@ -23,5 +51,8 @@ const updateInventory = (req, res) => {
 
 module.exports = {
   deleteSingleInventory,
-  updateInventory
+  updateInventory,
+  getAllInventories,
+  getSingleInventory,
+  createInventory
 };

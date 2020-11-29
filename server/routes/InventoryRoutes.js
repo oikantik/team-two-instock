@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const inventoryController = require("../controllers/InventoryController");
 
+router.get("/", inventoryController.getAllInventories);
+router.get("/:inventoryId", inventoryController.getSingleInventory);
+router.post("/", inventoryController.createInventory);
 router.put("/:inventoryId", inventoryController.updateInventory);
 router.delete("/:inventoryId", inventoryController.deleteSingleInventory);
 
