@@ -2,9 +2,7 @@ const inventoryModel = require("../models/InventoryModel");
 
 const getAllInventories = (req, res) => {
   const inventories = inventoryModel.readFromInventoriesFile();
-  const categories = inventoryModel.getInventoryCategories();
-  const warehouseNames = inventoryModel.getWarehouseNames();
-  res.status(200).json({...inventories, categories: [...new Set(categories)], warehouseNames});
+  res.status(200).json(inventories);
 }
 
 const getSingleInventory = (req, res) => {
