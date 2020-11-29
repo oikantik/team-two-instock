@@ -156,35 +156,35 @@ const sortBy = (paramString, queryString) => {
   const warehouses = readFromWarehousesFile();
   console.log(queryString)
 
-  if (paramString === "warehouse" && queryString === "desc") {
+  if (paramString === "warehouse" && queryString === "asc") {
     return warehouses.sort((a, b) => a.name.localeCompare(b.name))
   }
 
-  if (paramString === "address" && queryString === "desc") {
+  if (paramString === "address" && queryString === "asc") {
     return warehouses.sort((a, b) => a.address.localeCompare(b.address))
   }
 
-  if (paramString === "name" && queryString === "desc") {
+  if (paramString === "name" && queryString === "asc") {
     return warehouses.sort((a, b) => a.contact.name.localeCompare(b.contact.name))
   }
 
-  if (paramString === "info" && queryString === "desc") {
+  if (paramString === "info" && queryString === "asc") {
     return warehouses.sort((a, b) => a.contact.email.localeCompare(b.contact.email))
   }
 
-  if (paramString === "warehouse" && queryString === "asc") {
+  if (paramString === "warehouse" && queryString === "desc") {
     return warehouses.sort((a, b) => b.name.localeCompare(a.name))
   }
 
-  if (paramString === "address" && queryString === "asc") {
+  if (paramString === "address" && queryString === "desc") {
     return warehouses.sort((a, b) => b.address.localeCompare(a.address))
   }
 
-  if (paramString === "name" && queryString === "asc") {
+  if (paramString === "name" && queryString === "desc") {
     return warehouses.sort((a, b) => b.contact.name.localeCompare(a.contact.name))
   }
 
-  if (paramString === "info" && queryString === "asc") {
+  if (paramString === "info" && queryString === "desc") {
     return warehouses.sort((a, b) => b.contact.email.localeCompare(a.contact.email))
   }
 
