@@ -56,6 +56,11 @@ const getWarehouseNames = () => {
 return names;
 }
 
+const getWarehouseNameId = () => {
+  const nameId = readFromWarehouseFile().map(item => ({name: item.name, id: item.id}));
+return nameId;
+}
+
 const updateInventory = (inventoryID, reqBody) => {
   const inventories = readFromInventoriesFile();
   const inventory = inventories.find((inventory) => inventory.id === inventoryID);
@@ -100,5 +105,6 @@ module.exports = {
   findOne,
   getInventoryCategories,
   getWarehouseNames,
-  createInventory
+  createInventory,
+  getWarehouseNameId
 };

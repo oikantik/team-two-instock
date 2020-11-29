@@ -2,9 +2,7 @@ const inventoryModel = require("../models/InventoryModel");
 
 const getAllInventories = (req, res) => {
   const inventories = inventoryModel.readFromInventoriesFile();
-  const categories = inventoryModel.getInventoryCategories();
-  const warehouseNames = inventoryModel.getWarehouseNames();
-  res.status(200).json({...inventories, categories: [...new Set(categories)], warehouseNames});
+  res.status(200).json(inventories);
 }
 
 const getSingleInventory = (req, res) => {
@@ -16,6 +14,13 @@ const getSingleInventory = (req, res) => {
     return res.status(404).json({ error: "Inventory not found" });
   }
   res.status(200).json({...inventory, categories: [...new Set(categories)], warehouseNames});
+};
+
+const getInventorySummary = (req, res) => {
+  const categories = inventoryModel.getInventoryCategories();
+  const warehouseNames = inventoryModel.getWarehouseNames();
+  const warehouses = inventoryModel.getWarehouseNameId();
+  res.status(200).json({categories: [...new Set(categories)], warehouseNames, warehouses});
 };
 
 const deleteSingleInventory = (req, res) => {
@@ -54,5 +59,6 @@ module.exports = {
   updateInventory,
   getAllInventories,
   getSingleInventory,
-  createInventory
+  createInventory,
+  getInventorySummary
 };
