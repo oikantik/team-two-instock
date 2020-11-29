@@ -36,8 +36,7 @@ class WarehouseForm extends Component {
 
   validatePhone = (phone) => {
     const parsedPhone = phone.replace(/\D/g, "");
-    const re = /^(?!\b(0)\1+\b)(\+?\d{1,3}[. -]?)?\(?\d{3}\)?([. -]?)\d{3}\3\d{4}$/;
-    return re.test(parsedPhone);
+    return parsedPhone.length === 11;
   }
 
   componentDidMount(){
