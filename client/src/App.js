@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import WarehouseInventoryDetails from "./pages/WarehouseInventoryDetails/WarehouseInventoryDetails";
 
+import WarehouseEdit from './pages/WarehouseEdit/WarehouseEdit';
 import WarehouseAdd from './pages/WarehouseAdd/WarehouseAdd';
 import Inventory from './pages/Inventory/Inventory'
 
@@ -24,7 +25,7 @@ function App() {
             <Switch>
               <Redirect path="/" exact to="/warehouse"></Redirect>
               <Route path="/warehouse/add" component={WarehouseAdd}></Route>
-              <Route path="/warehouse/:warehouseId/edit" component={Home}></Route>
+              <Route path="/warehouse/:warehouseId/edit" component={WarehouseEdit}></Route>
               <Route path="/warehouse/:warehouseId" component={WarehouseInventoryDetails}></Route>
               <Route path="/warehouse" component={Home}></Route>
               <Route path="/inventory/add" component={InventoryAdd}></Route>

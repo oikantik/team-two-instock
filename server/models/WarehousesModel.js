@@ -70,7 +70,7 @@ const reqBodyIsValid = (reqBody) => {
   const { warehouseName, address, city, country, contactName, position, phone, email } = reqBody;
   if (!warehouseName && !address && !city && !country && !contactName && !position && !phone && !email) {
     return false;
-  } else if (phone.replace(/\D/g, "").length !== 11 && !email.match(/.*\@.*\..*/)) {
+  } else if (phone.replace(/\D/g, "").length !== 11 || !email.match(/.*\@.*\..*/)) {
     return false;
   } else {
     return true;
