@@ -1,435 +1,165 @@
 @use '../../partials/typography' as *;
 @use '../../partials/mixins' as *;
 
-
-.warehouse-details {
+.warehouse {
   width: 100%;
-  display: flex; 
-  flex-direction: column;
-  align-items: center;
-  height: 365px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid color(borders);
   @include tablet {
-    height: 292px;
-  }
-  @include desktop {
-    height: 274px;
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 91.5%;
-    height: 92px;
-    
-  }
-
-  &__title-div {
-    display: flex;
-    align-items: center;
-  }
-
-  &__arrow-link {
-    display: flex;
-    align-items: center;
-  }
-
-  &__arrow-icon {
-    margin-right: 8px
-  }
-
-  &__title {
-    @include m-h1;
-    @include tablet {
-      @include h1;
-    }
-  }
-
-  &__edit-link {
-    cursor: pointer;
-  }
-
-  &__edit-button {
+    margin-top: 1.5rem;
     border: none;
-    width: 36px;
-    height: 36px;
-    background-color: color(interactive);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    outline: none;
-    cursor: pointer;
-    @include tablet {
-      width: 81px;
-      height: 38px;
-      display: flex;
-      padding-right: 5px;
-    }
   }
 
-  &__edit-icon {
-    width: 20px;
-    height: 20px;
-    @include tablet {
-      margin-right: .5rem;
-    }
-  }
-
-  &__edit {
-    display: none;
-    @include tablet {
-      display: inline;
-      @include h3;
-      color: color(global-white);
-      
-    }
-  }
-
-  &__border {
-    width: 100%;
-    border-bottom: 1px solid color(borders);
-  }
-
-  &__warehouse-detail {
-    width: 100%;
-  }
-
-  &__label-div {
-    display: none;
-    @include tablet {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 40px;
-      background-color: color(page-bg);
-    }
-  }
-
-  &__label-div-margin {
+  &__details {
     width: 91.5%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     @include tablet {
-      width: 100%;
-      justify-content: space-between;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-  }
-
-  &__inv-item-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include tablet {
-
-    justify-content: normal;
-      width: 120px;
-    }
-  }
-
-  &__inv-item-label {
-    @include h4;
-    margin-right: 2px;
-  }
-
-  &__inv-item-sort {
-    width: 12px;
-    height: 20px;
-  }
-
-  &__categ-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include tablet {
-      justify-content: normal;
-      width: 120px;
-    }
-  }
-
-  &__categ-label {
-    @include h4;
-    margin-right: 2px;
-  }
-
-  &__categ-sort {
-    width: 12px;
-    height: 20px;
-  }
-
-  &__stat-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include tablet {
-      justify-content: normal;
-      width: 120px;
-    }
-  }
-
-  &__stat-label {
-    @include h4;
-    margin-right: 2px;
-  }
-
-  &__stat-sort {
-    width: 12px;
-    height: 20px;
-  }
-
-  &__quant-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include tablet {
-      justify-content: normal;
-      width: 120px;
-    }
-  }
-
-  &__quant-label {
-    @include h4;
-    margin-right: 2px;
-  }
-
-  &__quant-sort {
-    width: 12px;
-    height: 20px;
-  }
-
-  &__actions-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include tablet {
-      justify-content: center;
-      width: 120px;
-    }
-  }
-
-  &__actions-label {
-    @include h4;
-    margin-right: 2px;
-  }
-
-
-  &__inventory-div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-bottom: 1px solid color(borders);
-    @include tablet {
-      height: 58px;
-      flex-direction: row;
-      justify-content: center;
+      display: flex;
+      margin-bottom: 24px;
       
-    }
-  }
-
-  &__inventory-data {
-    width: 91.5%;
-    display: flex;
-    flex-wrap: wrap;
-    @include tablet {
-      width: 100%;
-      justify-content: space-between;
-      padding-left: 1.5rem;
-    padding-right: 1.5rem;
 
     }
-    
   }
 
-  &__flex-row {
-    display: flex;
-  }
-  
-  &__item-category {
-    margin-right: 73px;
-    @include tablet {
-      display: flex;
-      align-items: center;
-      margin-right: 0px;
-      width: 240px;
-      justify-content: space-between;
-    }
-  }
-
-  &__item-div {
+  &__address-div {
+    width: 259px;
     margin-top: 16px;
-    width: 50%;
-    order: 1;
     @include tablet {
-      order: 1;
+      border-right: 1px solid color(borders);
+      width: 214px;
+      padding-right: 32px;
       margin-top: 0;
-      width: 120px;
     }
-    
+    @include desktop {
+      width: 370px;
+      padding-right: 0px; 
+    }
   }
 
-  &__item-label {
+  &__address-label {
     @include m-h4;
+    color: color(table-header-text);
     @include tablet {
-      display: none;
-    }
-  }
-  
-  &__item-link {
-
-  }
-
-  &__item {
-    display: flex;
-    align-items: center;
-  }
-
-  &__item-text {
-    @include m-h3;
-    color: color(interactive);
-  }
-
-  &__item-chevron-right {
-    width: 20px;
-    height: 20px;
-    padding-top: 2px; 
-
-  }
-
-  &__category-div {
-    margin-top: 20px;
-    width: 50%;
-    order: 3;
-    @include tablet {
-      order: 2;
-      margin-top: 0;
-      width: 120px;
-    }
-  }
-
-  &__category-label {
-    @include m-h4;
-    @include tablet {
-      display: none;
+      @include h4;
     }
 
   }
 
-  &__category {
+  &__address {
     @include m-p2;
-    margin-top: 4px;
+    color: color(table-header-text);
     @include tablet {
-      margin-top: 0px;
+      @include p2;
+      color: color(table-header-text);
+    }
+
+  }
+
+  &__city-country {
+    @include m-p2;
+    color: color(table-header-text);
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+    }
+
+
+  }
+
+  &__contact-name-info {
+    display: flex;
+    margin-bottom: 16px;
+    @include tablet {
+      padding-left: 40px;
     }
   }
 
-  &__status-quantity {
-    @include tablet {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  &__status-div {
+  &__contact-name {
+    width: 140px;
     margin-top: 16px;
-    width: 50%;
-    order: 2;
+    margin-right: 16px;
     @include tablet {
-      order: 3;
-      margin-top: 0px;
-      width: 120px;
+      margin-top: 0px;  
+    }
+    @include desktop {
+      width: 217px;
+      margin-right: 28px;
     }
   }
 
-  &__status-label {
+  &__contact-name-label {
     @include m-h4;
+    color: color(table-header-text);
     @include tablet {
-      display: none;
+      @include h4;
+      color: color(table-header-text);
+
     }
 
   }
 
-  &__status-container {
-    width: 61px;
-    height: 24px;
-    background-color:  rgba(21, 132, 99, 0.07);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 4px;
-  }
-
-  &__status {
-    @include m-h4;
-    color: color(instock);
-    margin-top: 4px;
-  }
-
-  &__quantity-div {
-    margin-top: 20px;
-    width: 50%;
-    order: 4;
-    @include tablet {
-      margin-top: 0px;
-      width: 120px;
-    }
-  }
-
-  &__quantity-label {
-    @include m-h4;
-    @include tablet {
-      display: none;
-    }
-
-  }
-
-  &__quantity {
+  &__contact {
     @include m-p2;
+    color: color(table-header-text);
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+    }
+
+
   }
 
-  &__delete-edit {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 19px;
-    margin-bottom: 27px;
-    width: 100%;
-    order: 5;
+  &__position {
+    @include m-p2;
+    color: color(table-header-text);
     @include tablet {
-      justify-content: center;
-      margin: 0px;
-      width: 120px;
+      @include p2;
+      color: color(table-header-text);
+    }
+
+
+  }
+
+  &__contact-info {
+    margin-top: 16px;
+    @include tablet {
+      margin-top: 0px;
+
     }
   }
 
-  &__button {
-    border: none;
-    outline: none;
-    background: none;
+  &__contact-info-label {
+    @include m-h4;
+    color: color(table-header-text);
+    @include tablet {
+      @include h4;
+
+
+    }
+
   }
 
-  &__delete {
-@include tablet {
+  &__contact-info-number {
+    @include m-p2;
+    color: color(table-header-text);
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+    }
 
-  padding-right: 1rem;
-}
+
   }
 
-  &__edit-two {
-    display: block;
+  &__contact-info-email {
+    @include m-p2;
+    color: color(table-header-text);
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+    }
+
+
   }
-
-
-
-
-
-
-
-
 
 
 }

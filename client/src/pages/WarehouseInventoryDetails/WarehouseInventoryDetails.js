@@ -1,9 +1,9 @@
-import WarehouseDetails from '../../components/WarehouseDetails/WarehouseDetails'
+import WarehouseInventory from '../../components/WarehouseInventory/WarehouseInventory';
 
 const WarehouseInventoryDetails = () => {
   return (
     <div>
-      <WarehouseDetails/>
+      <WarehouseInventory/>
     </div>
   );
 };
