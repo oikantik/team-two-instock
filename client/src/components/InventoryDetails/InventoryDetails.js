@@ -11,7 +11,7 @@ const InventoryDetails = props => {
             <div className='inventory-details__container'>
                 <div className='inventory-details__main inventory-details__main--item'>
                     <h3 className='inventory-details__head inventory-details__none'>INVENTORY ITEM</h3>
-                    <Link to={`/inventory/${props.details.id}`} className='inventory-details__link'>{props.details.itemName}<img src={iconChevron} alt=''/></Link>
+                    <Link to={`/inventory/${props.details.id}`} className='inventory-details__link'>{props.details.itemName}<img className='inventory-details__link-img' src={iconChevron} alt=''/></Link>
                 </div>
                 <div className='inventory-details__main  inventory-details__main--status'>
                     <h3 className='inventory-details__head inventory-details__none'>STATUS</h3>
