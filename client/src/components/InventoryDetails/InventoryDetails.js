@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import './InventoryDetails.scss';
 
 const InventoryDetails = props => {
+    const handleDelete = (id, name) => props.onDelete(id, name);
     return (
         <div className='inventory-details'>
             <div className='inventory-details__container'>
@@ -31,12 +32,12 @@ const InventoryDetails = props => {
                     <p className='inventory-details__category inventory-details__category--warehouse'>{props.details.warehouseName}</p>
                 </div>
                 <div className='inventory-details__button-div-tablet  inventory-details__main--actions'>
-                    <button className='inventory-details__button'><img src={iconDelete} alt=''/></button>
+                    <button className='inventory-details__button'><img src={iconDelete} alt=''  onClick={() => handleDelete(props.details.id, props.details.itemName)}/></button>
                     <Link to={"/inventory/" + props.details.id +"/edit"}><button className='inventory-details__button'><img src={iconEdit} alt=''/></button></Link>
                 </div>
             </div>
             <div className='inventory-details__button-div inventory-details__category--actions'>
-                <button className='inventory-details__button'><img src={iconDelete} alt=''/></button>
+                <button className='inventory-details__button'><img src={iconDelete} alt='' onClick={() => handleDelete(props.details.id, props.details.itemName)}/></button>
                 <Link to="/inventory/editInventory/:inventoryId"><button className='inventory-details__button'><img src={iconEdit} alt=''/></button></Link>
             </div>
         </div>
