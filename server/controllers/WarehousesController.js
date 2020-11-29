@@ -34,9 +34,21 @@ const updateWarehouse = (req, res) => {
   return res.status(200).json(updatedWarehouse);
 }
 
+const createWarehouse = (req, res) => {
+  
+  if (!warehousesModel.reqBodyIsValid(req.body)) {
+    return res.status(400).send("One or more inputs is empty or invalid.");
+  }
+  const newWarehouses = warehousesModel.createWarehouse(req.body);
+  return res.status(200).json(newWarehouses);
+}
+
+
+
 module.exports = {
   getSingleWarehouse,
   getAllWarehouses,
   updateWarehouse,
-  deleteSingleWarehouse
+  deleteSingleWarehouse,
+  createWarehouse
 };
