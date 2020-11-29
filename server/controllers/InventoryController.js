@@ -18,6 +18,13 @@ const getSingleInventory = (req, res) => {
   res.status(200).json({...inventory, categories: [...new Set(categories)], warehouseNames});
 };
 
+const getInventorySummary = (req, res) => {
+  const categories = inventoryModel.getInventoryCategories();
+  const warehouseNames = inventoryModel.getWarehouseNames();
+  const warehouses = inventoryModel.getWarehouseNameId();
+  res.status(200).json({categories: [...new Set(categories)], warehouseNames, warehouses});
+};
+
 const deleteSingleInventory = (req, res) => {
   const id = req.params.inventoryId;
   if (inventoryModel.doesInventoryExist(id)) {
@@ -54,5 +61,6 @@ module.exports = {
   updateInventory,
   getAllInventories,
   getSingleInventory,
-  createInventory
+  createInventory,
+  getInventorySummary
 };

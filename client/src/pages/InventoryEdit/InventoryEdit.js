@@ -15,10 +15,23 @@ class InventoryEdit extends Component {
   componentDidMount() {
     this.getInventories();
   }
+
+  updateInventory = (data) => {
+    axiosInstance.put('/inventory/' + this.props.match.params.inventoryId, {
+      ...data
+    }).then(response => {
+      this.goBack();
+    }).catch(error => console.log(error))
+  }
+
+  goBack = () => {
+    this.props.history.goBack();
+  }
+
   render() {
     return (
       <Fragment>
-        {!this.state.loading && <InventoryForm name={this.state.itemName} description={this.state.description} category={this.state.category} status={this.state.status} quantity={this.state.quantity} warehouse={this.state.warehouseName} id={this.state.id} warehouseID={this.state.warehouseID} />}
+        {!this.state.loading && <InventoryForm name={this.state.itemName} description={this.state.description} category={this.state.category} status={this.state.status} quantity={this.state.quantity} warehouse={this.state.warehouseName} id={this.state.id} warehouseID={this.state.warehouseID} categories={this.state.categories} warehouses={this.state.warehouseNames} buttonText="Save" headingText="Edit Inventory Item" {...this.props} updateInventory={this.updateInventory} />}
       </Fragment>
     );
   }

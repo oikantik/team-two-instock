@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './InventoryForm.scss'
-import axios from 'axios';
+//import axios from 'axios';
 
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import errorIcon from "../../assets/icons/error-24px.svg";
@@ -128,7 +128,7 @@ class InventoryForm extends React.Component {
 
         if (this.validateAll()) {
             const newItem = {
-                warehouseID: "", // I think this can be found and set in the back end
+                warehouseID: this.props.warehouseID || this.findWarehouseID(itemWarehouse), // I think this can be found and set in the back end
                 warehouseName: itemWarehouse,
                 itemName: itemName,
                 description: itemDescription,
@@ -136,9 +136,10 @@ class InventoryForm extends React.Component {
                 status: itemStatus,
                 quantity: itemQuantity
             }
-            console.log(newItem);
+            this.props.updateInventory && this.props.updateInventory(newItem);
+            this.props.addInventory && this.props.addInventory(newItem);
             // put this inside axios request later
-            this.handleReset();
+            // this.handleReset()
             // axios.post()
             //     .then((response) => {
             //         this.handleReset();
@@ -165,7 +166,7 @@ class InventoryForm extends React.Component {
     }
 
     renderSelectFieldOptions = (optionsArr) => {
-        optionsArr = optionsArr || ["test1", "test2"];
+        optionsArr = optionsArr || ["Please Select"];
         return optionsArr.map((option, i) => {
             return <option key={i} value={option}>{option}</option>
         });
@@ -175,32 +176,41 @@ class InventoryForm extends React.Component {
         const itemQuantityInputClass = this.state.itemQuantityError ? "inventory-form__num-input inventory-form__num-input--error" : "inventory-form__num-input";
 
         return (
-            <>
-                <label 
-                    className="inventory-form__label"  
+            <Fragment>
+                <label
+                    className="inventory-form__label"
                     htmlFor="itemQuantity">
-                        Quantity
+                    Quantity
                 </label>
-                <input 
+                <input
                     className={itemQuantityInputClass}
                     onChange={this.handleChange}
                     value={this.state.itemQuantity}
-                    name="itemQuantity" 
-                    id="itemQuantity" 
+                    name="itemQuantity"
+                    id="itemQuantity"
                     type="number"
                     placeholder="0"
                 />
-            </>
+            </Fragment>
         );
     }
 
     renderErrorMessage = () => {
         return (
-            <>
+            <Fragment>
                 <img className="inventory-form__error-icon" src={errorIcon} alt="error message icon" />
                 <span className="inventory-form__error-text" >This field is required</span>
-            </>
+            </Fragment>
         );
+    }
+
+    goBack = () => {
+        this.props.history.goBack();
+    }
+
+    findWarehouseID = (name) => {
+        const warehouse = this.props.warehouseIds && this.props.warehouseIds.find(item => item.name === name);
+        return warehouse.id;
     }
 
     render() {
@@ -221,144 +231,144 @@ class InventoryForm extends React.Component {
             <div className="inventory-form">
                 {/* HEADING STARTS */}
                 <div className="inventory-form__heading">
-                    <img className="inventory-form__heading-icon" src={backArrow} alt="Go back arrow" />
-                    <h1 className="inventory-form__heading-text">Add New Inventory Item</h1>
+                    <img className="inventory-form__heading-icon" src={backArrow} alt="Go back arrow" onClick={this.goBack} />
+                    <h1 className="inventory-form__heading-text">{this.props.headingText}</h1>
                 </div>
                 {/* FORM STARTS */}
-                <form 
-                    className="inventory-form__form" 
-                    onSubmit={this.handleSubmit} 
+                <form
+                    className="inventory-form__form"
+                    onSubmit={this.handleSubmit}
                     onReset={this.handleReset}>
-                        {/* ITEM DETAILS SECTION */}
-                        <fieldset className="inventory-form__fieldset">
-                            <legend className="inventory-form__legend inventory-form__legend--stretch">Item Details</legend>
-                            <label 
-                                className="inventory-form__label" 
-                                htmlFor="itemName">
-                                    Item Name
+                    {/* ITEM DETAILS SECTION */}
+                    <fieldset className="inventory-form__fieldset">
+                        <legend className="inventory-form__legend inventory-form__legend--stretch">Item Details</legend>
+                        <label
+                            className="inventory-form__label"
+                            htmlFor="itemName">
+                            Item Name
                             </label>
-                            <input 
-                                className={itemNameInputClass}
-                                onChange={this.handleChange}
-                                value={this.state.itemName}
-                                name="itemName" 
-                                id="itemName" 
-                                type="text"
-                                placeholder="Item Name"
-                            />
-                            <div className="inventory-form__error">
-                                {this.state.itemNameError && this.renderErrorMessage()}
-                            </div>
-                            <label 
-                                className="inventory-form__label" 
-                                htmlFor="itemDescription">
-                                    Description
-                            </label>
-                            <textarea
-                                className={itemDescriptionInputClass}
-                                onChange={this.handleChange}
-                                value={this.state.itemDescription}
-                                name="itemDescription" 
-                                id="itemDescription" 
-                                placeholder="Please enter a brief item description..."
-                            />
-                            <div className="inventory-form__error">
-                                {this.state.itemDescriptionError && this.renderErrorMessage()}
-                            </div>
-                            <label 
-                                className="inventory-form__label" 
-                                htmlFor="itemCategory">
-                                    Category
-                            </label>
-                            <select 
-                                className={itemCategoryInputClass}
-                                onChange={this.handleChange}
-                                value={this.state.itemCategory}
-                                name="itemCategory" 
-                                id="itemCategory">
-                                    <option value="">Please select</option>
-                                    {this.renderSelectFieldOptions(this.props.categories)}
-                            </select>
-                            <div className="inventory-form__error">
-                                {this.state.itemCategoryError && this.renderErrorMessage()}
-                            </div>
-                        </fieldset>
-                        {/* ITEM AVAILABILITY SECTION */}
-                        <fieldset className="inventory-form__fieldset">
-                            <legend className="inventory-form__legend">Item Availability</legend>
-                            <fieldset className="inventory-form__radio">
-                                <legend 
-                                    className="inventory-form__label inventory-form__label--radio">
-                                        Status
-                                </legend>
-                                <div className="inventory-form__radio-group">
-                                    <input
-                                        className="inventory-form__radio-input"
-                                        onChange={this.handleOptionChange}
-                                        value="In Stock"
-                                        checked={this.state.itemStatus === "In Stock"}
-                                        name="itemStatus"
-                                        id="itemStatus"
-                                        type="radio" />
-                                    <label
-                                        className={inStockRadioLabelClass}
-                                        htmlFor="itemStatus">
-                                            In stock
-                                    </label>
-                                </div>
-                                <div className="inventory-form__radio-group">
-                                    <input 
-                                        className="inventory-form__radio-input" 
-                                        onChange={this.handleOptionChange}
-                                        value="Out of Stock"
-                                        checked={this.state.itemStatus === "Out of Stock"}
-                                        name="itemStatus" 
-                                        id="itemStatus" 
-                                        type="radio" />
-                                    <label 
-                                        className={outOfStockRadioLabelClass}
-                                        htmlFor="itemStatus">
-                                            Out of stock
-                                    </label>
-                                </div>
-                            </fieldset>
-                            {/* Only render Quantity Field if Status is "In Stock" */}
-                            {this.state.itemStatus === "In Stock" && this.renderQuantity()}
-                            <div className="inventory-form__error">
-                                {this.state.itemQuantityError && this.renderErrorMessage()}
-                            </div>
-                            <label  
-                                className="inventory-form__label" 
-                                htmlFor="itemWarehouse">
-                                    Warehouse
-                            </label>
-                            <select 
-                                className={itemWarehouseInputClass}
-                                onChange={this.handleChange}
-                                value={this.state.itemWarehouse}
-                                name="itemWarehouse" 
-                                id="itemWarehouse"
-                                >
-                                    <option value="">Please select</option>
-                                    {this.renderSelectFieldOptions(this.props.warehouses)}
-                            </select>
-                            <div className="inventory-form__error">
-                                {this.state.itemWarehouseError && this.renderErrorMessage()}
-                            </div>
-                        </fieldset>
-                        {/* BUTTONS */}
-                        <div className="inventory-form__button-group">
-                            <button 
-                                className="inventory-form__button inventory-form__button--secondary"
-                                type="reset">
-                                    Cancel
-                            </button>
-                            <button 
-                                className="inventory-form__button"
-                                type="submit">
-                                    + Add Item
-                            </button>
+                        <input
+                            className={itemNameInputClass}
+                            onChange={this.handleChange}
+                            value={this.state.itemName}
+                            name="itemName"
+                            id="itemName"
+                            type="text"
+                            placeholder="Item Name"
+                        />
+                        <div className="inventory-form__error">
+                            {this.state.itemNameError && this.renderErrorMessage()}
                         </div>
+                        <label
+                            className="inventory-form__label"
+                            htmlFor="itemDescription">
+                            Description
+                            </label>
+                        <textarea
+                            className={itemDescriptionInputClass}
+                            onChange={this.handleChange}
+                            value={this.state.itemDescription}
+                            name="itemDescription"
+                            id="itemDescription"
+                            placeholder="Please enter a brief item description..."
+                        />
+                        <div className="inventory-form__error">
+                            {this.state.itemDescriptionError && this.renderErrorMessage()}
+                        </div>
+                        <label
+                            className="inventory-form__label"
+                            htmlFor="itemCategory">
+                            Category
+                            </label>
+                        <select
+                            className={itemCategoryInputClass}
+                            onChange={this.handleChange}
+                            value={this.state.itemCategory}
+                            name="itemCategory"
+                            id="itemCategory">
+                            <option value="">Please select</option>
+                            {this.renderSelectFieldOptions(this.props.categories)}
+                        </select>
+                        <div className="inventory-form__error">
+                            {this.state.itemCategoryError && this.renderErrorMessage()}
+                        </div>
+                    </fieldset>
+                    {/* ITEM AVAILABILITY SECTION */}
+                    <fieldset className="inventory-form__fieldset">
+                        <legend className="inventory-form__legend">Item Availability</legend>
+                        <fieldset className="inventory-form__radio">
+                            <legend
+                                className="inventory-form__label inventory-form__label--radio">
+                                Status
+                                </legend>
+                            <div className="inventory-form__radio-group">
+                                <input
+                                    className="inventory-form__radio-input"
+                                    onChange={this.handleOptionChange}
+                                    value="In Stock"
+                                    checked={this.state.itemStatus === "In Stock"}
+                                    name="itemStatus"
+                                    id="itemStatus"
+                                    type="radio" />
+                                <label
+                                    className={inStockRadioLabelClass}
+                                    htmlFor="itemStatus">
+                                    In stock
+                                    </label>
+                            </div>
+                            <div className="inventory-form__radio-group">
+                                <input
+                                    className="inventory-form__radio-input"
+                                    onChange={this.handleOptionChange}
+                                    value="Out of Stock"
+                                    checked={this.state.itemStatus === "Out of Stock"}
+                                    name="itemStatus"
+                                    id="itemStatus"
+                                    type="radio" />
+                                <label
+                                    className={outOfStockRadioLabelClass}
+                                    htmlFor="itemStatus">
+                                    Out of stock
+                                    </label>
+                            </div>
+                        </fieldset>
+                        {/* Only render Quantity Field if Status is "In Stock" */}
+                        {this.state.itemStatus === "In Stock" && this.renderQuantity()}
+                        <div className="inventory-form__error">
+                            {this.state.itemQuantityError && this.renderErrorMessage()}
+                        </div>
+                        <label
+                            className="inventory-form__label"
+                            htmlFor="itemWarehouse">
+                            Warehouse
+                            </label>
+                        <select
+                            className={itemWarehouseInputClass}
+                            onChange={this.handleChange}
+                            value={this.state.itemWarehouse}
+                            name="itemWarehouse"
+                            id="itemWarehouse"
+                        >
+                            <option value="">Please select</option>
+                            {this.renderSelectFieldOptions(this.props.warehouses)}
+                        </select>
+                        <div className="inventory-form__error">
+                            {this.state.itemWarehouseError && this.renderErrorMessage()}
+                        </div>
+                    </fieldset>
+                    {/* BUTTONS */}
+                    <div className="inventory-form__button-group">
+                        <button
+                            className="inventory-form__button inventory-form__button--secondary"
+                            type="reset">
+                            Cancel
+                            </button>
+                        <button
+                            className="inventory-form__button"
+                            type="submit">
+                            {this.props.buttonText}
+                        </button>
+                    </div>
                 </form>
             </div>
         );
