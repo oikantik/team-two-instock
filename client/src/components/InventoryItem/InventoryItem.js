@@ -11,7 +11,7 @@ const InventoryItem = (props) => {
           <Link to={'/inventory'} className="inv-item-details__arrow-link">
             <img src={arrowBackIcon} alt="Arrow Icon" className="inv-item-details__arrow-icon" />
           </Link>
-          <h1 className="inv-item-details__title">Television</h1>
+          <h1 className="inv-item-details__title">{props.inventory.itemName}</h1>
         </div> 
         {/* We can add the inventory ID through the props once we patch everything together */}
         <Link to={`/inventory/${props.inventory.id}/edit`} className="inv-item-details__edit-link">
