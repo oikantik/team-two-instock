@@ -169,7 +169,7 @@ const sortBy = (paramString, queryString) => {
   }
 
   if (paramString === "info" && queryString === "desc") {
-    return warehouses.sort((a, b) => a.contact.phone.localeCompare(b.contact.phone))
+    return warehouses.sort((a, b) => a.contact.email.localeCompare(b.contact.email))
   }
 
   if (paramString === "warehouse" && queryString === "asc") {
@@ -185,7 +185,7 @@ const sortBy = (paramString, queryString) => {
   }
 
   if (paramString === "info" && queryString === "asc") {
-    return warehouses.sort((a, b) => b.contact.phone.localeCompare(a.contact.phone))
+    return warehouses.sort((a, b) => b.contact.email.localeCompare(a.contact.email))
   }
 
   return false;

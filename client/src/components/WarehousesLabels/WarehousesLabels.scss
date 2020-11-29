@@ -85,5 +85,9 @@
 
   &__label-icon-image {
     height: 12px;
+    
+    &--active {
+      filter: invert(29%) sepia(68%) saturate(3701%) hue-rotate(217deg) brightness(96%) contrast(100%);
+    }
   }
 }

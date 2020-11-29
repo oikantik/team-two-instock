@@ -6,7 +6,7 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import chevronRightIcon from "../../assets/icons/chevron_right-24px.svg";
 import WarehousesLabels from "../WarehousesLabels/WarehousesLabels";
 
-function WarehousesList({ warehouses, onDelete }) {
+function WarehousesList({ warehouses, onDelete, onSort,sortBy }) {
   const handleDelete = (id, name) => onDelete(id, name);
   const showWarehouses = warehouses.map((warehouse) => {
     return (
@@ -68,7 +68,7 @@ function WarehousesList({ warehouses, onDelete }) {
   });
   return (
     <div className="warehouses-list">
-      <WarehousesLabels />
+      <WarehousesLabels onSort={onSort} sortBy={sortBy}/>
       {showWarehouses}
     </div>
   );
