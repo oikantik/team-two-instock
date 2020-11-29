@@ -10,6 +10,7 @@ const API_URL = "http://localhost:8080/warehouses/";
 class WarehouseForm extends Component {
   
   state = {
+    warehouseId: "",
     warehouseName: "",
     warehouseAddress: "",
     warehouseCity: "",
@@ -44,9 +45,10 @@ class WarehouseForm extends Component {
     this.baseState = this.state;
   }
 
-  componentDidUpdate(_prevState, prevProps) {
-    if (this.props.warehouseObj) {
-      if (this.props.warehouseObj.name !== prevProps.warehouseName) {
+  componentDidUpdate(prevProps, prevState) {
+      if ((this.props.warehouseObj && this.props.warehouseObj.id) !== (prevProps.warehouseObj && prevProps.warehouseObj.id)) {
+        console.log(this.props);
+        console.log(prevProps)
         this.setState({
           warehouseName: this.props.warehouseObj.name,
           warehouseAddress: this.props.warehouseObj.address,
@@ -58,7 +60,6 @@ class WarehouseForm extends Component {
           contactEmail: this.props.warehouseObj.contact.email,
         })
       }
-    }
   }
 
   handleChange = (event) => {
@@ -267,8 +268,8 @@ class WarehouseForm extends Component {
     if (this.validateAll()) {
       const newItem = this.createRequestObject();
       axios.put(API_URL + this.props.warehouseObj.id, newItem)
-        .then((_response) => {
-            
+        .then((response) => {
+            console.log(response.data);
         })
         .catch((error) => console.log(error))
     };
