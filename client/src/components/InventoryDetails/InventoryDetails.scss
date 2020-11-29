@@ -122,6 +122,16 @@
         color: color(interactive);
         display: flex;
         align-items: center;
+
+        &:hover {
+            > img {
+                margin-left: 4px;
+            }
+        }
+
+        &-img {
+            transition: margin-left .3s ease;
+        }
     }
     
     &__status {
