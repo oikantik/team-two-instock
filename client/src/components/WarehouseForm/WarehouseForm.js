@@ -282,7 +282,7 @@ class WarehouseForm extends Component {
       const newItem = this.createRequestObject();
       axios.put(API_URL + this.props.warehouseObj.id, newItem)
         .then((response) => {
-            // console.log(response.data);
+            this.goBack();
         })
         .catch((error) => console.log(error))
     };
