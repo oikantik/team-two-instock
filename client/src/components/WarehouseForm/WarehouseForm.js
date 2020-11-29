@@ -3,21 +3,21 @@ import './WarehouseForm.scss';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
 import { Link } from 'react-router-dom';
 import RequireInput from '../RequireInput/RequireInput';
+import axios from 'axios';
 
-
-
+const API_URL = "http://localhost:8080/warehouses/";
 
 class WarehouseForm extends Component {
   
   state = {
-    warehouseName: this.props.name || "",
-    warehouseAddress: this.props.address || "",
-    warehouseCity: this.props.city || "",
-    warehouseCountry: this.props.country || "",
-    contactName: this.props.contactName || "",
-    contactPosition: this.props.contactPosition || "",
-    contactPhone: this.props.contactPhone || "",
-    contactEmail: this.props.contactEmail || "",
+    warehouseName: "",
+    warehouseAddress: "",
+    warehouseCity: "",
+    warehouseCountry: "",
+    contactName: "",
+    contactPosition: "",
+    contactPhone: "",
+    contactEmail: "",
     // should validation error message for a given field be rendered or not
     warehouseNameError: false,
     warehouseAddressError: false,
@@ -35,12 +35,28 @@ class WarehouseForm extends Component {
   }
 
   validatePhone = (phone) => {
-const re = /^(?!\b(0)\1+\b)(\+?\d{1,3}[. -]?)?\(?\d{3}\)?([. -]?)\d{3}\3\d{4}$/;
-return re.test(phone);
+    const parsedPhone = phone.replace(/\D/g, "");
+    const re = /^(?!\b(0)\1+\b)(\+?\d{1,3}[. -]?)?\(?\d{3}\)?([. -]?)\d{3}\3\d{4}$/;
+    return re.test(parsedPhone);
   }
 
   componentDidMount(){
     this.baseState = this.state;
+  }
+
+  componentDidUpdate(_prevState, prevProps) {
+    if (this.props.warehouseObj.name !== prevProps.warehouseName) {
+      this.setState({
+        warehouseName: this.props.warehouseObj.name,
+        warehouseAddress: this.props.warehouseObj.address,
+        warehouseCity: this.props.warehouseObj.city,
+        warehouseCountry: this.props.warehouseObj.country,
+        contactName: this.props.warehouseObj.contact.name,
+        contactPosition: this.props.warehouseObj.contact.position,
+        contactPhone: this.props.warehouseObj.contact.phone,
+        contactEmail: this.props.warehouseObj.contact.email,
+      })
+    }
   }
 
   handleChange = (event) => {
@@ -190,30 +206,32 @@ return re.test(phone);
         contactEmailError: true
       });
     }
-    
-    
 
     if (isValid.warehouseName && isValid.warehouseAddress && isValid.warehouseCity && isValid.warehouseCountry && isValid.contactName && isValid.contactPosition && isValid.contactPhone && isValid.contactEmail) {
       return true;
     }
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-
+  createRequestObject = () => {
     const { warehouseName, warehouseAddress, warehouseCity, warehouseCountry, contactName, contactPosition, contactPhone, contactEmail } = this.state;
 
+    const newItem = {
+      warehouseName: warehouseName,
+      address: warehouseAddress,
+      city:warehouseCity,
+      country: warehouseCountry,
+      contactName: contactName,
+      position: contactPosition,
+      phone: contactPhone,
+      email: contactEmail
+    }
+    return newItem;
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
     if (this.validateAll()) {
-        const newItem = {
-          warehouseName: warehouseName,
-          address: warehouseAddress,
-          city:warehouseCity,
-          country: warehouseCountry,
-          contactName: contactName,
-          position: contactPosition,
-          phone: contactPhone,
-          email: contactEmail
-        }
+        const newItem = this.createRequestObject();
         console.log(newItem);
         // put this inside axios request later
         this.handleReset();
@@ -224,14 +242,52 @@ return re.test(phone);
         //     .catch((error) => console.log(error))
 
     }
-}
+  }
 
-handleReset = () => {
-    this.setState({...this.baseState});
-}
+  handleReset = () => {
+      this.setState({...this.baseState});
+  }
 
+  renderAddWarehouseButton = () => {
+    return (
+        <button type="submit" className="add-warehouse__add-warehouse-button">+ Add Warehouse</button>
+    );
+  }
+
+  renderSaveButton = () => {
+    return (
+      <button type="submit" className="add-warehouse__add-warehouse-button">Save</button>
+    );
+  }
+
+  handleSave = (e) => {
+    e.preventDefault();
+    if (this.validateAll()) {
+      const newItem = this.createRequestObject();
+      axios.put(API_URL + this.props.warehouseObj.id, newItem)
+        .then((_response) => {
+            
+        })
+        .catch((error) => console.log(error))
+    };
+  }
+
+  renderCancelAddButton = () => {
+    return (
+      <button type="reset" onClick={this.handleReset} className="add-warehouse__cancel-button">Cancel</button>
+    );
+  }
+
+  renderCancelEditButton = () => {
+    return (
+      <Link to="/warehouse" >
+        <button className="add-warehouse__cancel-button">Cancel</button>
+      </Link>
+    );
+  }
 
   render() {
+
     const warehouseNameErrorClass = this.state.warehouseNameError ? "add-warehouse__warehouse-name-input add-warehouse__warehouse-error" : "add-warehouse__warehouse-name-input";
     const warehouseAddressErrorClass  =  this.state.warehouseAddressError ? "add-warehouse__warehouse-address-input add-warehouse__warehouse-error" : "add-warehouse__warehouse-address-input";
     const warehouseCityErrorClass =  this.state.warehouseCityError ? "add-warehouse__warehouse-city-input add-warehouse__warehouse-error" : "add-warehouse__warehouse-city-input";
@@ -241,6 +297,9 @@ handleReset = () => {
     const contactPhoneErrorClass =  this.state.contactPhoneError ? "add-warehouse__contact-phone-input add-warehouse__warehouse-error" : "add-warehouse__contact-phone-input";
     const contactEmailErrorClass =  this.state.contactEmailError ? "add-warehouse__contact-email-input add-warehouse__warehouse-error" : "add-warehouse__contact-email-input";
 
+    const headerText = this.props.edit ? "Edit Warehouse" : "Add New Warehouse";
+    const formSubmitHandler = this.props.edit ? this.handleSave : this.handleSubmit;
+
     return (
       <div className="add-warehouse">
         <div className="add-warehouse__header">
@@ -248,11 +307,11 @@ handleReset = () => {
             <Link to={"/warehouse"} className="add-warehouse__header-link">
               <img src={arrowBackIcon} className="add-warehouse__arrow-icon" alt="Back Arrow Icon"></img>
             </Link>
-            <h1 className="add-warehouse__title">Add New Warehouse</h1>
+            <h1 className="add-warehouse__title">{headerText}</h1>
           </div>
         </div>
         <div className="add-warehouse__border"></div>
-        <form className="add-warehouse__main" onSubmit={this.handleSubmit} 
+        <form className="add-warehouse__main" onSubmit={formSubmitHandler} 
                     onReset={this.handleReset}>
           <div className="add-warehouse__sub-main">
             <div className="add-warehouse__sub-main-div1">
@@ -261,7 +320,7 @@ handleReset = () => {
                 <div className="add-warehouse__warehouse-name-div">
                   <label className="add-warehouse__warehouse-name-label" htmlFor="warehouseNameInput">Warehouse Name</label>
                   <input  onChange={this.handleChange}
-                                value={this.state.warehouseName} name="warehouseName" className={warehouseNameErrorClass}placeholder="Warehouse Name" id="warehouseNameInput"type="text"/>
+                                value={this.state.warehouseName} name="warehouseName" className={warehouseNameErrorClass}placeholder="Warehouse Name" id="warehouseNameInput" type="text"/>
                  {this.state.warehouseNameError &&  <RequireInput/>}
                 </div>
                 <div className="add-warehouse__warehouse-address-div">
@@ -317,8 +376,8 @@ handleReset = () => {
           </div>
           <div className="add-warehouse__footer">
             <div className="add-warehouse__footer-container">
-              <button type="reset" onClick={this.handleReset} className="add-warehouse__cancel-button">Cancel</button>
-              <button type="submit" className="add-warehouse__add-warehouse-button">+ Add Warehouse</button>
+              {this.props.edit ? this.renderCancelEditButton() : this.renderCancelAddButton()}
+              {this.props.edit ? this.renderSaveButton() : this.renderAddWarehouseButton()}
             </div>
           </div>
         </form>
