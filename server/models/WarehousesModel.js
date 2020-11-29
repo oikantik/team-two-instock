@@ -1,6 +1,7 @@
 const fs = require("fs");
 const warehousesFile = "./data/warehouses.json";
 const inventoriesFile = "./data/inventories.json";
+const {v4: uuidv4} = require('uuid');
 
 const readFromWarehousesFile = () => {
   const warehouses = fs.readFileSync(warehousesFile);
@@ -94,11 +95,32 @@ const updateWarehouse = (warehouseID, reqBody) => {
     return warehouse;
 }
 
+const createWarehouse = (reqBody) => {
+  const warehouses = readFromWarehousesFile();
+  const { warehouseName, address, city, country, contactName, position, phone, email } = reqBody;
+  const warehouse = {id: uuidv4(),
+  name: warehouseName,
+  address: address,
+  city: city,
+  country :country,
+  contact: {
+    name: contactName,
+    position:position,
+    phone: formatPhoneNumber(phone.replace(/\D/g, "")),
+    email: email
+  }
+  }
+    warehouses.push(warehouse);
+    fs.writeFileSync(warehousesFile, JSON.stringify(warehouses, null, 2));
+    return warehouses;
+}
+
 module.exports = {
   readFromWarehousesFile,
   updateWarehouse, 
   reqBodyIsValid,
   findOne,
   doesWarehouseExist,
-  deleteOne
+  deleteOne,
+  createWarehouse
 };
