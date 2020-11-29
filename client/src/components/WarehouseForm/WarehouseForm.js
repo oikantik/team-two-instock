@@ -109,6 +109,34 @@ class WarehouseForm extends Component {
     }
   }
 
+  updatePhone = (event) => {
+    // custom format: +1 (123) 456-7890
+    const phoneVal = event.target.value.replace(/\D/g, "").substr(0, 11);
+    let formattedPhone = '';
+
+    for (let i = 0; i < phoneVal.length; i++) {
+      if (isNaN(phoneVal[i])) {
+        continue;
+      }
+      if (i === 0) {
+        formattedPhone += "+";
+      }
+      if (i === 1) {
+        formattedPhone += " (";
+      }
+      if (i === 4) {
+        formattedPhone += ") ";
+      }
+      if (i === 7) {
+        formattedPhone += "-";
+      }
+      formattedPhone += phoneVal[i];
+    }
+    this.setState({
+      contactPhone: formattedPhone
+    });
+  }
+
   // includes checking for only spaces
   checkForEmpty = (input) => {
     let trimmedInput = input.trim();
@@ -248,31 +276,19 @@ class WarehouseForm extends Component {
       this.setState({...this.baseState});
   }
 
-  renderAddWarehouseButton = () => {
-    return (
-        <button type="submit" className="add-warehouse__add-warehouse-button">+ Add Warehouse</button>
-    );
-  }
-
-  renderSaveButton = () => {
-    return (
-      <button type="submit" className="add-warehouse__add-warehouse-button">Save</button>
-    );
-  }
-
   handleSave = (e) => {
     e.preventDefault();
     if (this.validateAll()) {
       const newItem = this.createRequestObject();
       axios.put(API_URL + this.props.warehouseObj.id, newItem)
         .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
         })
         .catch((error) => console.log(error))
     };
   }
 
-  handleCancelEdit = () => {
+  goBack = () => {
     this.props.goBack();
   }
 
@@ -284,7 +300,7 @@ class WarehouseForm extends Component {
 
   renderCancelEditButton = () => {
     return (
-        <button className="add-warehouse__cancel-button" onClick={this.handleCancelEdit}>Cancel</button>
+        <button className="add-warehouse__cancel-button" onClick={this.goBack}>Cancel</button>
     );
   }
 
@@ -301,6 +317,7 @@ class WarehouseForm extends Component {
 
     const headerText = this.props.edit ? "Edit Warehouse" : "Add New Warehouse";
     const formSubmitHandler = this.props.edit ? this.handleSave : this.handleSubmit;
+    const blueButtonTxt = this.props.edit ? "Save" : "+ Add Warehouse";
 
     return (
       <div className="add-warehouse">
@@ -363,7 +380,7 @@ class WarehouseForm extends Component {
                 </div>
                 <div className="add-warehouse__contact-phone-div">
                   <label className="add-warehouse__contact-phone-label" htmlFor="phoneInput">Phone Number</label>            
-                  <input  onChange={this.handleChange}
+                  <input  onChange={this.updatePhone}
                                 value={this.state.contactPhone} name="contactPhone"  className={contactPhoneErrorClass} placeholder="Phone Number" id="phoneInput" type="text"/>
                   {this.state.contactPhoneError &&  <RequireInput/>}
                 </div>
@@ -379,7 +396,7 @@ class WarehouseForm extends Component {
           <div className="add-warehouse__footer">
             <div className="add-warehouse__footer-container">
               {this.props.edit ? this.renderCancelEditButton() : this.renderCancelAddButton()}
-              {this.props.edit ? this.renderSaveButton() : this.renderAddWarehouseButton()}
+              <button type="submit" className="add-warehouse__add-warehouse-button">{blueButtonTxt}</button>
             </div>
           </div>
         </form>

@@ -21,7 +21,6 @@ class WarehouseEdit extends Component {
 
 
     render() {
-        console.log(this.props.history);
         return (
             <div>
                <WarehouseForm warehouseObj={this.state.warehouseObj} goBack={this.props.history.goBack} edit /> 
