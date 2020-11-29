@@ -10,7 +10,6 @@ const API_URL = "http://localhost:8080/warehouses/";
 class WarehouseForm extends Component {
   
   state = {
-    warehouseId: "",
     warehouseName: "",
     warehouseAddress: "",
     warehouseCity: "",
@@ -47,8 +46,6 @@ class WarehouseForm extends Component {
 
   componentDidUpdate(prevProps, prevState) {
       if ((this.props.warehouseObj && this.props.warehouseObj.id) !== (prevProps.warehouseObj && prevProps.warehouseObj.id)) {
-        console.log(this.props);
-        console.log(prevProps)
         this.setState({
           warehouseName: this.props.warehouseObj.name,
           warehouseAddress: this.props.warehouseObj.address,
@@ -275,6 +272,10 @@ class WarehouseForm extends Component {
     };
   }
 
+  handleCancelEdit = () => {
+    this.props.goBack();
+  }
+
   renderCancelAddButton = () => {
     return (
       <button type="reset" onClick={this.handleReset} className="add-warehouse__cancel-button">Cancel</button>
@@ -283,9 +284,7 @@ class WarehouseForm extends Component {
 
   renderCancelEditButton = () => {
     return (
-      <Link to="/warehouse" >
-        <button className="add-warehouse__cancel-button">Cancel</button>
-      </Link>
+        <button className="add-warehouse__cancel-button" onClick={this.handleCancelEdit}>Cancel</button>
     );
   }
 
