@@ -1,5 +1,10 @@
 const inventoryModel = require("../models/InventoryModel");
 
+const getAllInventories = (req, res) => {
+  const inventories = inventoryModel.readFromInventoriesFile();
+  res.status(200).json(inventories);
+}
+
 const deleteSingleInventory = (req, res) => {
   const id = req.params.inventoryId;
   if (inventoryModel.doesInventoryExist(id)) {
@@ -23,5 +28,6 @@ const updateInventory = (req, res) => {
 
 module.exports = {
   deleteSingleInventory,
-  updateInventory
+  updateInventory,
+  getAllInventories
 };
