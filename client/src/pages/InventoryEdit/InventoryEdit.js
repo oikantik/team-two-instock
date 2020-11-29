@@ -24,6 +24,10 @@ class InventoryEdit extends Component {
     }).catch(error => console.log(error))
   }
 
+  cancelUpdateInventory = () => {
+    this.goBack();
+  }
+
   goBack = () => {
     this.props.history.goBack();
   }
@@ -31,7 +35,7 @@ class InventoryEdit extends Component {
   render() {
     return (
       <Fragment>
-        {!this.state.loading && <InventoryForm name={this.state.itemName} description={this.state.description} category={this.state.category} status={this.state.status} quantity={this.state.quantity} warehouse={this.state.warehouseName} id={this.state.id} warehouseID={this.state.warehouseID} categories={this.state.categories} warehouses={this.state.warehouseNames} buttonText="Save" headingText="Edit Inventory Item" {...this.props} updateInventory={this.updateInventory} />}
+        {!this.state.loading && <InventoryForm name={this.state.itemName} description={this.state.description} category={this.state.category} status={this.state.status} quantity={this.state.quantity} warehouse={this.state.warehouseName} id={this.state.id} warehouseID={this.state.warehouseID} categories={this.state.categories} warehouses={this.state.warehouseNames} buttonText="Save" headingText="Edit Inventory Item" {...this.props} updateInventory={this.updateInventory} cancelUpdateInventory={this.cancelUpdateInventory}/>}
       </Fragment>
     );
   }

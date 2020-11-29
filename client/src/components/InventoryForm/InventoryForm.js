@@ -150,6 +150,7 @@ class InventoryForm extends React.Component {
     }
 
     handleReset = () => {
+        
         this.setState({
             itemName: "",
             itemDescription: "",
@@ -163,6 +164,8 @@ class InventoryForm extends React.Component {
             itemQuantityError: false,
             itemWarehouseError: false
         });
+
+        this.props.cancelUpdateInventory && this.props.cancelUpdateInventory();
     }
 
     renderSelectFieldOptions = (optionsArr) => {
