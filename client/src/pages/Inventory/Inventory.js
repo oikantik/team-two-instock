@@ -2,16 +2,21 @@
 import {Link} from 'react-router-dom';
 import InventoryDetails from '../../components/InventoryDetails/InventoryDetails';
 import iconSort from '../../assets/icons/sort-24px.svg';
-import { Component } from 'react';
+import { Component, Fragment } from 'react';
 import './Inventory.scss';
 import { axiosInstance } from '../../utils/axios';
-
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
 //DECLARING THE STATE OF mainInventory-------------------------------
 class MainInventory extends Component {
     state = {
         mainInventory: [],
-        loading: true
+        loading: true,
+        deleteModal: {
+            show: false,
+            id: "",
+            name: "",
+          },
     }
     
     fetchInventories = () => {
@@ -27,11 +32,49 @@ class MainInventory extends Component {
         this.fetchInventories();
     }
     
+    onDelete = (id, name) => {
+        this.setState({
+          deleteModal: {
+            show: true,
+            id,
+            name,
+          },
+        });
+      };
+    
+      onClose = () => {
+        this.setState({
+          deleteModal: {
+            show: false,
+            id: "",
+            name: "",
+          },
+        });
+      };
+    
+      onConfirm = (id) => {
+        axiosInstance.delete(`/inventory/${id}`).then((response) => {
+          this.setState({
+            ...this.state,
+            mainInventory: response.data
+          }, () => this.onClose())
+        }).catch(error => console.log(error))
+    
+      };
     
     render() {
         return (
-
-            // ADD ITEM FORM---------------------------------------------
+<Fragment>
+{this.state.deleteModal.show && (
+          <DeleteModal
+            id={this.state.deleteModal.id}
+            name={this.state.deleteModal.name}
+            onClose={this.onClose}
+            onConfirm={this.onConfirm}
+            type="inventory item"
+            source="inventory list"
+          />
+        )}
             <section className='inventory'>
                 <div className='inventory__div'>
                     <div className='inventory__header'>
@@ -46,7 +89,6 @@ class MainInventory extends Component {
                     </div>
 
 
-                    {/* THIS DIV WILL BE DISPLAYED ON TABLET AND DESKTOP */}
                     <div className='inventory-tablet-head'>
                         <p className='inventory-tablet-head__headings inventory-tablet-head__headings--item'>inventory item<img src={iconSort} alt='' className="inventory-tablet-head__sort"/></p>
                         <p className='inventory-tablet-head__headings inventory-tablet-head__headings--category'>category<img src={iconSort} alt='sort icon' className="inventory-tablet-head__sort"/></p>
@@ -57,16 +99,16 @@ class MainInventory extends Component {
                     </div>
 
 
-                    {/* SETTING UP THE PROPS */}
                     <div className='total-inventory__table'>
                     {!this.state.loading && this.state.mainInventory.map(inventoryitem => 
                         <InventoryDetails
                             key={inventoryitem.id}
                             details={inventoryitem}
+                            onDelete={this.onDelete}
                         />)}
                     </div>
                 </div>
-            </section>
+            </section></Fragment>
         );
     }
 };

@@ -8,7 +8,9 @@ import WarehouseDetails from '../WarehouseDetails/WarehouseDetails'
 import './WarehouseInventory.scss';
 
 
-const WarehouseInventory = ({warehouse}) => {
+const WarehouseInventory = ({warehouse, onDelete}) => {
+  const handleDelete = (id, name) => onDelete(id, name);
+
   const inventories = warehouse.inventories && warehouse.inventories.map(item => {
     return (<div className="warehouse-details__inventory-div" key={item.id}>
     <div className="warehouse-details__inventory-data">
@@ -41,7 +43,7 @@ const WarehouseInventory = ({warehouse}) => {
           </div>
       <div className="warehouse-details__delete-edit">
         <button className="warehouse-details__button">
-          <img className="warehouse-details__delete" src={deleteIcon} alt="Delete Button"></img>
+          <img className="warehouse-details__delete" src={deleteIcon} alt="Delete Button"  onClick={() => handleDelete(item.id, item.itemName)}></img>
         </button>
         <Link to={"/inventory/"+ item.id + "/edit"}>
           <button className="warehouse-details__button">
