@@ -41,7 +41,7 @@ class MainInventory extends Component {
                            <form className="inventory__search-form"><input className='inventory__search' placeholder='Search...'></input>
                            <button className="inventory__search-icon"></button>
                            </form> 
-                            <Link to="/inventory/addInventory"><button className='inventory__button'>+ Add New Item</button></Link>
+                            <Link to="/inventory/add"><button className='inventory__button'>+ Add New Item</button></Link>
                         </div>
                     </div>
 
