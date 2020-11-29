@@ -1,10 +1,17 @@
 const fs = require("fs");
 const inventoriesFile = "./data/inventories.json";
+const warehousesFile = "./data/warehouses.json";
 
 const readFromInventoriesFile = () => {
   const inventories = fs.readFileSync(inventoriesFile);
   return JSON.parse(inventories);
 };
+
+const readFromWarehouseFile = () => {
+  const warehouses = fs.readFileSync(warehousesFile);
+  return JSON.parse(warehouses);
+};
+
 const doesInventoryExist = (id) => {
   const inventories = readFromInventoriesFile();
   const inventory = inventories.find((inventory) => inventory.id === id);
@@ -32,6 +39,22 @@ const deleteOne = (inventoryID) => {
   return newInventoriesList;
 }
 
+const findOne = (id) => {
+  const inventories = readFromInventoriesFile();
+  const inventory = inventories.find((inventory) => inventory.id === id);
+  return inventory;
+};
+
+const getInventoryCategories = () => {
+const categories = readFromInventoriesFile().map(item => item.category);
+return categories;
+}
+
+const getWarehouseNames = () => {
+  const names = readFromWarehouseFile().map(item => item.name);
+return names;
+}
+
 const updateInventory = (inventoryID, reqBody) => {
   const inventories = readFromInventoriesFile();
   const inventory = inventories.find((inventory) => inventory.id === inventoryID);
@@ -54,5 +77,8 @@ module.exports = {
   deleteOne,
   reqBodyIsValid,
   updateInventory,
-  readFromInventoriesFile
+  readFromInventoriesFile,
+  findOne,
+  getInventoryCategories,
+  getWarehouseNames
 };
