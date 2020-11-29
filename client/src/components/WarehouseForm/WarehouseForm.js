@@ -45,17 +45,19 @@ class WarehouseForm extends Component {
   }
 
   componentDidUpdate(_prevState, prevProps) {
-    if (this.props.warehouseObj.name !== prevProps.warehouseName) {
-      this.setState({
-        warehouseName: this.props.warehouseObj.name,
-        warehouseAddress: this.props.warehouseObj.address,
-        warehouseCity: this.props.warehouseObj.city,
-        warehouseCountry: this.props.warehouseObj.country,
-        contactName: this.props.warehouseObj.contact.name,
-        contactPosition: this.props.warehouseObj.contact.position,
-        contactPhone: this.props.warehouseObj.contact.phone,
-        contactEmail: this.props.warehouseObj.contact.email,
-      })
+    if (this.props.warehouseObj) {
+      if (this.props.warehouseObj.name !== prevProps.warehouseName) {
+        this.setState({
+          warehouseName: this.props.warehouseObj.name,
+          warehouseAddress: this.props.warehouseObj.address,
+          warehouseCity: this.props.warehouseObj.city,
+          warehouseCountry: this.props.warehouseObj.country,
+          contactName: this.props.warehouseObj.contact.name,
+          contactPosition: this.props.warehouseObj.contact.position,
+          contactPhone: this.props.warehouseObj.contact.phone,
+          contactEmail: this.props.warehouseObj.contact.email,
+        })
+      }
     }
   }
 
