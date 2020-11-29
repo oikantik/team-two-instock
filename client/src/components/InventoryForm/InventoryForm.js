@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import './InventoryForm.scss'
-//import axios from 'axios';
 
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import errorIcon from "../../assets/icons/error-24px.svg";
@@ -77,7 +76,6 @@ class InventoryForm extends React.Component {
         };
 
         if (!this.checkForEmpty(itemName)) {
-            // console.log("name is empty");
             isValid.name = false;
             this.setState({
                 itemNameError: true
@@ -85,7 +83,6 @@ class InventoryForm extends React.Component {
         }
 
         if (!this.checkForEmpty(itemDescription)) {
-            // console.log("description is empty");
             isValid.description = false;
             this.setState({
                 itemDescriptionError: true
@@ -93,7 +90,6 @@ class InventoryForm extends React.Component {
         }
 
         if (!this.checkForEmpty(itemCategory)) {
-            // console.log("category is empty");
             isValid.category = false;
             this.setState({
                 itemCategoryError: true
@@ -101,7 +97,6 @@ class InventoryForm extends React.Component {
         }
 
         if (itemStatus === "In Stock" && itemQuantity === "0") {
-            // console.log("if in stock add quantity");
             isValid.quantity = false;
             this.setState({
                 itemQuantityError: true
@@ -109,7 +104,6 @@ class InventoryForm extends React.Component {
         }
 
         if (!this.checkForEmpty(itemWarehouse)) {
-            // console.log("warehouse empty");
             isValid.warehouse = false;
             this.setState({
                 itemWarehouseError: true
@@ -128,7 +122,7 @@ class InventoryForm extends React.Component {
 
         if (this.validateAll()) {
             const newItem = {
-                warehouseID: this.props.warehouseID || this.findWarehouseID(itemWarehouse), // I think this can be found and set in the back end
+                warehouseID: this.props.warehouseID || this.findWarehouseID(itemWarehouse), 
                 warehouseName: itemWarehouse,
                 itemName: itemName,
                 description: itemDescription,
@@ -138,14 +132,6 @@ class InventoryForm extends React.Component {
             }
             this.props.updateInventory && this.props.updateInventory(newItem);
             this.props.addInventory && this.props.addInventory(newItem);
-            // put this inside axios request later
-            // this.handleReset()
-            // axios.post()
-            //     .then((response) => {
-            //         this.handleReset();
-            //     })
-            //     .catch((error) => console.log(error))
-
         }
     }
 
