@@ -23,7 +23,7 @@ class WarehouseEdit extends Component {
     render() {
         return (
             <div>
-               <WarehouseForm warehouseObj={this.state.warehouseObj} edit/> 
+               <WarehouseForm warehouseObj={this.state.warehouseObj} edit /> 
             </div>
         );
     }
