@@ -53,5 +53,6 @@ module.exports = {
   doesInventoryExist,
   deleteOne,
   reqBodyIsValid,
-  updateInventory
+  updateInventory,
+  readFromInventoriesFile
 };
