@@ -1,0 +1,165 @@
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+
+.warehouse {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid color(borders);
+  @include tablet {
+    margin-top: 1.5rem;
+    border: none;
+  }
+
+  &__details {
+    width: 91.5%;
+    @include tablet {
+      display: flex;
+      margin-bottom: 24px;
+      
+
+    }
+  }
+
+  &__address-div {
+    width: 259px;
+    margin-top: 16px;
+    @include tablet {
+      border-right: 1px solid color(borders);
+      width: 214px;
+      padding-right: 32px;
+      margin-top: 0;
+    }
+    @include desktop {
+      width: 370px;
+      padding-right: 0px; 
+    }
+  }
+
+  &__address-label {
+    @include m-h4;
+    color: color(table-header-text);
+    @include tablet {
+      @include h4;
+    }
+
+  }
+
+  &__address {
+    @include m-p2;
+    color: color(table-header-text);
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+    }
+
+  }
+
+  &__city-country {
+    @include m-p2;
+    color: color(table-header-text);
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+    }
+
+
+  }
+
+  &__contact-name-info {
+    display: flex;
+    margin-bottom: 16px;
+    @include tablet {
+      padding-left: 40px;
+    }
+  }
+
+  &__contact-name {
+    width: 140px;
+    margin-top: 16px;
+    margin-right: 16px;
+    @include tablet {
+      margin-top: 0px;  
+    }
+    @include desktop {
+      width: 217px;
+      margin-right: 28px;
+    }
+  }
+
+  &__contact-name-label {
+    @include m-h4;
+    color: color(table-header-text);
+    @include tablet {
+      @include h4;
+      color: color(table-header-text);
+
+    }
+
+  }
+
+  &__contact {
+    @include m-p2;
+    color: color(table-header-text);
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+    }
+
+
+  }
+
+  &__position {
+    @include m-p2;
+    color: color(table-header-text);
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+    }
+
+
+  }
+
+  &__contact-info {
+    margin-top: 16px;
+    @include tablet {
+      margin-top: 0px;
+
+    }
+  }
+
+  &__contact-info-label {
+    @include m-h4;
+    color: color(table-header-text);
+    @include tablet {
+      @include h4;
+
+
+    }
+
+  }
+
+  &__contact-info-number {
+    @include m-p2;
+    color: color(table-header-text);
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+    }
+
+
+  }
+
+  &__contact-info-email {
+    @include m-p2;
+    color: color(table-header-text);
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+    }
+
+
+  }
+
+
+}
