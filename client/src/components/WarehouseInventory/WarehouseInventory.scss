@@ -310,6 +310,11 @@
   &__item-text {
     @include m-h3;
     color: color(interactive);
+
+    @include tablet {
+      @include h3;
+      color: color(interactive);
+    }
   }
 
   &__item-chevron-right {
@@ -342,6 +347,7 @@
     @include m-p2;
     margin-top: 4px;
     @include tablet {
+      @include p2;
       margin-top: 0px;
     }
   }
@@ -393,6 +399,11 @@
     @include m-h4;
     color: color(instock);
     margin-top: 4px;
+
+    @include tablet {
+      @include h4;
+      color: color(instock);
+    }
     
   }
 
@@ -423,6 +434,9 @@
 
   &__quantity {
     @include m-p2;
+    @include tablet {
+      @include p2;
+    }
   }
 
   &__delete-edit {
