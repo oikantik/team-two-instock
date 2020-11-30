@@ -60,6 +60,10 @@
     &__title {
         @include m-h1;
         margin-bottom: 1rem;
+        @include tablet{
+            @include h1;
+            margin-bottom: 1.5rem;
+        }
     }
 
     &__search-form {
@@ -152,18 +156,30 @@
 
         &--item{
             width: 120px;
+            @include tablet {
+                width: 108px;
+            }
         }
 
         &--category{
             width: 120px;
+            @include tablet {
+                width: 113px;
+            }
         }
 
         &--status{
             width: 120px;
+            @include tablet {
+                width: 100px;
+            }
         }
 
         &--qty{
             width: 70px;
+            @include tablet {
+                width: 60px;
+            }
         }
 
         &--warehouse {
@@ -172,6 +188,7 @@
 
         &--action{
             width: 70px;
+            justify-content: left;
         }
     }
 

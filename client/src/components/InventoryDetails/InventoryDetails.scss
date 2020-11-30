@@ -24,6 +24,7 @@
         align-items: center;
         flex-wrap: wrap;
         @include tablet {
+            padding-right: 2.1875rem;
             border-top: none;
             height: 58px;
         }
@@ -122,6 +123,11 @@
         color: color(interactive);
         display: flex;
         align-items: center;
+        @include tablet{
+            @include h3;
+            color: color(interactive);
+            font-weight: 600;
+        }
 
         &:hover {
             > img {
@@ -131,6 +137,9 @@
 
         &-img {
             transition: margin-left .3s ease;
+            @include tablet {
+                height: 1rem;
+            }
         }
     }
     
@@ -163,6 +172,12 @@
         border: 0;
     }
 
+    &__button-delete {
+        @include tablet {
+            margin-right: 1.375rem;
+        }
+    }
+
     &__button-div-tablet{
         display: none;
         @include tablet{
@@ -184,6 +199,10 @@
     &__category {
         @include m-h3;
         font-weight: 400;
-
+        @include tablet{
+            @include h3;
+            color: color(table-header-text);
+            font-weight: 400;
+        }
     }
 }
