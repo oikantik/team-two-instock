@@ -46,6 +46,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color .2s ease;
+
+    &:hover {
+        background-color: color(nav-bg);
+    }
 
     @include tablet {
       width: 168px;
@@ -84,6 +89,10 @@
     &::placeholder {
       @include m-p2;
       color: color(table-header-text);
+    }
+
+    &:focus {
+      border-color: color(interactive);
     }
   }
 

@@ -168,11 +168,13 @@
 
 
     &__button {
+        cursor: pointer;
         background-color: #fff;
         border: 0;
     }
 
     &__button-delete {
+        cursor: pointer;
         @include tablet {
             margin-right: 1.375rem;
         }
@@ -201,7 +203,6 @@
         font-weight: 400;
         @include tablet{
             @include h3;
-            color: color(table-header-text);
             font-weight: 400;
         }
     }
