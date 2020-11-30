@@ -62,6 +62,7 @@
         margin-bottom: 1rem;
         @include tablet{
             @include h1;
+            margin-bottom: 1.5rem;
         }
     }
 
