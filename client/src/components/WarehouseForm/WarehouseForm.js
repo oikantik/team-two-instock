@@ -257,6 +257,7 @@ class WarehouseForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log(this.validateAll())
     if (this.validateAll()) {
         const newItem = this.createRequestObject();
         // put this inside axios request later

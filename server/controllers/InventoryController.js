@@ -54,11 +54,24 @@ const updateInventory = (req, res) => {
   return res.status(200).json(updatedInventory);
 }
 
+const sortBy = (req, res) => {
+  const sortString = req.params.sortString;
+  const queryString = req.query.type;
+  const inventories = inventoryModel.readFromInventoriesFile();
+  const data = inventoryModel.sortBy(sortString, queryString,inventories);
+  if (!data) {
+    return res.status(400).send("Parameter is invalid.");
+  }
+  return res.status(200).json(data);
+}
+
+
 module.exports = {
   deleteSingleInventory,
   updateInventory,
   getAllInventories,
   getSingleInventory,
   createInventory,
-  getInventorySummary
+  getInventorySummary,
+  sortBy
 };

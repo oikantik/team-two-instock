@@ -12,6 +12,28 @@ class WarehouseInventoryDetails extends Component {
       id: "",
       name: "",
     },
+    sortBy: {
+      item: {
+        type: "",
+        enabled: false,
+      },
+      category: {
+        type: "",
+        enabled: false,
+      },
+      status: {
+        type: "",
+        enabled: false,
+      },
+      qty: {
+        type: "",
+        enabled: false,
+      },
+      warehouse: {
+        type: "",
+        enabled: false,
+      },
+    },
   }
 
 
@@ -29,8 +51,20 @@ class WarehouseInventoryDetails extends Component {
     }, () => this.onClose())}).catch(error=> console.log(error))
   }
 
+  fetchSortedInventories = (type) => {
+    axiosInstance
+      .get(`/warehouses/${this.props.match.params.warehouseId}/sort/by/${type}?type=${this.state.sortBy[type].type}`)
+      .then((response) => {
+        this.setState({
+          warehouse: response.data
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+
   componentDidMount(){
     this.fetchWarehouses();
+    this.baseSortState = this.state.sortBy;
   }
 
 
@@ -61,6 +95,50 @@ class WarehouseInventoryDetails extends Component {
 
   };
 
+
+  onSort = (type) => {
+    if (this.state.sortBy[type].type === "asc") {
+      this.setState(
+        {
+          sortBy: {
+            ...this.baseSortState,
+            [type]: {
+              type: "desc",
+              enabled: true,
+            },
+          },
+        },
+        () => this.fetchSortedInventories(type)
+      );
+    } else if (this.state.sortBy[type].type === "desc") {
+      this.setState(
+        {
+          sortBy: {
+            ...this.baseSortState,
+            [type]: {
+              type: "",
+              enabled: false,
+            },
+          },
+        },
+        () => this.fetchWarehouses()
+      );
+    } else {
+      this.setState(
+        {
+          sortBy: {
+            ...this.baseSortState,
+            [type]: {
+              type: "asc",
+              enabled: true,
+            },
+          },
+        },
+        () => this.fetchSortedInventories(type)
+      );
+    }
+  };
+
   render () {
     return (
       <div>
@@ -74,7 +152,8 @@ class WarehouseInventoryDetails extends Component {
             source="inventory list"
           />
         )}
-        <WarehouseInventory onDelete={this.onDelete} {...this.state}/>
+        <WarehouseInventory onDelete={this.onDelete} onSort={this.onSort}
+        sortBy={this.state.sortBy} {...this.state}/>
       </div>
     );
   }    

@@ -13,17 +13,51 @@ class Home extends Component {
       id: "",
       name: "",
     },
+    sortBy: {
+      warehouse: {
+        type: "",
+        enabled: false
+      },
+      address: {
+        type: "",
+        enabled: false
+      },
+      name: {
+        type: "",
+        enabled: false
+      },
+      info: {
+        type: "",
+        enabled: false
+      },
+    }
   };
 
-  componentDidMount() {
+  fetchWarehouses = () => {
     axiosInstance
-      .get("/warehouses")
-      .then((response) => {
-        this.setState({
-          warehouses: response.data,
-        });
-      })
-      .catch((error) => console.log(error));
+    .get("/warehouses")
+    .then((response) => {
+      this.setState({
+        warehouses: response.data,
+      });
+    })
+    .catch((error) => console.log(error));
+  }
+
+  fetchSortedWarehouses = (type) => {
+    axiosInstance
+    .get(`/warehouses/sort/by/${type}?type=${this.state.sortBy[type].type}`)
+    .then((response) => {
+      this.setState({
+        warehouses: response.data,
+      });
+    })
+    .catch((error) => console.log(error));
+  } 
+
+  componentDidMount() {
+    this.fetchWarehouses();
+    this.baseSortState = this.state.sortBy;
   }
 
   onDelete = (id, name) => {
@@ -56,6 +90,41 @@ class Home extends Component {
 
   };
 
+  onSort = (type) => {
+
+    if(this.state.sortBy[type].type === 'asc'){
+      this.setState({
+        sortBy: {
+          ...this.baseSortState,
+          [type]: {
+            type: "desc",
+            enabled: true
+          },
+        }
+      }, () => this.fetchSortedWarehouses(type))
+    } else if (this.state.sortBy[type].type === 'desc') {
+      this.setState({
+        sortBy: {
+          ...this.baseSortState,
+          [type]: {
+            type: "",
+            enabled: false
+          },
+        }
+      }, () => this.fetchWarehouses())
+    } else {
+      this.setState({
+        sortBy: {
+          ...this.baseSortState,
+          [type]: {
+            type: "asc",
+            enabled: true
+          },
+        }
+      }, () => this.fetchSortedWarehouses(type))
+    }
+  }
+
   render() {
     return (
       <Fragment>
@@ -71,8 +140,10 @@ class Home extends Component {
         )}
         <main className="warehouse-home">
           <section className="warehouse-list-section">
-            <WarehousesListHeader />
+            <WarehousesListHeader/>
             <WarehousesList
+              onSort={this.onSort}
+              sortBy={this.state.sortBy}
               warehouses={this.state.warehouses}
               onDelete={this.onDelete}
             />

@@ -177,6 +177,10 @@
 
     &__sort {
         height: 14px;
+
+        &--active {
+            filter: invert(29%) sepia(68%) saturate(3701%) hue-rotate(217deg) brightness(96%) contrast(100%);
+          }
     }
 }
     // &__headings {

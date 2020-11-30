@@ -96,6 +96,53 @@ const createInventory = (reqBody) => {
   return inventory;
 }
 
+const sortBy = (paramString, queryString, inventories) => {
+
+  console.log(queryString)
+
+  if (paramString === "item" && queryString === "asc") {
+    return inventories.sort((a, b) => a.itemName.localeCompare(b.itemName))
+  }
+
+  if (paramString === "category" && queryString === "asc") {
+    return inventories.sort((a, b) => a.category.localeCompare(b.category))
+  }
+
+  if (paramString === "status" && queryString === "asc") {
+    return inventories.sort((a, b) => a.status.localeCompare(b.status))
+  }
+
+  if (paramString === "qty" && queryString === "asc") {
+    return inventories.sort((a, b) => a.quantity - b.quantity)
+  }
+
+  if (paramString === "warehouse" && queryString === "asc") {
+    return inventories.sort((a, b) => a.warehouseName.localeCompare(b.warehouseName))
+  }
+
+  if (paramString === "item" && queryString === "desc") {
+    return inventories.sort((a, b) => b.itemName.localeCompare(a.itemName))
+  }
+
+  if (paramString === "category" && queryString === "desc") {
+    return inventories.sort((a, b) => b.category.localeCompare(a.category))
+  }
+
+  if (paramString === "status" && queryString === "desc") {
+    return inventories.sort((a, b) => b.status.localeCompare(a.status))
+  }
+
+  if (paramString === "qty" && queryString === "desc") {
+    return inventories.sort((a, b) => b.quantity - a.quantity)
+  }
+
+  if (paramString === "warehouse" && queryString === "desc") {
+    return inventories.sort((a, b) => b.warehouseName.localeCompare(a.warehouseName))
+  }
+
+  return false;
+}
+
 module.exports = {
   doesInventoryExist,
   deleteOne,
@@ -106,5 +153,6 @@ module.exports = {
   getInventoryCategories,
   getWarehouseNames,
   createInventory,
-  getWarehouseNameId
+  getWarehouseNameId,
+  sortBy
 };

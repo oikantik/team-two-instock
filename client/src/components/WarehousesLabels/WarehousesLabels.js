@@ -2,7 +2,7 @@ import React from "react";
 import sortIcon from "../../assets/icons/sort-24px.svg";
 import "./WarehousesLabels.scss";
 
-function WarehousesLabels() {
+function WarehousesLabels({onSort, sortBy}) {
   return (
     <div className="warehouses-items-labels">
       <div className="warehouses-items-labels__label warehouses-items-labels__label--warehouse">
@@ -12,7 +12,8 @@ function WarehousesLabels() {
             <img
               src={sortIcon}
               alt="sortIcon"
-              className="warehouses-items-labels__label-icon-image"
+              className={sortBy.warehouse.enabled ? "warehouses-items-labels__label-icon-image warehouses-items-labels__label-icon-image--active" : "warehouses-items-labels__label-icon-image"}
+              onClick={() => onSort("warehouse")}
             />
           </span>
         </p>
@@ -24,7 +25,8 @@ function WarehousesLabels() {
             <img
               src={sortIcon}
               alt="sortIcon"
-              className="warehouses-items-labels__label-icon-image"
+              className={sortBy.address.enabled ? "warehouses-items-labels__label-icon-image warehouses-items-labels__label-icon-image--active" : "warehouses-items-labels__label-icon-image"}
+              onClick={() => onSort("address")}
             />
           </span>
         </p>
@@ -38,7 +40,8 @@ function WarehousesLabels() {
             <img
               src={sortIcon}
               alt="sortIcon"
-              className="warehouses-items-labels__label-icon-image"
+              className={sortBy.name.enabled ? "warehouses-items-labels__label-icon-image warehouses-items-labels__label-icon-image--active" : "warehouses-items-labels__label-icon-image"}
+              onClick={() => onSort("name")}
             />
           </span>
         </p>
@@ -52,7 +55,8 @@ function WarehousesLabels() {
             <img
               src={sortIcon}
               alt="sortIcon"
-              className="warehouses-items-labels__label-icon-image"
+              className={sortBy.info.enabled ? "warehouses-items-labels__label-icon-image warehouses-items-labels__label-icon-image--active" : "warehouses-items-labels__label-icon-image"}
+              onClick={() => onSort("info")}
             />
           </span>
         </p>

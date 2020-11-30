@@ -137,6 +137,9 @@
   &__inv-item-sort {
     width: 12px;
     height: 20px;
+    &--active {
+      filter: invert(29%) sepia(68%) saturate(3701%) hue-rotate(217deg) brightness(96%) contrast(100%);
+    }
   }
 
   &__categ-div {
@@ -157,6 +160,9 @@
   &__categ-sort {
     width: 12px;
     height: 20px;
+    &--active {
+      filter: invert(29%) sepia(68%) saturate(3701%) hue-rotate(217deg) brightness(96%) contrast(100%);
+    }
   }
 
   &__stat-div {
@@ -177,6 +183,9 @@
   &__stat-sort {
     width: 12px;
     height: 20px;
+    &--active {
+      filter: invert(29%) sepia(68%) saturate(3701%) hue-rotate(217deg) brightness(96%) contrast(100%);
+    }
   }
 
   &__quant-div {
@@ -197,6 +206,9 @@
   &__quant-sort {
     width: 12px;
     height: 20px;
+    &--active {
+      filter: invert(29%) sepia(68%) saturate(3701%) hue-rotate(217deg) brightness(96%) contrast(100%);
+    }
   }
 
   &__actions-div {
