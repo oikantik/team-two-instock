@@ -5,6 +5,7 @@ const warehousesController = require("../controllers/WarehousesController");
 
 router.get("/", warehousesController.getAllWarehouses);
 router.get("/:warehouseId", warehousesController.getSingleWarehouse);
+router.get("/:warehouseId/sort/by/:sortString", warehousesController.singleSortBy);
 router.get("/sort/by/:sortString", warehousesController.sortBy);
 router.delete("/:warehouseId", warehousesController.deleteSingleWarehouse);
 

@@ -1,4 +1,5 @@
 const warehousesModel = require("../models/WarehousesModel");
+const inventoryModel = require('../models/InventoryModel');
 
 const getAllWarehouses = (req, res) => {
   res.status(200).json(warehousesModel.readFromWarehousesFile());
@@ -55,11 +56,27 @@ const sortBy = (req, res) => {
   return res.status(200).json(data);
 }
 
+const singleSortBy = (req, res) => {
+  const id = req.params.warehouseId;
+  const sortString = req.params.sortString;
+  const queryString = req.query.type;
+  const warehouse = warehousesModel.findOne(id);
+  if (!warehouse) {
+    return res.status(404).json({
+      error: "warehouse not found"
+    });
+  }
+  const inventories = inventoryModel.sortBy(sortString, queryString, warehouse.inventories)
+  res.status(200).json({...warehouse, inventories});
+};
+
+
 module.exports = {
   getSingleWarehouse,
   getAllWarehouses,
   updateWarehouse,
   deleteSingleWarehouse,
   createWarehouse,
-  sortBy
+  sortBy,
+  singleSortBy
 };
