@@ -32,8 +32,8 @@ const InventoryDetails = props => {
                     <p className='inventory-details__category inventory-details__category--warehouse'>{props.details.warehouseName}</p>
                 </div>
                 <div className='inventory-details__button-div-tablet  inventory-details__main--actions'>
-                    <button className='inventory-details__button'><img src={iconDelete} alt=''  onClick={() => handleDelete(props.details.id, props.details.itemName)}/></button>
-                    <Link to={"/inventory/" + props.details.id +"/edit"}><button className='inventory-details__button'><img src={iconEdit} alt=''/></button></Link>
+                    <button className='inventory-details__button'><img src={iconDelete} alt=''  onClick={() => handleDelete(props.details.id, props.details.itemName)} className="inventory-details__button-delete"/></button>
+                    <Link to={"/inventory/" + props.details.id +"/edit"}><button className='inventory-details__button'><img src={iconEdit} alt='' className="inventory-details__button-edit"/></button></Link>
                 </div>
             </div>
             <div className='inventory-details__button-div inventory-details__category--actions'>

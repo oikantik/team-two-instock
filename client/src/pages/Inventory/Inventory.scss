@@ -155,18 +155,30 @@
 
         &--item{
             width: 120px;
+            @include tablet {
+                width: 108px;
+            }
         }
 
         &--category{
             width: 120px;
+            @include tablet {
+                width: 113px;
+            }
         }
 
         &--status{
             width: 120px;
+            @include tablet {
+                width: 100px;
+            }
         }
 
         &--qty{
             width: 70px;
+            @include tablet {
+                width: 60px;
+            }
         }
 
         &--warehouse {
@@ -175,6 +187,7 @@
 
         &--action{
             width: 70px;
+            justify-content: left;
         }
     }
 
