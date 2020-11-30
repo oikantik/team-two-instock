@@ -85,7 +85,7 @@ header{
     &__link {
         @include m-h3;
         border: none;
-        color: color(table-header-text);
+        color: color(borders);
         background: none;
         margin: 0;
         display: flex;
@@ -97,6 +97,7 @@ header{
         @include tablet {
             height: 2.375rem;
             @include h4;
+            color: color(borders);
         }
     }
 

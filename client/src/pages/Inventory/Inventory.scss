@@ -79,7 +79,9 @@
         margin-bottom: 1rem;
         outline: none;
    
-
+        &:focus {
+            border-color: color(interactive);
+        }
         &::placeholder {
 
         @include m-p2;
@@ -100,6 +102,7 @@
         width: 20px;
         height: 20px;
         outline: none;
+        cursor: pointer;
         border: none;
         background-image: url(../../assets/icons/search-24px.svg);
 
@@ -119,7 +122,13 @@
         padding: 0.5rem, 6.4375rem;
         border: 0;
         height: 2.25rem;
+        cursor: pointer;
         width: 100%;
+        transition: background-color .2s ease;
+
+        &:hover {
+            background-color: color(nav-bg);
+        }
         @include tablet {
             width: 128px;
             height: 38px;
@@ -188,13 +197,13 @@
 
         &--action{
             width: 70px;
-            justify-content: left;
+            justify-content: center;
         }
     }
 
     &__sort {
-        height: 14px;
-
+        height: 12px;
+        cursor: pointer;
         &--active {
             filter: invert(29%) sepia(68%) saturate(3701%) hue-rotate(217deg) brightness(96%) contrast(100%);
           }

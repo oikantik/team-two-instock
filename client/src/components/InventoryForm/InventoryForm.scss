@@ -27,6 +27,7 @@
         }
 
         &-icon {
+            cursor: pointer;
             position: relative;
             top: 0.5rem;
             margin-right: 0.5rem;
@@ -266,6 +267,7 @@
        border-radius: 20px;
        border: none;
        outline: none;
+       cursor: pointer;
        color: color(global-white);
        background-color: color(interactive);
        font-weight: 600;
@@ -289,7 +291,8 @@
 
        &--secondary {
            border: 1px solid color(borders);
-           color: color(global-black);
+           color: color(table-header-text);
+           cursor: pointer;
            background-color: color(global-white);
            transition: border .2s ease, color .2s ease;
 

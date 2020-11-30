@@ -47,20 +47,16 @@
 
   &__address {
     @include m-p2;
-    color: color(table-header-text);
     @include tablet {
       @include p2;
-      color: color(table-header-text);
     }
 
   }
 
   &__city-country {
     @include m-p2;
-    color: color(table-header-text);
     @include tablet {
       @include p2;
-      color: color(table-header-text);
     }
 
 
@@ -89,10 +85,8 @@
 
   &__contact-name-label {
     @include m-h4;
-    color: color(table-header-text);
     @include tablet {
       @include h4;
-      color: color(table-header-text);
 
     }
 
@@ -100,10 +94,8 @@
 
   &__contact {
     @include m-p2;
-    color: color(table-header-text);
     @include tablet {
       @include p2;
-      color: color(table-header-text);
     }
 
 
@@ -111,10 +103,8 @@
 
   &__position {
     @include m-p2;
-    color: color(table-header-text);
     @include tablet {
       @include p2;
-      color: color(table-header-text);
     }
 
 
@@ -152,10 +142,8 @@
 
   &__contact-info-email {
     @include m-p2;
-    color: color(table-header-text);
     @include tablet {
       @include p2;
-      color: color(table-header-text);
     }
 
 
