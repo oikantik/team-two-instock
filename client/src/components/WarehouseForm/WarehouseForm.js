@@ -157,7 +157,6 @@ class WarehouseForm extends Component {
     };
 
     if (!this.checkForEmpty(warehouseName)) {
-        // console.log("name is empty");
         isValid.warehouseName = false;
         this.setState({
           warehouseNameError: true
@@ -165,7 +164,6 @@ class WarehouseForm extends Component {
     }
 
     if (!this.checkForEmpty(warehouseAddress)) {
-        // console.log("description is empty");
         isValid.warehouseAddress = false;
         this.setState({
           warehouseAddressError: true
@@ -173,7 +171,6 @@ class WarehouseForm extends Component {
     }
 
     if (!this.checkForEmpty(warehouseCity)) {
-        // console.log("category is empty");
         isValid.warehouseCity = false;
         this.setState({
           warehouseCityError: true
@@ -181,7 +178,6 @@ class WarehouseForm extends Component {
     }
 
     if (!this.checkForEmpty(warehouseCountry)) {
-      // console.log("category is empty");
       isValid.warehouseCountry = false;
       this.setState({
         warehouseCountryError: true
@@ -189,7 +185,6 @@ class WarehouseForm extends Component {
     }
 
     if (!this.checkForEmpty(contactName)) {
-        // console.log("warehouse empty");
         isValid.contactName = false;
         this.setState({
           contactNameError: true
@@ -197,7 +192,6 @@ class WarehouseForm extends Component {
     }
 
     if (!this.checkForEmpty(contactPosition)) {
-      // console.log("warehouse empty");
       isValid.contactPosition = false;
       this.setState({
         contactPositionError: true
@@ -205,7 +199,6 @@ class WarehouseForm extends Component {
     }
 
     if (!this.checkForEmpty(contactPhone)) {
-      // console.log("warehouse empty");
       isValid.contactPhone = false;
       this.setState({
         contactPhoneError: true
@@ -220,7 +213,6 @@ class WarehouseForm extends Component {
     }
 
     if (!this.checkForEmpty(contactEmail)) {
-      // console.log("warehouse empty");
       isValid.contactEmail = false;
       this.setState({
         contactEmailError: true
@@ -257,7 +249,6 @@ class WarehouseForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.validateAll())
     if (this.validateAll()) {
         const newItem = this.createRequestObject();
         // put this inside axios request later
