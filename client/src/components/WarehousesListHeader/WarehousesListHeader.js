@@ -17,7 +17,7 @@ function WarehousesContainer({onSearchSubmit, onSearchChange, search}) {
       <form className="warehouses-search" onSubmit={handleSearch}>
         <input
           type="text"
-          placeholder="Search"
+          placeholder="Search..."
           className="warehouses-search__input"
           name="search"
           value={search}
