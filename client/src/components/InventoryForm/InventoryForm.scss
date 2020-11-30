@@ -268,6 +268,7 @@
        outline: none;
        color: color(global-white);
        background-color: color(interactive);
+       font-weight: 600;
        transition: background-color .2s ease;
 
        &:hover {
@@ -278,6 +279,7 @@
            @include p2;
            width: auto;
            color: color(global-white);
+           font-weight: 600;
 
            // targets "cancel" button
            &:first-child {
