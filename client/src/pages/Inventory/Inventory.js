@@ -39,7 +39,20 @@ class MainInventory extends Component {
         enabled: false,
       },
     },
+    search: ""
   };
+
+  fetchSearchResults = (query) => {
+    axiosInstance
+    .get(`/inventory/search/all?string=${query}`)
+    .then((response) => {
+      this.setState({
+        mainInventory: response.data,
+        search: ""
+      });
+    })
+    .catch((error) => console.log(error));
+  }
 
   fetchInventories = () => {
     axiosInstance
@@ -147,6 +160,18 @@ class MainInventory extends Component {
     }
   };
 
+
+  onSearchSubmit = (e) => {
+    e.preventDefault();
+    this.fetchSearchResults(this.state.search);
+  }
+
+  onSearchChange = (e) => {
+    this.setState({
+      search: e.target.value
+    })
+  }
+
   render() {
     return (
       <Fragment>
@@ -160,16 +185,18 @@ class MainInventory extends Component {
             source="inventory list"
           />
         )}
-        <section className="inventory">
+        {!this.state.loading && <section className="inventory">
           <div className="inventory__div">
             <div className="inventory__header">
               <h2 className="inventory__title">Inventory</h2>
               <div className="inventory__flex-end">
-                <form className="inventory__search-form">
+                <form className="inventory__search-form" onSubmit={this.onSearchSubmit}>
                   <input
                     className="inventory__search"
                     placeholder="Search..."
-                  ></input>
+                    name="search"
+                    value={this.state.search}
+                    onChange={this.onSearchChange}/>
                   <button className="inventory__search-icon"></button>
                 </form>
                 <Link to="/inventory/add">
@@ -240,7 +267,7 @@ class MainInventory extends Component {
                 ))}
             </div>
           </div>
-        </section>
+        </section>}
       </Fragment>
     );
   }
