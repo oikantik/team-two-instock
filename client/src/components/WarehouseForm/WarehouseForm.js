@@ -259,14 +259,15 @@ class WarehouseForm extends Component {
     e.preventDefault();
     if (this.validateAll()) {
         const newItem = this.createRequestObject();
-        console.log(newItem);
         // put this inside axios request later
-        this.handleReset();
-        // axios.post()
-        //     .then((response) => {
-        //         this.handleReset();
-        //     })
-        //     .catch((error) => console.log(error))
+        axios.post(API_URL, {
+          ...newItem
+        })
+            .then((response) => {
+              this.handleReset();
+              this.goBack();
+            })
+            .catch((error) => console.log(error))
 
     }
   }
