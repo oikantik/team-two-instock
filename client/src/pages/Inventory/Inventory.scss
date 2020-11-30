@@ -60,6 +60,9 @@
     &__title {
         @include m-h1;
         margin-bottom: 1rem;
+        @include tablet{
+            @include h1;
+        }
     }
 
     &__search-form {

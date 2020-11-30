@@ -122,6 +122,11 @@
         color: color(interactive);
         display: flex;
         align-items: center;
+        @include tablet{
+            @include h3;
+            color: color(interactive);
+            font-weight: 600;
+        }
 
         &:hover {
             > img {
@@ -184,6 +189,9 @@
     &__category {
         @include m-h3;
         font-weight: 400;
-
+        @include tablet{
+            @include h3;
+            font-weight: 400;
+        }
     }
 }
