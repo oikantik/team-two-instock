@@ -3,9 +3,7 @@ import './WarehouseForm.scss';
 import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
 import { Link } from 'react-router-dom';
 import RequireInput from '../RequireInput/RequireInput';
-import axios from 'axios';
-
-const API_URL = "http://localhost:8080/warehouses/";
+import { axiosInstance } from "../../utils/axios";
 
 class WarehouseForm extends Component {
   
@@ -251,8 +249,7 @@ class WarehouseForm extends Component {
     e.preventDefault();
     if (this.validateAll()) {
         const newItem = this.createRequestObject();
-        // put this inside axios request later
-        axios.post(API_URL, {
+        axiosInstance.post("/warehouses/", {
           ...newItem
         })
             .then((response) => {
@@ -272,7 +269,7 @@ class WarehouseForm extends Component {
     e.preventDefault();
     if (this.validateAll()) {
       const newItem = this.createRequestObject();
-      axios.put(API_URL + this.props.warehouseObj.id, newItem)
+      axiosInstance.put("/warehouses/" + this.props.warehouseObj.id, newItem)
         .then((response) => {
             this.goBack();
         })

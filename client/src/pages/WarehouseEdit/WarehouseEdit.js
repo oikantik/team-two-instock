@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { axiosInstance } from "../../utils/axios";
 import WarehouseForm from '../../components/WarehouseForm/WarehouseForm';
-
-const API_URL = "http://localhost:8080/warehouses/";
 
 class WarehouseEdit extends Component {
     state = {
         warehouseObj: {}
     }
 
-    componentDidMount() {
-        axios.get(API_URL + this.props.match.params.warehouseId)
+    getWarehouses = () => {
+        axiosInstance.get("/warehouses/" + this.props.match.params.warehouseId)
             .then((response) => {
                 this.setState({
                     warehouseObj: response.data
@@ -19,6 +17,9 @@ class WarehouseEdit extends Component {
             .catch((error) => console.log(error));
     }
 
+    componentDidMount() {
+        this.getWarehouses();
+    }
 
     render() {
         return (
