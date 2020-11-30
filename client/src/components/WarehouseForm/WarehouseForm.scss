@@ -1,0 +1,519 @@
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+
+.add-warehouse {
+  // position: absolute;
+  // background-color: color(global-white);
+  // top: 136px;
+  // left: 4.25%;
+  // border-radius: 3px;
+  // width: 91.5%;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // box-shadow: 0 2px 5px 0 rgb(19 24 44 / 0.20);
+  // @include tablet {
+  //   top: 95px;
+  //   left: 4.2%;
+  // }
+
+  @include desktop {
+    top: 98px;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 92px;
+  }
+
+  &__div-title {
+    display: flex;
+    margin-left: 28px;
+    @include tablet {
+      margin-left: 36px;
+    }
+    @include desktop {
+      margin-left: 44px;
+    }
+  }
+
+  &__header-link {
+    display: flex;
+    align-items: center;
+    @include tablet {
+      padding-top: 4px;
+    }
+  }
+
+
+  &__title {
+    @include m-h1;
+    margin-left: 12px;
+    @include tablet {
+      @include h1;
+    }
+  }
+
+  &__border {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid color(borders);
+  }
+
+  &__main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__sub-main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__sub-main-div1 {
+    width: 86%;
+    @include tablet {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+    //  border-right: 1px solid color(borders)
+    }
+  }
+
+  &__warehouse-details {
+    width: 100%;
+    @include tablet {
+      width: 82%;
+    }
+  }
+
+  &__warehouse-details-title {
+    @include m-h2;
+    margin-top: 16px;
+    @include tablet {
+      @include h2;
+      margin-top: 24px;
+    }
+  }
+
+  &__warehouse-name-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__warehouse-name-label {
+    @include m-h3;
+    margin-top: 24px;
+    margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 32px;
+    }
+  }
+
+
+  &__warehouse-name-input {
+    border-radius: 20px;
+    border: 1px solid color(borders);
+    height: 36px;
+    @include m-p2;
+    padding-left: 16px;
+    color: color(table-header-text);
+    outline: none;
+    &::placeholder {
+      @include m-p2;
+    }
+    &:hover {
+      border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+    }
+  }
+
+  &__warehouse-address-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__warehouse-address-label {
+    @include m-h3;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 24px;
+    }
+
+
+  }
+
+  &__warehouse-address-input {
+    border-radius: 20px;
+    border: 1px solid color(borders);
+    height: 36px;
+    padding-left: 16px;
+    @include m-p2;
+    color: color(table-header-text);
+    outline: none;
+    &::placeholder {
+      @include m-p2;
+    }
+    &:hover {
+      border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+
+    }
+
+  }
+
+  &__warehouse-city-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__warehouse-city-label {
+    @include m-h3;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 24px;
+    }
+
+
+  }
+
+  &__warehouse-city-input {
+    border-radius: 20px;
+    border: 1px solid color(borders);
+    height: 36px;
+    padding-left: 16px;
+    @include m-p2;
+    color: color(table-header-text);
+    outline: none;
+    &::placeholder {
+      @include m-p2;
+    }
+    &:hover {
+      border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+
+    }
+
+  }
+
+  &__warehouse-country-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__warehouse-country-label {
+    @include m-h3;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 24px;
+    }
+
+  }
+
+  &__warehouse-country-input {
+    border-radius: 20px;
+    border: 1px solid color(borders);
+    height: 36px;
+    padding-left: 16px;
+    outline: none;
+    @include m-p2;
+    color: color(table-header-text);
+    &::placeholder {
+      @include m-p2;
+    }
+    &:hover {
+      border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+
+    }
+
+  }
+
+  &__borderTwo {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid color(borders);
+    margin-top: 24px;
+    @include tablet {
+      height: 460px;
+      width: 1px;
+      border-right: 1px solid color(borders);
+    }
+  }
+
+  &__sub-main-div2 {
+    width: 86%;
+    @include tablet {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__contact-details {
+    width: 100%;
+    @include tablet {
+      width: 82%;
+    }
+  }
+
+  &__contact-details-title {
+    @include m-h2;
+    margin-top: 16px;
+    @include tablet {
+      @include h2;
+      margin-top: 24px;
+    }
+
+  }
+
+  &__contact-name-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__contact-name-label {
+    @include m-h3;
+    margin-top: 24px;
+    margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 32px;
+    }
+
+
+  }
+
+  &__contact-name-input {
+    border-radius: 20px;
+    border: 1px solid color(borders);
+    height: 36px;
+    padding-left: 16px;
+    outline: none;
+    @include m-p2;
+    color: color(table-header-text);
+    &::placeholder {
+      @include m-p2;
+    }
+    &:hover {
+      border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+
+    }
+
+  }
+  
+  &__contact-position-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__contact-position-label {
+    @include m-h3;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 24px;
+    }
+
+
+  }
+
+  &__contact-position-input {
+    border-radius: 20px;
+    border: 1px solid color(borders);
+    height: 36px;
+    padding-left: 16px;
+    outline: none;
+    @include m-p2;
+    color: color(table-header-text);
+    &::placeholder {
+      @include m-p2;
+    }
+    &:hover {
+      border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+
+    }
+
+  }
+
+  &__contact-phone-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__contact-phone-label {
+    @include m-h3;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 24px;
+    }
+  }
+
+  &__contact-phone-input {
+    border-radius: 20px;
+    border: 1px solid color(borders);
+    height: 36px;
+    padding-left: 16px;
+    outline: none;
+    @include m-p2;
+    color: color(table-header-text);
+    &::placeholder {
+      @include m-p2;
+    }
+    &:hover {
+      border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+    }
+  }
+
+  &__contact-email-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__contact-email-label {
+    @include m-h3;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    @include tablet {
+      @include h3;
+      margin-top: 24px;
+    }
+  }
+
+  &__contact-email-input {
+    border-radius: 20px;
+    border: 1px solid color(borders);
+    height: 36px;
+    padding-left: 16px;
+    outline: none;
+    @include m-p2;
+    color: color(table-header-text);
+    &::placeholder {
+      @include m-p2;
+    }
+    &:hover {
+      border: 2px solid color(interactive); 
+    }
+    @include tablet {
+      @include p2;
+      color: color(table-header-text);
+      height: 38px;
+    }
+  }
+
+  &__footer {
+    width: 100%;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F7F8F9;
+    margin-top: 24px;
+    @include tablet {
+      height: 70px;
+      margin-top: 32px;
+    }
+  }
+
+  &__footer-container {
+    width: 86%;
+    display: flex;
+    justify-content: space-between;
+    @include tablet {
+      justify-content: flex-end;
+    }
+  }
+
+  &__cancel-button {
+    cursor: pointer;
+    outline: none;
+    border-radius: 20px;
+    width: 139px;
+    height: 36px;
+    @include m-h3;
+    border: 1px solid color(borders);
+    background-color: color(global-white);
+    color: color(table-header-text);
+    @include tablet {
+      @include h3;
+      color: color(table-header-text);
+      height: 38px;
+      width: 72px;
+    }
+  }
+
+  &__add-warehouse-button {
+    cursor: pointer;
+    outline: none;
+    border-radius: 20px;
+    width: 139px;
+    height: 36px;
+    @include m-h3;
+    background-color: color(interactive);
+    color: color(global-white);
+    border: 1px solid color(borders);
+    @include tablet {
+      @include h3;
+      color: color(global-white);
+      margin-left: 16px;
+      height: 38px;
+      width: 138px;
+    }
+  }
+
+  &__warehouse-error{
+    border: 1px solid color(out-of-stock);
+  }
+}

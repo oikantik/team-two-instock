@@ -1,0 +1,18 @@
+@import '../../partials/variables';
+@import '../../partials/typography';
+@import '../../partials/mixins';
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__text {
+        @include m-p3;
+        padding: 2.5rem 0;
+        color: color(table-header-text);
+        @include tablet {
+            @include p3;
+            color: color(table-header-text);
+        }
+    }
+}

@@ -1,0 +1,326 @@
+@import '../../partials/variables';
+@import '../../partials/typography';
+@import '../../partials/mixins';
+
+.inventory-form {
+    width: 100%;
+
+    @include tablet {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__heading {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        height: 128px;
+        padding: 1.5rem;
+        padding-top: 2rem;
+        border-bottom: 1px solid color(borders);
+        margin-bottom: 1rem;
+
+        @include tablet {
+            width: 100%;
+            height: 93px;
+            margin-bottom: 1.5rem;
+        }
+
+        &-icon {
+            position: relative;
+            top: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        &-text {
+            @include m-h1;
+            @include tablet {
+                @include h1;
+            }
+        }
+    }
+
+    &__form {
+        width: 100%;
+
+        @include tablet {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__fieldset {
+        display: flex;
+        flex-direction: column;
+        padding: 0 1.5rem;
+        border: none;
+
+        @include tablet {
+            width: 50%;
+            padding: 0 2rem;
+            padding-right: 0;
+        }
+        
+        // targets the "Item Details" fieldset
+        &:nth-child(1) {
+            border-bottom: 1px solid color(borders);
+            margin-bottom: 1rem;
+
+            @include tablet {
+                border-bottom: none;
+                border-right: 1px solid color(borders);
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        // targets the last direct child of each fieldset
+        > :last-child {
+            margin-bottom: 0.75rem;
+
+            @include tablet {
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+
+    &__legend {
+        @include m-h2;
+        position: relative;
+        top: 1rem;
+        margin-bottom: 2.5rem;
+
+        @include tablet {
+            @include h2;
+            margin-bottom: 3rem;
+        }
+    }
+
+    &__label {
+        @include m-h3;
+        margin-bottom: 0.25rem;
+
+        @include tablet {
+            @include h3;
+        }
+
+        &--radio {
+            width: 100%;
+        }
+    }
+
+    // full class name is .inventory-form__text-input, will be reuseing with @extend
+    &__text-input {
+        @include m-p2;
+        width: 100%;
+        height: 36px;
+        padding: 0.5rem 1rem;
+        border: 1px solid color(borders);
+        border-radius: 20px;
+        outline: none;
+        margin-bottom: 0.25rem;
+
+        &:focus {
+            border-color: color(interactive);
+        }
+
+        @include tablet {
+            @include p2;
+            width: calc(100% - 2rem);
+            height: 38px;
+        }
+
+        &::placeholder {
+            @include m-p2;
+            color: color(table-header-text);
+
+            @include tablet {
+                @include p2;
+                color: color(table-header-text);
+            }
+
+        }
+        
+        // make input border red on error, will stay red on focus intil value changed
+        // full class name is .inventory-form__text-input--error, will be reusing with @extend
+        &--error {
+            border: 1px solid color(out-of-stock);
+
+            &:focus {
+                border: 1px solid color(out-of-stock);
+            }
+        }
+    }
+
+    &__textarea {
+        @extend .inventory-form__text-input;
+        height: 120px;
+        resize: none;
+
+        &--error {
+            @extend .inventory-form__text-input--error;
+        }
+    }
+
+    &__select {
+        @extend .inventory-form__text-input;
+        @include m-p2;
+        font-family: $base-font-family;
+        color: color(global-black); // not sure it this is doing anything
+        background-color: color(global-white);
+        background-image: url(../../assets/icons/arrow_drop_down-24px.svg);
+        background-repeat: no-repeat;
+        background-position: 95% 50%;
+        appearance: none;
+
+        &:focus {
+            background-image: url(../../assets/icons/arrow_drop_down-24px-hover.svg);
+        }
+
+        &:invalid {
+            color: color(table-header-text);
+        }
+
+        @include tablet {
+            @include p2;
+        }
+
+        &--error {
+            @extend .inventory-form__text-input--error;
+        }
+    }
+    // fieldset for radio buttons group
+    &__radio {
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: space-between;
+       align-items: center;
+       width: calc(100% - 48px);
+       border: 0;
+       margin-bottom: 1.125rem;
+
+       @include tablet {
+           justify-content: flex-start;
+       }
+
+       &-group {
+           display: inline-block;
+
+           @include tablet {
+               margin-right: 2.5rem;
+           }
+       }
+
+       &-input {
+           padding: 0.5rem;
+           margin-right: .5rem;
+       }
+
+       &-label {
+           @include m-p2;
+           color: color(table-header-text);
+
+           @include tablet {
+               @include p2;
+               color: color(table-header-text);
+           }
+
+           &--checked {
+               color: color(global-black);
+           }
+       }
+
+       &--error {
+           @extend .inventory-form__text-input--error;
+       }
+   }
+
+   &__num-input {
+       @extend .inventory-form__text-input;
+       transition: width 1.5s ease;
+
+       @include desktop {
+           width: 122px;
+       }
+
+       &--error {
+           @extend .inventory-form__text-input--error;
+       }
+   }
+
+   &__button-group {
+       display: flex;
+       justify-content: space-between;
+       padding: 1rem 1.5rem;
+       background-color: color(page-bg);
+
+       @include tablet {
+           justify-content: flex-end;
+           width: 100%;
+       }
+   }
+
+   &__button {
+       @include m-p2;
+       width: calc(50% - 8.5px);
+       padding: .5rem 1rem;
+       border-radius: 20px;
+       border: none;
+       outline: none;
+       color: color(global-white);
+       background-color: color(interactive);
+       transition: background-color .2s ease;
+
+       &:hover {
+           background-color: color(nav-bg);
+       }
+
+       @include tablet {
+           @include p2;
+           width: auto;
+           color: color(global-white);
+
+           // targets "cancel" button
+           &:first-child {
+               margin-right: 1rem;
+           }
+       }
+
+       &--secondary {
+           border: 1px solid color(borders);
+           color: color(global-black);
+           background-color: color(global-white);
+           transition: border .2s ease, color .2s ease;
+
+           &:hover {
+               border: 1px solid color(interactive);
+               color: color(interactive);
+               background-color: color(global-white);
+           }
+       }
+   }
+
+   &__error {
+       display: flex;
+       align-items: center;
+       height: 16px;
+        @include tablet {
+            margin-bottom: 0.25rem;
+        }
+
+        &-icon {
+            width: 1rem;
+            margin-right: 0.25rem;
+        }
+
+        &-text {
+            @include m-p3;
+            color: color(out-of-stock);
+            line-height: 1rem;
+            @include tablet {
+                @include p3;
+                color: color(out-of-stock);
+                line-height: 1rem;
+            }
+        }
+   }
+}

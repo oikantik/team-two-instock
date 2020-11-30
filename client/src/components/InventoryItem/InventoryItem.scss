@@ -1,0 +1,259 @@
+
+@use '../../partials/typography' as *;
+@use '../../partials/mixins' as *;
+
+
+
+.inv-item-details {
+  width: 100%;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  height: 365px;
+  @include tablet {
+    height: 292px;
+  }
+  @include desktop {
+    height: 274px;
+  }
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 91.5%;
+    height: 92px;
+    
+  }
+
+  &__title-div {
+    display: flex;
+    align-items: center;
+  }
+
+  &__arrow-link {
+    display: flex;
+    align-items: center;
+  }
+
+  &__arrow-icon {
+    margin-right: 8px
+  }
+
+  &__title {
+    @include m-h1;
+    @include tablet {
+      @include h1;
+    }
+  }
+
+  &__edit-link {
+    cursor: pointer;
+  }
+
+  &__edit-button {
+    border: none;
+    width: 36px;
+    height: 36px;
+    background-color: color(interactive);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    cursor: pointer;
+    @include tablet {
+      width: 81px;
+      height: 38px;
+      display: flex;
+      padding-right: 5px;
+    }
+  }
+
+  &__edit-icon {
+    width: 20px;
+    height: 20px;
+    @include tablet {
+      margin-right: .5rem;
+    }
+  }
+
+  &__edit {
+    display: none;
+    @include tablet {
+      display: inline;
+      @include h3;
+      color: color(global-white);
+      
+    }
+  }
+
+  &__border {
+    width: 100%;
+    border-bottom: 1px solid color(borders);
+  }
+
+  &__main {
+    width: 91.5%;
+    height: 250px;
+    @include tablet {
+      height: 198px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__main-top {
+    @include tablet {
+      height: 150px;
+      border-right: 1px solid color(borders);
+      width: 100%;
+    }
+  }
+
+  &__descr-label {
+    @include m-h4;
+    margin-top: 16px;
+    @include tablet {
+      @include h4;
+      margin:0;
+    }
+  }
+
+  &__descr {
+    @include m-p2;
+    margin-top: 4px;
+    margin-right: 50px;
+    @include tablet {
+      @include p2;
+
+    }
+  }
+
+  &__category-label {
+    @include m-h4;
+    margin-top: 16px;
+    @include tablet {
+      @include h4;
+      margin-top: 32px;
+
+    }
+
+  }
+
+  &__category {
+    @include m-p2;
+    margin-top: 4px;
+    @include tablet {
+      @include p2;
+
+    }
+
+
+  }
+
+  &__main-bottom {
+    @include tablet {
+      height: 150px;
+      width: 100%;
+      padding-left: 2.5rem;
+    }
+  }
+
+  &__div-row {
+    display: flex;
+    margin-top: 16px;
+    @include tablet {
+      margin: 0;
+    }
+  }
+
+  &__div-column {
+    margin-right: 117px;
+  }
+
+  &__status-label {
+    @include m-h4;
+    @include tablet {
+      @include h4;
+
+    }
+    
+  }
+
+  &__div-status {
+    width: 61px;
+    height: 24px;
+    background-color:  rgba(21, 132, 99, 0.07);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 4px;
+
+    &--out-of-stock{
+      background-color: rgba(201, 69, 21, 0.07);
+      padding: 0 0.2rem;
+      width: 92px;
+      padding-bottom: 0.3rem;
+    }
+    
+  }
+
+  &__status {
+    @include m-h4;
+    color: color(instock);
+    margin-top: 4px;
+    
+    @include tablet{
+      @include h4;
+      color: color(instock);
+
+    }
+
+    &--out-of-stock {
+      color: color(out-of-stock);
+    }
+
+  }
+
+  &__quantity-label {
+    @include m-h4;
+    @include tablet{
+      @include h4;
+
+    }
+  }
+
+  &__quantity {
+    @include m-p2;
+    margin-top: 4px;
+    @include tablet {
+      @include p2;
+
+    }
+  }
+
+  &__warehouse-label{
+    @include m-h4;
+    margin-top: 16px;
+    @include tablet{
+      @include h4;
+      margin-top: 36px;
+
+    }
+
+
+  }
+
+  &__warehouse {
+    @include m-p2;
+    margin-top: 4px;
+    @include tablet {
+      @include p2;
+
+    }
+
+  }
+
+}
