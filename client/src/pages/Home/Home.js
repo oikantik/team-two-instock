@@ -30,7 +30,8 @@ class Home extends Component {
         type: "",
         enabled: false
       },
-    }
+    },
+    search: ""
   };
 
   fetchWarehouses = () => {
@@ -54,6 +55,18 @@ class Home extends Component {
     })
     .catch((error) => console.log(error));
   } 
+
+  fetchSearchResults = (query) => {
+    axiosInstance
+    .get(`/warehouses/search/all?string=${query}`)
+    .then((response) => {
+      this.setState({
+        warehouses: response.data,
+        search: ""
+      });
+    })
+    .catch((error) => console.log(error));
+  }
 
   componentDidMount() {
     this.fetchWarehouses();
@@ -125,6 +138,16 @@ class Home extends Component {
     }
   }
 
+  onSearchSubmit = () => {
+    this.fetchSearchResults(this.state.search);
+  }
+
+  onSearchChange = (e) => {
+    this.setState({
+      search: e.target.value
+    })
+  }
+
   render() {
     return (
       <Fragment>
@@ -140,7 +163,7 @@ class Home extends Component {
         )}
         <main className="warehouse-home">
           <section className="warehouse-list-section">
-            <WarehousesListHeader/>
+            <WarehousesListHeader onSearchSubmit={this.onSearchSubmit} onSearchChange={this.onSearchChange} search={this.state.search}/>
             <WarehousesList
               onSort={this.onSort}
               sortBy={this.state.sortBy}

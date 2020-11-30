@@ -70,6 +70,12 @@ const singleSortBy = (req, res) => {
   res.status(200).json({...warehouse, inventories});
 };
 
+const searchWarehouses = (req, res) => {
+  const queryString = req.query.string;
+  const data = warehousesModel.findWarehouses(queryString);
+  return res.status(200).json(data);
+}
+
 
 module.exports = {
   getSingleWarehouse,
@@ -78,5 +84,6 @@ module.exports = {
   deleteSingleWarehouse,
   createWarehouse,
   sortBy,
-  singleSortBy
+  singleSortBy,
+  searchWarehouses
 };

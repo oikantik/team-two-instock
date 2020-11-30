@@ -143,6 +143,14 @@ const sortBy = (paramString, queryString, inventories) => {
   return false;
 }
 
+const findInventories = (query) => {
+  const inventories = readFromInventoriesFile();
+  const inventoriesFound = inventories.filter(inventory => {
+    return inventory.itemName.toLowerCase().indexOf(query.toLowerCase()) > -1 || inventory.warehouseName.toLowerCase().indexOf(query.toLowerCase()) > -1 || inventory.category.toLowerCase().indexOf(query.toLowerCase()) > -1 || inventory.status.toLowerCase().indexOf(query.toLowerCase()) > -1  || inventory.quantity <= Number(query);
+  })
+  return inventoriesFound;
+}
+
 module.exports = {
   doesInventoryExist,
   deleteOne,
@@ -154,5 +162,6 @@ module.exports = {
   getWarehouseNames,
   createInventory,
   getWarehouseNameId,
-  sortBy
+  sortBy,
+  findInventories
 };

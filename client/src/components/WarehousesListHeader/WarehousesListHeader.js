@@ -2,9 +2,14 @@ import React from "react";
 import "./WarehousesListHeader.scss";
 import { Link } from 'react-router-dom'
 
-function WarehousesContainer() {
+function WarehousesContainer({onSearchSubmit, onSearchChange, search}) {
   const handleSearch = (e) => {
     e.preventDefault();
+    onSearchSubmit(e);
+  }
+
+  const handleSearchChange = (e) => {
+    onSearchChange(e);
   }
   return (
     <div className="warehouses-list-header">
@@ -14,6 +19,9 @@ function WarehousesContainer() {
           type="text"
           placeholder="Search"
           className="warehouses-search__input"
+          name="search"
+          value={search}
+          onChange={handleSearchChange}
         />
         <button className="warehouses-search__icon" type="submit"></button>
       </form>

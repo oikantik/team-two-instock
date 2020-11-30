@@ -65,6 +65,12 @@ const sortBy = (req, res) => {
   return res.status(200).json(data);
 }
 
+const searchInventories = (req, res) => {
+  const queryString = req.query.string;
+  const data = inventoryModel.findInventories(queryString);
+  return res.status(200).json(data);
+}
+
 
 module.exports = {
   deleteSingleInventory,
@@ -73,5 +79,6 @@ module.exports = {
   getSingleInventory,
   createInventory,
   getInventorySummary,
-  sortBy
+  sortBy,
+  searchInventories
 };
