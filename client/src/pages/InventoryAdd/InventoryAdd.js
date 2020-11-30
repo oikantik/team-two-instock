@@ -21,7 +21,6 @@ class InventoryAdd extends Component {
     }
 
     addInventory = (data) => {
-        console.log("add it", data);
         axiosInstance.post('/inventory', {
           ...data
         }).then(response => {
