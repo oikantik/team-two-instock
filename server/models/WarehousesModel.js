@@ -191,6 +191,14 @@ const sortBy = (paramString, queryString) => {
   return false;
 }
 
+const findWarehouses = (query) => {
+  const warehouses = readFromWarehousesFile();
+  const warehousesFound = warehouses.filter(warehouse => {
+    return warehouse.name.toLowerCase().indexOf(query.toLowerCase()) > -1 || warehouse.address.toLowerCase().indexOf(query.toLowerCase()) > -1 || warehouse.city.toLowerCase().indexOf(query.toLowerCase()) > -1 || warehouse.country.toLowerCase().indexOf(query.toLowerCase()) > -1 || warehouse.contact.name.toLowerCase().indexOf(query.toLowerCase()) > -1 || warehouse.contact.email.toLowerCase().indexOf(query.toLowerCase()) > -1 || warehouse.contact.phone.toLowerCase().indexOf(query.toLowerCase()) > -1;
+  })
+  return warehousesFound;
+}
+
 module.exports = {
   readFromWarehousesFile,
   updateWarehouse,
@@ -199,5 +207,6 @@ module.exports = {
   doesWarehouseExist,
   deleteOne,
   createWarehouse,
-  sortBy
+  sortBy,
+  findWarehouses
 };
