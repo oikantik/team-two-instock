@@ -43,7 +43,7 @@
     padding-top: 0;
     flex-direction: row;
     align-items: center;
-    height: 70px;
+    height: 98px;
     padding-bottom: 0;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -51,6 +51,7 @@
   }
 
   @include desktop {
+    height: 76px;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
@@ -134,14 +135,22 @@
     color: color(table-header-text);
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+
+    @include tablet {
+      @include p2;
+    }
 
     &--location {
       @include m-h3;
       color: color(interactive);
       display: flex;
       align-items: center;
+
+      @include tablet {
+        @include h3;
+      }
 
       &:active,
       &:visited,

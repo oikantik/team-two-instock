@@ -13,7 +13,7 @@ const WarehouseDetails = ({warehouse}) => {
         <div className="warehouse__contact-name-info">
           <div className="warehouse__contact-name">
             <p className="warehouse__contact-name-label">CONTACT NAME:</p>
-  <p className="warehouse__contact">{warehouse.contact && warehouse.contact.name}</p>
+            <p className="warehouse__contact">{warehouse.contact && warehouse.contact.name}</p>
             <p className="warehouse__position">{warehouse.contact && warehouse.contact.position}</p>
           </div>
           <div className="warehouse__contact-info">

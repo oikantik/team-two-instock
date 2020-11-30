@@ -13,7 +13,6 @@ const InventoryItem = (props) => {
           </Link>
           <h1 className="inv-item-details__title">{props.inventory.itemName}</h1>
         </div> 
-        {/* We can add the inventory ID through the props once we patch everything together */}
         <Link to={`/inventory/${props.inventory.id}/edit`} className="inv-item-details__edit-link">
           <button className="inv-item-details__edit-button">
             <svg className="inv-item-details__edit-icon"width="24" height="24" viewBox="0 0 24 24" fill="FFFFFF" xmlns="http://www.w3.org/2000/svg">

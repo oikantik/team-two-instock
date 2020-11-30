@@ -137,6 +137,8 @@
   &__inv-item-sort {
     width: 12px;
     height: 20px;
+    cursor: pointer;
+
     &--active {
       filter: invert(29%) sepia(68%) saturate(3701%) hue-rotate(217deg) brightness(96%) contrast(100%);
     }
@@ -160,6 +162,7 @@
   &__categ-sort {
     width: 12px;
     height: 20px;
+    cursor: pointer;
     &--active {
       filter: invert(29%) sepia(68%) saturate(3701%) hue-rotate(217deg) brightness(96%) contrast(100%);
     }
@@ -183,6 +186,7 @@
   &__stat-sort {
     width: 12px;
     height: 20px;
+    cursor: pointer;
     &--active {
       filter: invert(29%) sepia(68%) saturate(3701%) hue-rotate(217deg) brightness(96%) contrast(100%);
     }
@@ -206,6 +210,7 @@
   &__quant-sort {
     width: 12px;
     height: 20px;
+    cursor: pointer;
     &--active {
       filter: invert(29%) sepia(68%) saturate(3701%) hue-rotate(217deg) brightness(96%) contrast(100%);
     }

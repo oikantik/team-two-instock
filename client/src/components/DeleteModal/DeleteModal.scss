@@ -98,14 +98,26 @@
     }
 
     &--cancel {
+      color: color(table-header-text);
       border: 1px solid color(borders);
       background-color: color(global-white);
+      transition: border .2s ease, color .2s ease;
+
+      &:hover {
+          border: 1px solid color(interactive);
+          color: color(interactive);
+          background-color: color(global-white);
+      }
     }
 
     &--delete {
       background-color: color(out-of-stock);
       color: color(global-white);
+      transition: background-color .2s ease;
 
+      &:hover {
+          background-color: color(nav-bg);
+      }
     }
   }
 }
